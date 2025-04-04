@@ -1,14 +1,14 @@
-import type { PropsWithChildren } from 'react'
+'use client'
+
+import { type PropsWithChildren } from 'react'
 
 import { Header } from './header/Header'
-
-interface Props {}
 
 export function Content({ children }: PropsWithChildren<unknown>) {
 	return (
 		<div className='w-full relative'>
 			<Header />
-			<section>{children}</section>
+			<section className='px-20 max-sm:px-10'>{children}</section>
 		</div>
 	)
 }

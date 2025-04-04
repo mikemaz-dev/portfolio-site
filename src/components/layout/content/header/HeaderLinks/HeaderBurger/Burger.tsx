@@ -23,8 +23,8 @@ export function Burger({
 			/>
 
 			<motion.span
-				className='h-0.5 w-6.5 bg-white rounded-md'
-				animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+				className='h-0.5 bg-white rounded-md'
+				animate={isOpen ? { width: 0 } : { width: 26 }}
 				transition={{
 					duration: 0.2,
 					ease: 'easeInOut',

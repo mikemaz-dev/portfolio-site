@@ -1,0 +1,22 @@
+import type { ISocial } from './socials.types'
+
+export const SOCIALS_DATA: ISocial[] = [
+	{
+		link: '/',
+		icon: '/icons/linkedin.svg',
+		alt: 'Linkedin',
+		color: 'bg-blue-500/80'
+	},
+	{
+		link: 'https://www.instagram.com/vettcoder/',
+		icon: '/icons/instagram.svg',
+		alt: 'Instagram',
+		color: 'bg-pink-500/80'
+	},
+	{
+		link: 'https://github.com/mikemaz-dev',
+		icon: '/icons/github.svg',
+		alt: 'GitHub',
+		color: 'bg-white/80'
+	}
+]

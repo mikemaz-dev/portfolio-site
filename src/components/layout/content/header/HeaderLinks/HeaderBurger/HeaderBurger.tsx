@@ -32,9 +32,9 @@ export function HeaderBurger({ classname }: Props) {
 					animate={{ opacity: 1, y: 0 }}
 					exit={{ opacity: 0, y: -10 }}
 					transition={{ duration: 0.3, ease: 'easeInOut' }}
-					className='bg-zinc-900 px-2 py-3 rounded-b-2xl absolute top-10 right-1 sm:w-auto sm:max-w-xs'
+					className='bg-zinc-900/95 px-2 py-3 rounded-b-lg absolute top-[2.44rem] right-0'
 				>
-					<ul className='flex flex-col sm:flex-row items-start gap-3 sm:gap-4'>
+					<ul className='flex flex-col items-start gap-3'>
 						{HEADER_LINKS_DATA.map((link, i) => (
 							<PageLink
 								link={link}
