@@ -4,11 +4,22 @@
 	--background: #111111;
 	--foreground: #171717;
 	--text: #ffffff;
+
+	/* OneUI-style цвета */
+	--scroll-track: #1c1c1c;
+	--scroll-thumb: #3a3a3a;
+	--scroll-thumb-hover: #5a5a5a;
 }
 
 @theme inline {
 	--color-background: var(--background);
 	--font-sans: var(--font-inter);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
 html {
@@ -17,10 +28,55 @@ html {
 
 body {
 	height: 100%;
+	min-height: 100vh;
+	overflow-x: hidden;
 	font-family: Arial, Helvetica, sans-serif;
-	background: var(--background);
+	background-image: linear-gradient(to top right, var(--background), #182129);
+	background-attachment: fixed;
 	color: var(--text);
 	transition-property: opacity, transform, filter;
 	transition-timing-function: ease-in-out;
 	transition-duration: 0.5s;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+	opacity: 0;
+	transition:
+		opacity 0.3s ease,
+		width 0.3s ease;
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+	background-color: var(--scroll-track);
+	border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--scroll-thumb);
+	border-radius: 9999px;
+	transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--scroll-thumb-hover);
+}
+
+::-webkit-scrollbar-button {
+	display: none;
+	height: 0;
+	width: 0;
+}
+
+body:hover::-webkit-scrollbar,
+body:focus-within::-webkit-scrollbar {
+	width: 8px;
+	opacity: 1;
+}
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }

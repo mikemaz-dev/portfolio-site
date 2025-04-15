@@ -1,10 +1,10 @@
 export function Description() {
 	return (
-		<p className='text-zinc-300 mt-4 text-lg text-start'>
-			I'm an 18-year-old web developer specializing in modern, high-performance websites that
-			transform ideas into reality. I focus on clean code, intuitive UX, and technologies like{' '}
-			<span className='text-zinc-100'>Next.js</span> and{' '}
-			<span className='text-zinc-100'>TypeScript</span> to craft seamless digital experiences.
+		<p className='text-zinc-300 max-sm:text-sm mt-3.5 text-lg leading-relaxed text-start max-sm:text-center'>
+			I’m an 18-year-old developer focused on building meaningful digital experiences with modern{' '}
+			{''}
+			<span className='text-cyan-400'>web technologies. </span>I enjoy creating intuitive user
+			interfaces and constantly explore new tools to bring ideas to life.
 		</p>
 	)
 }

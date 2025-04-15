@@ -8,7 +8,7 @@ export const SOCIALS_DATA: ISocial[] = [
 		color: 'bg-blue-500/80'
 	},
 	{
-		link: 'https://www.instagram.com/vettcoder/',
+		link: 'https://www.instagram.com/mikemazdev/',
 		icon: '/icons/instagram.svg',
 		alt: 'Instagram',
 		color: 'bg-pink-500/80'
