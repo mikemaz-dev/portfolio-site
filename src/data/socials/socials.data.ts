@@ -15,7 +15,7 @@ export const SOCIALS_DATA: ISocial[] = [
 	},
 	{
 		link: 'https://github.com/mikemaz-dev',
-		icon: '/icons/github.svg',
+		icon: '/icons/github-new.svg',
 		alt: 'GitHub',
 		color: 'bg-white/80'
 	}

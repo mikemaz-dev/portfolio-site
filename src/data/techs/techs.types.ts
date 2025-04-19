@@ -1,5 +1,5 @@
 export interface ITech { 
-	img: string
+	img?: string
 	name: string
 	link?: string
 }

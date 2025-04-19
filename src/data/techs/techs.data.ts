@@ -7,6 +7,16 @@ export const TECHS_DATA: ITech[] = [
 		link: 'https://react.dev/'
 	},
 	{
+		img: '/icons/techs/redux.svg',
+		name: 'React Redux',
+		link: 'https://react-redux.js.org/'
+	},
+	{
+		img: '/icons/techs/react-router.svg',
+		name: 'React Router',
+		link: 'https://reactrouter.com/'
+	},
+	{
 		img: '/icons/techs/next.webp',
 		name: 'Next.js',
 		link: 'https://nextjs.org/'
@@ -39,8 +49,23 @@ export const TECHS_DATA: ITech[] = [
 		link: 'https://tailwindcss.com/'
 	},
 	{
+		img: '/icons/techs/shadcn.svg',
+		name: 'Shadcn',
+		link: 'https://tailwindcss.com/'
+	},
+	{
 		img: '/icons/techs/framermotion.svg',
 		name: 'Framer Motion',
 		link: 'https://motion.dev/'
+	},
+	{
+		img: '/icons/techs/formik.svg',
+		name: 'Formik',
+		link: 'https://formik.org/'
+	},
+	{
+		img: '/icons/techs/zustand.svg',
+		name: 'Zustand',
+		link: 'https://zustand-demo.pmnd.rs/'
 	}
 ]

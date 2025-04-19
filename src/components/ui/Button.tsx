@@ -6,6 +6,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string
 	variant?: 'primary' | 'secondary' | 'destructive' | 'outline' | 'ghost'
 	iconOnly?: boolean
+	minimalistic?: boolean
 }
 
 const variantClasses = {
@@ -16,14 +17,22 @@ const variantClasses = {
 	ghost: 'bg-transparent text-white border-none hover:bg-white/10'
 }
 
-export function Button({ children, className, variant = 'primary', iconOnly, ...props }: Props) {
+export function Button({
+	children,
+	className,
+	variant = 'primary',
+	iconOnly,
+	minimalistic,
+	...props
+}: Props) {
 	return (
 		<button
 			className={twMerge(
 				'relative font-medium rounded-lg border-2 cursor-pointer backdrop-blur-md transition-all duration-300 ease-in-out',
 				iconOnly
 					? 'p-2 w-10 h-10 flex items-center justify-center'
-					: 'px-4 max-sm:px-3 py-2.5 max-sm:text-sm',
+					: 'px-4 py-2.5 max-sm:text-sm',
+				minimalistic && 'py-1 px-2',
 				variantClasses[variant],
 				className
 			)}

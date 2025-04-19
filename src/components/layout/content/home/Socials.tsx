@@ -7,14 +7,26 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { Button } from '@/ui/Button'
+
 import { SOCIALS_DATA } from '@/data/socials/socials.data'
 
 export function Socials({ className }: { className?: string }) {
 	const [copied, setCopied] = useState(false)
 
 	const handleCopy = async () => {
+		const copyEmail = 'mazurkevich.mikhail.14@gmail.com'
 		try {
-			await navigator.clipboard.writeText('mazurkevich.mikhail.14@gmail.com')
+			if (navigator.clipboard && window.isSecureContext) {
+				await navigator.clipboard.writeText(copyEmail)
+			} else {
+				const input = document.createElement('input')
+				input.value = copyEmail
+				document.body.appendChild(input)
+				input.select()
+				document.execCommand('copy')
+				document.body.removeChild(input)
+			}
 			setCopied(true)
 			setTimeout(() => setCopied(false), 2000)
 		} catch (err) {
@@ -32,35 +44,35 @@ export function Socials({ className }: { className?: string }) {
 						target='_blank'
 						title={alt}
 						className={twMerge(
-							'group p-1.5 transition-colors duration-400 ease-in-out rounded-lg max-sm:flex max-sm:items-center max-sm:justify-center max-sm:gap-1',
+							'group p-1.5 transition-colors duration-400 ease-in-out rounded-lg max-sm:flex max-sm:items-center max-sm:justify-center max-sm:gap-2',
 							alt === 'Linkedin' && 'hover:bg-blue-500/80',
 							alt === 'Instagram' &&
 								'bg-gradient-to-r from-transparent to-transparent hover:bg-gradient-to-tr hover:from-red-500 hover:to-purple-600',
-							alt === 'GitHub' && 'p-1 py-0.5 hover:bg-white/10'
+							alt === 'GitHub' && 'hover:bg-white/10 max-sm:-ml-2'
 						)}
 					>
 						<Image
 							src={icon}
 							alt={alt}
-							width={alt === 'GitHub' ? 35 : 24}
+							width={24}
 							height={24}
 							className='transition-transform duration-300'
 						/>
-						<span className='text-sm text-white/90 font-medium sm:hidden'>{alt}</span>
+						<span className='text-sm hidden max-sm:inline'>{alt}</span>
 					</Link>
 				))}
 
-				<button
+				<Button
+					variant='ghost'
 					onClick={handleCopy}
-					className={twMerge(
-						'flex items-center justify-center gap-2 p-2 text-white text-xs rounded-lg cursor-pointer transition-colors',
-						copied ? 'bg-green-500' : 'hover:bg-white/10'
-					)}
-					title='Copy email address'
+					className='flex items-center gap-2 p-1.5 max-sm:ml-5.5'
+					title='Copy email'
 				>
 					<Mail size={24} />
-					<span className='sm:hidden font-medium'>Copy email</span>
-				</button>
+					<span className='text-sm select-none hidden max-sm:block'>
+						{copied ? 'Copied!' : 'Copy email'}
+					</span>
+				</Button>
 			</div>
 		</div>
 	)

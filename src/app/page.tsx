@@ -7,6 +7,7 @@ import { useRef } from 'react'
 
 import { About } from '@/components/layout/content/about/About'
 import { Badges, Description, Greeting, Socials } from '@/components/layout/content/home'
+import { Projects } from '@/components/layout/content/projects/Projects'
 
 import { Button } from '@/ui/index'
 
@@ -57,7 +58,7 @@ export default function Home() {
 				<div className='w-full sm:w-auto flex flex-col items-center sm:items-end'>
 					<div className='w-full flex items-center justify-center rounded-t-lg sm:rounded-lg sm:rounded-b-none'>
 						<Image
-							src='/Me.jpg'
+							src='/Me-edited.png'
 							alt='Me'
 							width={1980}
 							height={2539}
@@ -73,6 +74,9 @@ export default function Home() {
 				ref={aboutRef}
 			>
 				<About />
+			</section>
+			<section className='flex items-start max-sm:flex-col gap-10 pb-4 mt-5 max-sm:mt-10'>
+				<Projects />
 			</section>
 		</div>
 	)

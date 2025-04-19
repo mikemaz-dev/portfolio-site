@@ -4,7 +4,7 @@ import * as m from 'motion/react-m'
 
 import { AboutMeBlocks } from './AboutMeBlocks'
 import { Certificates } from './Certificates/Certificates'
-import { TechStack } from './TechStack'
+import { TechStackBlock } from './TechStackBlock'
 import { fadeIn } from './fadeIn-animation'
 
 export function About() {
@@ -24,7 +24,7 @@ export function About() {
 				</div>
 			</m.div>
 			<div className='flex flex-col gap-4'>
-				<TechStack />
+				<TechStackBlock />
 				<Certificates />
 			</div>
 		</>
