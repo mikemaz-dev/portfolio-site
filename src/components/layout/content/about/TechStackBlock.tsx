@@ -2,7 +2,7 @@
 
 import * as m from 'motion/react-m'
 
-import { TechStack } from '@/ui/TechStack'
+import { TechStack } from '@/ui/techstack/TechStack'
 
 import { fadeIn } from './fadeIn-animation'
 

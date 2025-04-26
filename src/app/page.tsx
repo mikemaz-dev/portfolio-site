@@ -5,11 +5,13 @@ import * as m from 'motion/react-m'
 import Image from 'next/image'
 import { useRef } from 'react'
 
-import { About } from '@/components/layout/content/about/About'
+import { AboutMeBlocks } from '@/components/layout/content/about/AboutMeBlocks'
 import { Badges, Description, Greeting, Socials } from '@/components/layout/content/home'
 import { Projects } from '@/components/layout/content/projects/Projects'
 
+import { Heading } from '@/ui/Heading'
 import { Button } from '@/ui/index'
+import { TechStack } from '@/ui/techstack/TechStack'
 
 export default function Home() {
 	const aboutRef = useRef<HTMLDivElement>(null)
@@ -31,7 +33,6 @@ export default function Home() {
 				<div className='w-full sm:max-w-2xl h-auto text-center sm:text-left flex flex-col justify-between'>
 					<div>
 						<Greeting />
-						<Badges />
 						<Description />
 						<div className='max-sm:w-full max-sm:flex max-sm:items-center max-sm:justify-center'>
 							<Button
@@ -48,10 +49,20 @@ export default function Home() {
 						onClick={handleScrollDown}
 						className='absolute bottom-0 w-max mx-auto flex items-center gap-2 cursor-pointer select-none group max-sm:hidden'
 					>
-						<Mouse className='size-5 text-neutral-100/80 group-hover:text-neutral-100 transition-colors duration-300' />
-						<span className='font-medium text-neutral-100/80 group-hover:text-neutral-100 transition-colors duration-300'>
+						<m.div
+							animate={{ opacity: [1, 0.3, 1] }}
+							transition={{ duration: 4, repeat: Infinity }}
+						>
+							<Mouse className='size-5 text-neutral-100/80 group-hover:text-neutral-100 transition-colors duration-300' />
+						</m.div>
+
+						<m.span
+							animate={{ opacity: [1, 0.3, 1] }}
+							transition={{ duration: 4, repeat: Infinity }}
+							className='font-medium text-neutral-100/80 group-hover:text-neutral-100 transition-colors duration-300'
+						>
 							Scroll Down
-						</span>
+						</m.span>
 					</button>
 				</div>
 
@@ -70,12 +81,20 @@ export default function Home() {
 				</div>
 			</m.section>
 			<section
-				className='flex items-start max-sm:flex-col gap-10 pb-4 mt-30 max-sm:mt-20'
+				className='w-full flex flex-col items-start max-sm:flex-col gap-10 mt-30 max-sm:mt-20'
 				ref={aboutRef}
 			>
-				<About />
+				<div className='w-full flex items-center justify-between'>
+					<Heading title='About Me' />
+					<Badges />
+				</div>
+				<AboutMeBlocks />
 			</section>
-			<section className='flex items-start max-sm:flex-col gap-10 pb-4 mt-5 max-sm:mt-10'>
+			<section className='w-full flex flex-col items-start max-sm:flex-col gap-10 mt-25 max-sm:mt-20'>
+				<Heading title='Tech stack' />
+				<TechStack variant='big' />
+			</section>
+			<section className='flex items-start max-sm:flex-col gap-10 pb-4 mt-20 max-sm:mt-10'>
 				<Projects />
 			</section>
 		</div>

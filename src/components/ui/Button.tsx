@@ -29,10 +29,13 @@ export function Button({
 		<button
 			className={twMerge(
 				'relative font-medium rounded-lg border-2 cursor-pointer backdrop-blur-md transition-all duration-300 ease-in-out',
+
 				iconOnly
-					? 'p-2 w-10 h-10 flex items-center justify-center'
-					: 'px-4 py-2.5 max-sm:text-sm',
-				minimalistic && 'py-1 px-2',
+					? 'p-1 w-8 h-8 flex items-center justify-center'
+					: 'px-3 py-1.5 text-sm max-sm:text-xs',
+
+				minimalistic && 'px-2 py-1 text-xs',
+
 				variantClasses[variant],
 				className
 			)}

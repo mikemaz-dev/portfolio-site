@@ -1,16 +1,9 @@
-import * as m from 'motion/react-m'
 import Image from 'next/image'
+import Link from 'next/link'
 
-import { TechStack } from '@/ui/TechStack'
-
-import {
-	cardAnimation,
-	descriptionAnimation,
-	imageOverlayAnimation,
-	titleAnimation
-} from './ProjectCardAnimations'
 import { ProjectCardFooter } from './ProjectCardFooter'
 import type { IProject } from '@/data/projects/project.types'
+import { TECHS_DATA } from '@/data/techs/techs.data'
 
 export function ProjectCard({
 	title,
@@ -21,65 +14,84 @@ export function ProjectCard({
 	livelink,
 	githubLink
 }: IProject) {
+	const filteredTechs = TECHS_DATA.filter(tech => !excludeTechs.includes(tech.name))
+
 	return (
-		<m.div
-			className='group flex flex-col relative overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/40 transition'
-			{...cardAnimation}
+		<div
+			className='
+        flex flex-col gap-3 h-full 
+        bg-neutral-700/30 rounded-2xl 
+        p-4 max-sm:p-2
+      '
 		>
-			<div className='relative h-64 w-full'>
-				<Image
-					src={preview || '/placeholder.svg'}
-					alt={title}
-					fill
-					className='object-cover transition-transform duration-300 group-hover:scale-105'
-				/>
-				<div className='absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent z-10' />
-				<m.div
-					className='absolute bottom-0 z-20 p-5 text-white'
-					{...imageOverlayAnimation}
-				>
-					<m.h3
-						className='text-xl font-semibold'
-						{...titleAnimation}
+			<Image
+				src={preview}
+				alt='Preview'
+				width={1200}
+				height={800}
+				className='
+          rounded-xl object-cover 
+          w-full h-48 max-sm:h-32
+        '
+			/>
+
+			<div className='flex flex-col justify-between gap-5 h-full rounded-b-lg'>
+				<div className='flex flex-col gap-5.5'>
+					<div className='flex flex-col gap-0.5'>
+						<h3 className='text-2xl font-semibold text-neutral-100 max-sm:text-xl'>{title}</h3>
+						<p className='text-sm text-neutral-200/80 max-sm:text-xs max-sm:line-clamp-3'>
+							{description}
+						</p>
+					</div>
+
+					<div
+						className='
+              flex flex-wrap items-center gap-3 
+              max-sm:gap-2 max-sm:overflow-x-auto max-sm:py-1
+            '
 					>
-						{title}
-					</m.h3>
-					<m.p
-						className='mt-1 text-sm text-neutral-300 line-clamp-2'
-						{...descriptionAnimation}
-					>
-						{description}
-					</m.p>
-				</m.div>
+						{filteredTechs.map((tech, i) => (
+							<Link
+								href={tech.link ?? '/'}
+								target={tech.link ? '_blank' : undefined}
+								title={tech.name}
+								key={i}
+								className='
+                  flex items-center justify-center gap-2
+                  px-3 py-2 rounded-lg
+                  bg-neutral-700/30 hover:bg-neutral-700/50
+                  transition-colors duration-300
+                  max-sm:px-2 max-sm:py-1
+                '
+							>
+								<Image
+									src={tech.img}
+									alt={tech.name}
+									width={20}
+									height={20}
+									className='max-sm:w-4 max-sm:h-4'
+								/>
+								<span
+									className='
+                  text-sm font-medium text-neutral-100/80
+                  max-sm:text-xs
+                '
+								>
+									{tech.name}
+								</span>
+							</Link>
+						))}
+					</div>
+				</div>
+
+				<div className='max-sm:mt-2'>
+					<ProjectCardFooter
+						livelink={livelink}
+						githubLink={githubLink}
+						difficult={difficult}
+					/>
+				</div>
 			</div>
-
-			<m.div
-				className='p-4 flex flex-col flex-1 gap-5'
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ duration: 0.3, delay: 0.15 }}
-			>
-				<m.div
-					initial={{ opacity: 0, y: 5 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.2, delay: 0.25 }}
-				>
-					<TechStack exclude={excludeTechs} />
-				</m.div>
-
-				<m.hr
-					className='mt-auto text-neutral-600/50'
-					initial={{ width: '0%' }}
-					animate={{ width: '100%' }}
-					transition={{ duration: 0.3, delay: 0.3 }}
-				/>
-
-				<ProjectCardFooter
-					livelink={livelink}
-					githubLink={githubLink}
-					difficult={difficult}
-				/>
-			</m.div>
-		</m.div>
+		</div>
 	)
 }
