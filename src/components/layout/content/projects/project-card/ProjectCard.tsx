@@ -1,5 +1,7 @@
+import * as m from 'motion/react-m'
 import Image from 'next/image'
 import Link from 'next/link'
+import { twMerge } from 'tailwind-merge'
 
 import { ProjectCardFooter } from './ProjectCardFooter'
 import type { IProject } from '@/data/projects/project.types'
@@ -17,12 +19,13 @@ export function ProjectCard({
 	const filteredTechs = TECHS_DATA.filter(tech => !excludeTechs.includes(tech.name))
 
 	return (
-		<div
-			className='
-        flex flex-col gap-3 h-full 
-        bg-neutral-700/30 rounded-2xl 
-        p-4 max-sm:p-2
-      '
+		<m.div
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.5, ease: 'easeOut' }}
+			whileInView='visible'
+			viewport={{ once: true, amount: 0.3 }}
+			className='flex flex-col gap-3 h-full bg-neutral-700/30 rounded-2xl p-4 max-sm:p-2'
 		>
 			<Image
 				src={preview}
@@ -30,7 +33,7 @@ export function ProjectCard({
 				width={1200}
 				height={800}
 				className='
-          rounded-xl object-cover 
+          rounded-xl object-cover
           w-full h-48 max-sm:h-32
         '
 			/>
@@ -46,23 +49,18 @@ export function ProjectCard({
 
 					<div
 						className='
-              flex flex-wrap items-center gap-3 
+              flex flex-wrap items-center gap-3
               max-sm:gap-2 max-sm:overflow-x-auto max-sm:py-1
             '
 					>
 						{filteredTechs.map((tech, i) => (
 							<Link
-								href={tech.link ?? '/'}
-								target={tech.link ? '_blank' : undefined}
-								title={tech.name}
+								href={tech.link ? tech.link : '/'}
 								key={i}
-								className='
-                  flex items-center justify-center gap-2
-                  px-3 py-2 rounded-lg
-                  bg-neutral-700/30 hover:bg-neutral-700/50
-                  transition-colors duration-300
-                  max-sm:px-2 max-sm:py-1
-                '
+								className={twMerge(
+									'flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-neutral-700/30 hover:bg-neutral-700/50 transition-colors duration-300 max-sm:px-2 max-sm:py-1',
+									!tech.link && 'opacity-90 pointer-events-none'
+								)}
 							>
 								<Image
 									src={tech.img}
@@ -71,12 +69,7 @@ export function ProjectCard({
 									height={20}
 									className='max-sm:w-4 max-sm:h-4'
 								/>
-								<span
-									className='
-                  text-sm font-medium text-neutral-100/80
-                  max-sm:text-xs
-                '
-								>
+								<span className='text-sm  font-medium text-neutral-100/80 max-sm:text-xs'>
 									{tech.name}
 								</span>
 							</Link>
@@ -92,6 +85,6 @@ export function ProjectCard({
 					/>
 				</div>
 			</div>
-		</div>
+		</m.div>
 	)
 }

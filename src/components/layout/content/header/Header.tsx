@@ -41,7 +41,7 @@ export function Header({}: Props) {
 				'fixed right-20 z-50 bg-neutral-800/60 backdrop-blur-md px-6 py-3 sm:px-3 sm:py-2 rounded-xl',
 			)}
 		>
-			<HeaderLinks />
+			<HeaderLinks /> 
 		</m.header>
 	)
 }
