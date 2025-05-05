@@ -1,7 +1,17 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+	async headers() {
+		return [
+			{
+				source: '/(.*)',
+				headers: [
+					{ key: 'X-Frame-Options', value: 'DENY' },
+					{ key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' }
+				]
+			}
+		]
+	}
+}
 
-export default nextConfig;
+export default nextConfig

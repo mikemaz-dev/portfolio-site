@@ -1,4 +1,4 @@
-import { ExternalLink, Globe } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import * as m from 'motion/react-m'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -33,7 +33,7 @@ export function ProjectCardFooter({
 							<Link
 								href={livelink}
 								target='_blank'
-								rel='noopener noreferrer'
+								aria-label={`Visit project live demo`}
 							>
 								<m.div
 									whileHover={{ scale: 1.05 }}
@@ -63,7 +63,7 @@ export function ProjectCardFooter({
 							<Link
 								href={githubLink}
 								target='_blank'
-								rel='noopener noreferrer'
+								aria-label={`Visit project github`}
 							>
 								<m.div
 									whileHover={{ scale: 1.05 }}

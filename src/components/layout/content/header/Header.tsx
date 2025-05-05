@@ -6,9 +6,7 @@ import { useEffect, useState } from 'react'
 
 import { HeaderLinks } from './HeaderLinks/HeaderLinks'
 
-interface Props {}
-
-export function Header({}: Props) {
+export function Header() {
 	const [isShow, setIsShow] = useState(true)
 	const [lastScrollY, setLastScrollY] = useState(0)
 

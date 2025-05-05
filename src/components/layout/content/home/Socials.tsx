@@ -36,13 +36,14 @@ export function Socials({ className }: { className?: string }) {
 
 	return (
 		<div className={cn('w-full flex justify-center md:justify-start', className)}>
-			<div className='flex w-full max-sm:grid max-sm:grid-cols-2 justify-between md:justify-between items-center gap-3 px-4 py-2 bg-neutral-900/30 border border-t-0 border-neutral-700/30 rounded-b-lg'>
+			<div className='flex w-full max-sm:grid max-sm:grid-cols-2 justify-between md:justify-between items-center gap-3 px-4 py-2 bg-slate-700/30 border border-t-0 border-neutral-700/30 rounded-b-lg'>
 				{SOCIALS_DATA.map(({ link, icon, alt }) => (
 					<Link
 						key={alt}
 						href={link}
 						target='_blank'
 						title={alt}
+						aria-label={`Visit my ${alt}`}
 						className={twMerge(
 							'group p-1.5 transition-colors duration-400 ease-in-out rounded-lg max-sm:flex max-sm:items-center max-sm:justify-center max-sm:gap-2',
 							alt === 'Linkedin' && 'hover:bg-blue-500/80',

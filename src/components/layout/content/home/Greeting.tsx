@@ -15,8 +15,8 @@ export function Greeting() {
 					👋
 				</m.span>
 			</div>
-			<div className='max-sm:mt-1 flex items-center justify-center gap-2 max-sm:gap-1.5'>
-				<span>I'm</span>
+			<div className='max-sm:mt-1 flex items-center gap-1'>
+				<span>I&apos;m</span>
 				<span className='font-semibold'>Mikhail Mazurkevich</span>
 			</div>
 		</div>
