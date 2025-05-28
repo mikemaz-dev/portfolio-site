@@ -9,7 +9,7 @@ import { Footer } from './Footer'
 
 export function Content({ children }: PropsWithChildren<unknown>) {
 	const [isLoading, setIsLoading] = useState(true)
-	const [shouldShowLoader, setShouldShowLoader] = useState(false)
+	const [_shouldShowLoader, setShouldShowLoader] = useState(false)
 
 	useEffect(() => {
 		const hasVisited = localStorage.getItem('hasVisited')
