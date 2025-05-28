@@ -6,13 +6,13 @@ export function Description() {
         max-sm:text-sm max-sm:text-center
       '
 		>
-			I’m an 18-year-old <span className='text-white pb-0.5'>frontend developer</span> based in
+			I’m a <span className='text-white pb-0.5'>frontend developer</span> based in
 			Poland and currently{' '}
 			<span className='text-green-400 font-medium'>
 				available for freelance &amp; part-time work.
 			</span>
 			{' '}
-			I specialize in React, Next.js, and TailwindCSS to craft modern, performant web experiences.
+			I specialize in React.js, Next.js, and TailwindCSS to craft modern, performant web experiences.
 		</p>
 	)
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { FileDown, Mouse } from 'lucide-react'
+import { ExternalLink, FileDown, Mouse } from 'lucide-react'
 import * as m from 'motion/react-m'
 import Image from 'next/image'
 
@@ -20,10 +20,29 @@ export function Hero() {
 				<div>
 					<Greeting />
 					<Description />
-					<div className='max-sm:w-full max-sm:flex max-sm:items-center max-sm:justify-center'>
+					<div className='max-sm:w-full max-sm:flex max-sm:items-center max-sm:justify-center flex items-center gap-3'>
 						<Button
 							className='flex items-center mt-5.5 gap-1.5 sm:w-auto'
 							variant='primary'
+							onClick={() => {
+								window.open(
+									'https://drive.google.com/file/d/1jXw82_JAoVFLTd4pPj0pWPn_-5DUBixz/preview',
+									'_blank'
+								)
+							}}
+						>
+							<ExternalLink className='w-5 h-5' />
+							Open CV
+						</Button>
+						<Button
+							className='flex items-center mt-5.5 gap-1.5 sm:w-auto'
+							variant='outline'
+							onClick={() => {
+								window.open(
+									'https://drive.google.com/uc?export=download&id=1jXw82_JAoVFLTd4pPj0pWPn_-5DUBixz',
+									'_blank'
+								)
+							}}
 						>
 							<FileDown className='w-5 h-5' />
 							Download CV

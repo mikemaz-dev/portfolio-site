@@ -4,7 +4,7 @@ import { Content } from './content/Content'
 
 export function Layout({ children }: PropsWithChildren<unknown>) {
 	return (
-		<main className=''>
+		<main>
 			<Content>{children}</Content>
 		</main>
 	)

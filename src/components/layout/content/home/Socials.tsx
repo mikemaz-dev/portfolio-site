@@ -46,7 +46,6 @@ export function Socials({ className }: { className?: string }) {
 						aria-label={`Visit my ${alt}`}
 						className={twMerge(
 							'group p-1.5 transition-colors duration-400 ease-in-out rounded-lg max-sm:flex max-sm:items-center max-sm:justify-center max-sm:gap-2',
-							alt === 'Linkedin' && 'hover:bg-blue-500/80',
 							alt === 'Instagram' &&
 								'bg-gradient-to-r from-transparent to-transparent hover:bg-gradient-to-tr hover:from-red-500 hover:to-purple-600',
 							alt === 'GitHub' && 'hover:bg-white/10 max-sm:-ml-2'

@@ -1,6 +1,6 @@
 'use client'
 
-import { type PropsWithChildren, useState } from 'react'
+import { type PropsWithChildren, useEffect, useState } from 'react'
 
 import { Loader } from '@/ui/Loader'
 import { ScrollToTopButton } from '@/ui/ScrollToTopButton'
@@ -9,6 +9,18 @@ import { Footer } from './Footer'
 
 export function Content({ children }: PropsWithChildren<unknown>) {
 	const [isLoading, setIsLoading] = useState(true)
+	const [shouldShowLoader, setShouldShowLoader] = useState(false)
+
+	useEffect(() => {
+		const hasVisited = localStorage.getItem('hasVisited')
+		if (!hasVisited) {
+			setShouldShowLoader(true)
+			localStorage.setItem('hasVisited', 'true')
+		} else {
+			setIsLoading(false)
+		}
+	}, [])
+
 	return (
 		<div>
 			{isLoading && <Loader onFinish={() => setIsLoading(false)} />}

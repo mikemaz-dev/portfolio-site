@@ -32,7 +32,7 @@ export function Button({
 
 				iconOnly
 					? 'p-1 w-8 h-8 flex items-center justify-center'
-					: 'px-3 py-1.5 text-sm max-sm:text-xs',
+					: 'px-3 py-1.5 max-sm:text-xs',
 
 				minimalistic && 'px-2 py-1 text-xs',
 
