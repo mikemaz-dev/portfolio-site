@@ -78,9 +78,6 @@ portfolio/
 ├── public/                # Static assets
 │   ├── images/            # Images and icons
 │   └── assets/            # Other static files
-├── lib/                   # Utility functions and helpers
-├── types/                 # TypeScript type definitions
-├── hooks/                 # Custom React hooks
 └── data/                  # Static data (projects, skills, etc.)
 ```
 
