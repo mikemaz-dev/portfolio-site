@@ -26,7 +26,7 @@ export function Hero() {
 							variant='primary'
 							onClick={() => {
 								window.open(
-									'https://drive.google.com/file/d/1jXw82_JAoVFLTd4pPj0pWPn_-5DUBixz/preview',
+									'https://drive.google.com/file/d/11qNyJWInZzPoRYBVNZRHwMsS1AxiuXii/preview',
 									'_blank'
 								)
 							}}
