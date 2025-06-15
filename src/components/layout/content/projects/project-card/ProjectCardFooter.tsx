@@ -19,7 +19,7 @@ export function ProjectCardFooter({
 	difficult: keyof typeof Difficulties
 }) {
 	return (
-		<div className='flex flex-col gap-4'>
+		<div className='flex flex-col gap-4 max-sm:mt-2'>
 			<hr className='text-neutral-700/80' />
 			<m.div
 				className='flex items-center justify-between max-sm:flex-col max-sm:items-start max-sm:gap-4'
@@ -65,29 +65,19 @@ export function ProjectCardFooter({
 								target='_blank'
 								aria-label={`Visit project github`}
 							>
-								<m.div
-									whileHover={{ scale: 1.05 }}
-									whileTap={{ scale: 0.98 }}
+								<Button
+									variant='secondary'
+									minimalistic
+									className='flex items-center gap-1.5'
 								>
-									<Button
-										variant='secondary'
-										minimalistic
-										className='flex items-center gap-1.5'
-									>
-										<m.div
-											whileHover={{ rotate: 360 }}
-											transition={{ duration: 0.4 }}
-										>
-											<Image
-												src='/icons/github-new.svg'
-												alt='Github'
-												width={20}
-												height={20}
-											/>
-										</m.div>
-										More info
-									</Button>
-								</m.div>
+									<Image
+										src='/icons/github-new.svg'
+										alt='Github'
+										width={20}
+										height={20}
+									/>
+									More info
+								</Button>
 							</Link>
 						)}
 					</div>

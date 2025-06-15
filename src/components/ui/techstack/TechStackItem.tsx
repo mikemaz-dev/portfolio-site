@@ -14,7 +14,7 @@ export function TechStackItem({ tech }: TechStackItemProps) {
 			href={tech.link ?? '/'}
 			target={tech.link ? '_blank' : undefined}
 			className={twMerge(
-				'flex flex-col items-center justify-center group p-6 rounded-2xl  border border-neutral-700 bg-neutral-800/30 hover:bg-neutral-700/20 transform hover:scale-105 duration-300 shadow-lg',
+				'flex flex-col items-center justify-center group p-6 rounded-2xl border border-neutral-700 bg-neutral-800/30 hover:bg-neutral-700/20 transform hover:scale-105 duration-300 shadow-lg',
 				!tech.link && 'pointer-events-none opacity-95'
 			)}
 		>

@@ -14,11 +14,37 @@ export const PROJECTS_DATA: IProject[] = [
 			'HTML',
 			'CSS',
 			'Formik',
-			'Mantine'
+			'Mantine',
+			'Webpack',
+			'Prettier',
+			'ESLint'
 		],
 		difficult: Difficulties.Advanced,
 		livelink: 'https://next-pizza-7zt4-nine.vercel.app/',
 		githubLink: 'https://github.com/mikemaz-dev/next-pizza'
+	},
+	{
+		preview: '/wip_screen/justbank.png',
+		title: 'JustBank',
+		description:
+			'A modern banking interface featuring transaction management, statistics, and account operations',
+		excludeTechs: [
+			'Next.js',
+			'React.js',
+			'NextAuth.js',
+			'Framer Motion',
+			'React Redux',
+			'React Router',
+			'TypeScript',
+			'Tailwind',
+			'Shadcn',
+			'Zustand',
+			'Formik',
+			'Mantine'
+		],
+		difficult: Difficulties.Advanced,
+		livelink: 'https://justbank.vercel.app/',
+		githubLink: 'https://github.com/mikemaz-dev/justbank'
 	},
 	{
 		preview: '/wip_screen/marvel.png',
@@ -34,7 +60,10 @@ export const PROJECTS_DATA: IProject[] = [
 			'Shadcn',
 			'Sass',
 			'Zustand',
-			'Mantine'
+			'Mantine',
+			'Webpack',
+			'Prettier',
+			'ESLint'
 		],
 		difficult: Difficulties.Intermediate,
 		livelink: 'https://marvel-react-three.vercel.app/',
@@ -58,7 +87,10 @@ export const PROJECTS_DATA: IProject[] = [
 			'Zustand',
 			'Formik',
 			'NextAuth.js',
-			'Mantine'
+			'Mantine',
+			'Webpack',
+			'Prettier',
+			'ESLint'
 		],
 		difficult: Difficulties.Beginner,
 		livelink: 'https://mikemaz-dev.github.io/Embrace-Agency/',

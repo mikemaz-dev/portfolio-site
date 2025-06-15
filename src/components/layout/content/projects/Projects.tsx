@@ -7,7 +7,7 @@ import { PROJECTS_DATA } from '@/data/projects/projects.data'
 
 export function Projects() {
 	return (
-		<div className='grid grid-cols-3 gap-4 max-sm:grid-cols-1'>
+		<div className='grid grid-cols-3 gap-8 max-sm:grid-cols-1'>
 			{PROJECTS_DATA.map((project, i) => (
 				<m.div
 					key={project.title}
