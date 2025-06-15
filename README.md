@@ -141,12 +141,6 @@ Contributions, issues, and feature requests are welcome!
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📞 Contact
-
-Project Link: [https://github.com/mikemaz-dev/portfolio-site](https://github.com/mikemaz-dev/portfolio-site)
-
-Live Demo: [https://mikemaz-portfolio.vercel.app](https://mikemaz-portfolio.vercel.app)
-
 ---
 
 ⭐️ If you found this project helpful, please give it a star!
