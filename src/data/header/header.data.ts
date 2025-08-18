@@ -18,8 +18,4 @@ export const HEADER_DATA: IHeader[] = [
 		name: 'Projects',
 		href: PAGE.PROJECTS
 	},
-	{
-		name: 'Contacts',
-		href: PAGE.CONTACTS
-	}
 ]
