@@ -1,13 +1,13 @@
+import type { Difficulties } from '@/types/project.types'
+
+import { Button } from '@/ui/Button'
 import { ExternalLink } from 'lucide-react'
 import * as m from 'motion/react-m'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Button } from '@/ui/Button'
-
 import { DifficultyBadge } from '../DifficultBadge'
 
-import type { Difficulties } from '@/data/projects/project.types'
 
 export function ProjectCardFooter({
 	livelink,

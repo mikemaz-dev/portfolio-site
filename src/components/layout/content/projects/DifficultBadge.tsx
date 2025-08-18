@@ -1,7 +1,6 @@
+import type { Difficulties } from '@/types/project.types'
 import { CircleDot } from 'lucide-react'
 import { twMerge } from 'tailwind-merge'
-
-import type { Difficulties } from '@/data/projects/project.types'
 
 export interface DifficultyBadgeProps {
 	difficulty: keyof typeof Difficulties

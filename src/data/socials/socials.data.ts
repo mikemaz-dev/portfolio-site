@@ -1,4 +1,4 @@
-import type { ISocial } from './socials.types'
+import type { ISocial } from '@/types/socials.types'
 
 export const SOCIALS_DATA: ISocial[] = [
 	{

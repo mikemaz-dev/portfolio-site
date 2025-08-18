@@ -1,13 +1,14 @@
 'use client'
 
+import {
+	ProjectCardContent
+} from '@/components/layout/content/projects/project-card/ProjectCardContent'
+import type { IProject } from '@/types/project.types'
 import * as m from 'motion/react-m'
 import Image from 'next/image'
 import React, { useRef } from 'react'
 
-import { ProjectCardContent } from '@/components/layout/content/projects/project-card/ProjectCardContent'
-
 import { ProjectCardFooter } from './ProjectCardFooter'
-import type { IProject } from '@/data/projects/project.types'
 
 export function ProjectCard({
 	title,
