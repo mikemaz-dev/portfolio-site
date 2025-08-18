@@ -2,6 +2,12 @@ import type { ICertificate } from '@/types/certificates.types'
 
 export const CERTIFICATES_DATA: ICertificate[] = [
 	{
+		name: 'Marathon RED Summer',
+		date: 'Summer 2025',
+		link: 'https://www.udemy.com/course/javascript_full/',
+		pdfLink: 'https://drive.google.com/file/d/1lqFKplqOaoMZivptXCs4U-nvEb93XKzI/preview?usp=drive_link'
+	},
+	{
 		name: 'Complete course on Javascript + React - from scratch to results',
 		date: 'Apr 30, 2024 - June 9, 2024',
 		link: 'https://www.udemy.com/course/javascript_full/',
