@@ -62,7 +62,7 @@ export function Hero() {
 						}}
 						className='absolute -bottom-6 left-4 bg-accent text-accent-foreground rounded-full text-sm font-medium shadow-lg'
 					>
-						Let's connect!
+						Let&apos;s connect!
 					</m.span>
 				</div>
 			</m.div>
