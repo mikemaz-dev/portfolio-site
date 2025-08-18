@@ -1,99 +1,71 @@
 'use client'
 
-import { ExternalLink, FileDown, Mouse } from 'lucide-react'
+import { Description, Greeting } from '@/components/layout/content/home'
 import * as m from 'motion/react-m'
 import Image from 'next/image'
 
-import { Description, Greeting, Socials } from '@/components/layout/content/home'
-
-import { Button } from '@/ui/index'
-
 export function Hero() {
 	return (
-		<m.section
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			transition={{ duration: 0.6, delay: 0.2 }}
-			className='relative flex flex-col sm:flex-row items-center sm:items-start justify-between leading-relaxed gap-8 sm:gap-4'
-		>
-			<div className='w-full sm:max-w-2xl h-auto text-center sm:text-left flex flex-col justify-between'>
-				<div>
+		<div
+			className='relative grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 section items-center'>
+			<m.div
+				initial={{ opacity: 0, x: -50 }}
+				animate={{ opacity: 1, x: 0 }}
+				transition={{ duration: 0.8, delay: 0.2 }}
+				className='text-center flex flex-col gap-10'
+			>
+				<div className='flex flex-col md:gap-2 gap-8'>
 					<Greeting />
 					<Description />
-					<div className='max-sm:w-full max-sm:flex max-sm:items-center max-sm:justify-center flex items-center gap-3'>
-						<Button
-							className='flex items-center mt-5.5 gap-1.5 sm:w-auto'
-							variant='primary'
-							onClick={() => {
-								window.open(
-									'https://drive.google.com/file/d/11qNyJWInZzPoRYBVNZRHwMsS1AxiuXii/preview',
-									'_blank'
-								)
-							}}
-						>
-							<ExternalLink className='w-5 h-5' />
-							Open CV
-						</Button>
-						<Button
-							className='flex items-center mt-5.5 gap-1.5 sm:w-auto'
-							variant='outline'
-							onClick={() => {
-								window.open(
-									'https://drive.google.com/uc?export=download&id=1jXw82_JAoVFLTd4pPj0pWPn_-5DUBixz',
-									'_blank'
-								)
-							}}
-						>
-							<FileDown className='w-5 h-5' />
-							Download CV
-						</Button>
-					</div>
 				</div>
-
-				<button
-					onClick={() => {
-						const about_el = document.getElementById('about-me')
-						if (about_el) about_el.scrollIntoView({ behavior: 'smooth' })
-					}}
-					className='absolute bottom-0 w-max mx-auto flex items-center gap-2 cursor-pointer select-none group max-sm:hidden'
-				>
-					<m.div
-						animate={{ opacity: [1, 0.3, 1] }}
-						transition={{ duration: 4, repeat: Infinity }}
-					>
-						<Mouse className='size-5 text-neutral-100/80 group-hover:text-neutral-100 transition-colors duration-300' />
-					</m.div>
-
-					<m.span
-						animate={{ opacity: [1, 0.3, 1] }}
-						transition={{ duration: 4, repeat: Infinity }}
-						className='font-medium text-neutral-100/80 group-hover:text-neutral-100 transition-colors duration-300'
-					>
-						Scroll Down
-					</m.span>
-				</button>
-			</div>
-
-			<div className='w-full sm:w-auto flex flex-col items-center sm:items-end'>
-				<div className='w-full relative flex items-center justify-center rounded-t-lg sm:rounded-lg sm:rounded-b-none'>
+			</m.div>
+			
+			<m.div
+				initial={{ opacity: 0, x: 50, scale: 0.9 }}
+				animate={{ opacity: 1, x: 0, scale: 1 }}
+				transition={{ duration: 0.8, delay: 0.4 }}
+				className='relative flex justify-center lg:justify-end'
+			>
+				<div
+					className='relative'>
 					<Image
-						src='/logos/logo_transparent.png'
-						alt='Logo'
-						width={85.3}
-						height={85.3}
-						className='absolute top-0 left-0'
-					/>
-					<Image
-						src='/Me-edited.png'
-						alt='Me'
+						src='/Me.jpg'
+						alt='Portfolio photo'
 						width={1980}
 						height={2539}
-						className='w-90 aspect-auto rounded-t-lg border border-neutral-700/40 border-b-none sm:rounded-lg sm:rounded-b-none'
+						className='w-80 lg:w-96 aspect-auto rounded-xl shadow-md transition duration-300 ease-in-out brightness-90 contrast-100 hover:brightness-100 hover:contrast-105'
 						priority
 					/>
+					<m.span
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{
+							duration: 0.6,
+							delay: 1.2,
+							repeat: Infinity,
+							repeatType: 'reverse',
+							repeatDelay: 2
+						}}
+						className='absolute -top-6 right-4 rounded-full text-sm font-medium text-green-500'
+					>
+						Available for work
+					</m.span>
+					<m.span
+						initial={{ opacity: 0, x: -20 }}
+						animate={{ opacity: 1, x: 0 }}
+						transition={{
+							duration: 0.6,
+							delay: 1.4,
+							repeat: Infinity,
+							repeatType: 'reverse',
+							repeatDelay: 3
+						}}
+						className='absolute -bottom-6 left-4 bg-accent text-accent-foreground rounded-full text-sm font-medium shadow-lg'
+					>
+						Let's connect!
+					</m.span>
 				</div>
-				<Socials />
-			</div>
-		</m.section>
+			</m.div>
+		</div>
 	)
 }

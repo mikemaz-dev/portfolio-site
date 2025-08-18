@@ -1,0 +1,20 @@
+<svg width="128" height="128" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Круглая основа -->
+  <circle cx="32" cy="32" r="30" stroke="white" stroke-width="4"/>
+
+  <!-- Левая скобка "<" -->
+  <polyline points="20,22 13,32 20,42" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Правая скобка ">" -->
+  <polyline points="44,22 51,32 44,42" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Экран/IDE в центре -->
+  <rect x="26" y="26" width="12" height="12" rx="2" stroke="white" stroke-width="3" fill="none"/>
+
+  <!-- "Порталы разума" или вентиляции по бокам -->
+  <circle cx="10" cy="32" r="2" fill="white"/>
+  <circle cx="54" cy="32" r="2" fill="white"/>
+
+  <!-- Нижняя дуга — как нижняя обводка маски -->
+  <path d="M16 44 Q32 58 48 44" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,4 +1,4 @@
-import type { ICertificate } from './certificates.types'
+import type { ICertificate } from '@/types/certificates.types'
 
 export const CERTIFICATES_DATA: ICertificate[] = [
 	{
@@ -10,7 +10,7 @@ export const CERTIFICATES_DATA: ICertificate[] = [
 	{
 		name: 'Mastering Next.js 13 with TypeScript',
 		date: 'July 3, 2024 - July 16, 2024',
-		link: 'http://codewithmosh.com/p/mastering-next-js-13-with-typescript',
+		link: 'https://codewithmosh.com/p/mastering-next-js-13-with-typescript',
 		pdfLink: 'https://drive.google.com/file/d/1n0wyQXdiGy3cyqsWrmAj36YwHaJb4BfW/preview'
 	},
 	{

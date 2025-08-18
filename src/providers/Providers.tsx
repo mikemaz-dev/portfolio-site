@@ -1,6 +1,10 @@
-import { LazyMotion, domAnimation } from 'motion/react'
+'use client'
+
+import { domAnimation, LazyMotion } from 'motion/react'
 import type { ReactNode } from 'react'
 
 export function Providers({ children }: { children: ReactNode }) {
-	return <LazyMotion features={domAnimation}>{children}</LazyMotion>
+	return <LazyMotion features={domAnimation}>
+		{children}
+	</LazyMotion>
 }

@@ -1,11 +1,11 @@
 @import 'tailwindcss';
 
+
 :root {
 	--background: #111111;
 	--foreground: #171717;
 	--text: #ffffff;
-
-	/* OneUI-style цвета */
+	
 	--scroll-track: #1c1c1c;
 	--scroll-thumb: #3a3a3a;
 	--scroll-thumb-hover: #5a5a5a;
@@ -20,6 +20,8 @@
 *::before,
 *::after {
 	box-sizing: border-box;
+	scrollbar-width: thin;
+	scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }
 
 html {
@@ -31,22 +33,39 @@ body {
 	min-height: 100vh;
 	overflow-x: hidden;
 	font-family: Arial, Helvetica, sans-serif;
-	background-color: var(--background);
-	background-image: linear-gradient(to top right, var(--background), #182129);
+	
+	background: linear-gradient(135deg, #0f1419 0%, #1a1f26 100%);
 	background-attachment: fixed;
+	
 	color: var(--text);
+	
 	transition-property: opacity, transform, filter;
 	transition-timing-function: ease-in-out;
 	transition-duration: 0.5s;
+	
+	@apply md:pt-[7rem] pt-[5rem];
+}
+
+
+a,
+button {
+	@apply focus-visible:outline-4 focus-visible:outline-dashed focus-visible:outline-blue-500 focus-visible:outline-offset-4 focus-visible:rounded transition-all duration-300;
+}
+
+
+.container {
+	@apply px-8 md:px-48 w-full mx-auto;
+}
+.section {
+	@apply md:py-20 py-8 container;
 }
 
 ::-webkit-scrollbar {
 	width: 6px;
 	height: 6px;
 	opacity: 0;
-	transition:
-		opacity 0.3s ease,
-		width 0.3s ease;
+	transition: opacity 0.3s ease,
+	width 0.3s ease;
 	background-color: transparent;
 }
 
@@ -75,9 +94,4 @@ body:hover::-webkit-scrollbar,
 body:focus-within::-webkit-scrollbar {
 	width: 8px;
 	opacity: 1;
-}
-
-* {
-	scrollbar-width: thin;
-	scrollbar-color: var(--scroll-thumb) var(--scroll-track);
 }

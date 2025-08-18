@@ -1,13 +1,13 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-
 import { Layout } from '@/components/layout/Layout'
 
 import { Providers } from '@/providers/Providers'
 
 import './globals.css'
+import type { Metadata } from 'next'
+import { Exo_2 } from 'next/font/google'
+import type { ReactNode } from 'react'
 
-const inter = Inter({
+const exo_2 = Exo_2({
 	variable: '--font-inter',
 	subsets: ['latin']
 })
@@ -32,16 +32,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children
-}: Readonly<{
-	children: React.ReactNode
+  }: Readonly<{
+	children: ReactNode
 }>) {
 	return (
 		<html lang='en'>
-			<body className={`${inter.className}`}>
-				<Providers>
-					<Layout>{children}</Layout>
-				</Providers>
-			</body>
+		<body className={`${exo_2.className}`}>
+		<Providers>
+			<Layout>{children}</Layout>
+		</Providers>
+		</body>
 		</html>
 	)
 }
