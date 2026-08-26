@@ -1,8 +1,9 @@
-import { Onest } from 'next/font/google'
+import localFont from 'next/font/local'
 
-export const onest = Onest({
+export const onest = localFont({
+	src: './fonts/onest-variable.woff2',
 	variable: '--font-onest',
-	subsets: ['cyrillic', 'latin'],
-	weight: ['300', '400'],
+	weight: '100 900',
+	style: 'normal',
 	display: 'swap'
 })
