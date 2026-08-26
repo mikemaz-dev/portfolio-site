@@ -1,0 +1,107 @@
+.hero {
+	position: relative;
+	display: grid;
+	grid-template-columns: 60% 40%;
+	height: 100svh;
+	min-height: 580px;
+	overflow: hidden;
+	background: var(--ink);
+	color: var(--paper);
+}
+
+.hero-copy {
+	position: relative;
+	z-index: 2;
+	grid-column: 1;
+	align-self: end;
+	padding: 100px clamp(32px, 4.2vw, 68px) clamp(52px, 7vw, 104px);
+}
+
+.hero-title {
+	margin: 0;
+	max-width: 10ch;
+	font-size: clamp(3.7rem, 7.2vw, 8.6rem);
+	font-weight: 300;
+	line-height: 0.87;
+	letter-spacing: -0.045em;
+	text-wrap: balance;
+	hyphens: none;
+}
+
+.hero-title span,
+.section-heading h2 span,
+.about-heading h2 span {
+	display: inline;
+}
+
+.hero-lead {
+	margin: var(--space-5) 0 0;
+	max-width: 55ch;
+	color: rgb(242 241 237 / 72%);
+	font-size: clamp(15px, 1.15vw, 18px);
+	line-height: 1.6;
+	text-wrap: pretty;
+}
+
+.hero-actions {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+	margin-top: var(--space-5);
+}
+
+.hero-photo {
+	position: relative;
+	grid-column: 2;
+	height: 100%;
+	overflow: hidden;
+}
+
+.hero-photo::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+	opacity: 0.05;
+	pointer-events: none;
+}
+
+.hero-photo img {
+	object-fit: cover;
+	object-position: center center;
+}
+
+.rise-item {
+	animation: rise-in 900ms var(--ease) both;
+}
+
+.hero-copy .rise-item:nth-child(1) {
+	animation-delay: 300ms;
+}
+
+.hero-copy .rise-item:nth-child(2) {
+	animation-delay: 420ms;
+}
+
+.hero-copy .rise-item:nth-child(3) {
+	animation-delay: 520ms;
+}
+
+.hero > .hero-photo {
+	animation-delay: 620ms;
+}
+
+@keyframes rise-in {
+	from {
+		opacity: 0;
+		transform: translateY(28px);
+		filter: blur(14px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+		filter: blur(0);
+	}
+}

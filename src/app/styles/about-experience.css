@@ -1,0 +1,143 @@
+.section-about {
+	display: grid;
+	grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1.08fr);
+	gap: clamp(52px, 8vw, 136px);
+	border-top: 1px solid rgb(11 12 15 / 20%);
+}
+
+.about-heading .section-label {
+	margin-bottom: var(--space-5);
+}
+
+.about-body {
+	padding-top: var(--space-7);
+}
+
+.about-copy {
+	display: grid;
+	gap: var(--space-4);
+}
+
+.about-copy p {
+	max-width: 58ch;
+	margin: 0;
+	font-size: clamp(16px, 1.45vw, 21px);
+	line-height: 1.6;
+	text-wrap: pretty;
+}
+
+.stack-list {
+	grid-column: 1 / -1;
+	display: grid;
+	grid-template-columns: minmax(220px, 0.55fr) 1.45fr;
+	gap: var(--space-5);
+	margin-top: var(--space-4);
+	border-top: 1px solid rgb(11 12 15 / 22%);
+	padding-top: var(--space-5);
+}
+
+.stack-list h3 {
+	margin: 5px 0 0;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.stack-list ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.stack-list li {
+	display: grid;
+	grid-template-columns: 60px 1fr;
+	align-items: center;
+	min-height: 68px;
+	border-bottom: 1px solid rgb(11 12 15 / 18%);
+	font-size: clamp(19px, 2.2vw, 30px);
+	letter-spacing: -0.02em;
+}
+
+.stack-list li span {
+	color: var(--cobalt);
+	font-size: 12px;
+	letter-spacing: 0.16em;
+}
+
+.section-experience,
+.section-work,
+.section-reviews {
+	border-top: 1px solid rgb(11 12 15 / 20%);
+}
+
+.section-reviews {
+	background: #fff;
+}
+
+.experience-list {
+	border-bottom: 1px solid rgb(11 12 15 / 22%);
+}
+
+.experience-item {
+	display: grid;
+	grid-template-columns: minmax(80px, 0.25fr) minmax(250px, 0.75fr) minmax(0, 1.15fr);
+	gap: var(--space-5);
+	align-items: start;
+	padding: var(--space-6) 0;
+	border-top: 1px solid rgb(11 12 15 / 22%);
+}
+
+.experience-number {
+	color: var(--cobalt);
+	font-size: 12px;
+	letter-spacing: 0.16em;
+}
+
+.experience-role h3 {
+	max-width: 20ch;
+	margin: 0;
+	font-size: clamp(1.7rem, 2.8vw, 3.2rem);
+	font-weight: 300;
+	line-height: 1;
+	letter-spacing: -0.035em;
+}
+
+.experience-role p {
+	margin: var(--space-4) 0 0;
+	font-size: 15px;
+}
+
+.experience-role time {
+	display: block;
+	margin-top: var(--space-2);
+	color: rgb(11 12 15 / 58%);
+	font-size: 13px;
+}
+
+.experience-item ul {
+	display: grid;
+	gap: var(--space-3);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.experience-item li {
+	position: relative;
+	max-width: 62ch;
+	padding-left: 22px;
+	font-size: 16px;
+	line-height: 1.55;
+	text-wrap: pretty;
+}
+
+.experience-item li::before {
+	content: '';
+	position: absolute;
+	top: 0.7em;
+	left: 0;
+	width: 6px;
+	height: 6px;
+	border-radius: var(--radius-pill);
+	background: var(--cobalt);
+}
