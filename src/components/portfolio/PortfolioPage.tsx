@@ -152,6 +152,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 					<div
 						className='stack-list'
 						aria-labelledby='stack-title'
+						role='group'
 					>
 						<h3 id='stack-title'>{copy.about.stackTitle}</h3>
 						<ul>
@@ -187,7 +188,6 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 			<footer
 				className='contact-section'
 				id='contact'
-				aria-labelledby='contact-title'
 				data-header-theme='dark'
 			>
 				<div className='contact-top'>

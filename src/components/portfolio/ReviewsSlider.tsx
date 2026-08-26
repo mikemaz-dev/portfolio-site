@@ -36,9 +36,9 @@ export function ReviewsSlider({ locale }: { locale: Locale }) {
 			{ root: track, threshold: [0.55, 0.75] }
 		)
 
-		track
-			.querySelectorAll<HTMLElement>('[data-review-index]')
-			.forEach(slide => observer.observe(slide))
+		track.querySelectorAll<HTMLElement>('[data-review-index]').forEach(slide => {
+			observer.observe(slide)
+		})
 		return () => observer.disconnect()
 	}, [])
 
@@ -126,7 +126,7 @@ export function ReviewsSlider({ locale }: { locale: Locale }) {
 					<figure
 						className='review-slide'
 						data-review-index={index}
-						key={`${review.author}-${index}`}
+						key={review.original}
 					>
 						<div className='review-slide-meta'>
 							<span>
@@ -162,12 +162,13 @@ export function ReviewsSlider({ locale }: { locale: Locale }) {
 				<div
 					className='reviews-dots'
 					aria-label={locale === 'ru' ? 'Выбрать отзыв' : 'Choose a review'}
+					role='group'
 				>
 					{REVIEWS.map((item, index) => (
 						<button
 							className='review-dot'
 							data-active={index === activeIndex}
-							key={`${item.author}-${index}`}
+							key={item.original}
 							onClick={() => showReview(index)}
 							type='button'
 							aria-label={`${locale === 'ru' ? 'Отзыв' : 'Review'} ${index + 1}`}

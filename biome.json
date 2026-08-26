@@ -1,0 +1,36 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.10/schema.json",
+	"files": {
+		"includes": [
+			"src/app/**",
+			"src/components/portfolio/**",
+			"src/data/site-content.ts",
+			"src/lib/**"
+		]
+	},
+	"formatter": {
+		"enabled": false
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"preset": "recommended",
+			"a11y": {
+				"useSemanticElements": "off",
+				"useValidAnchor": "off"
+			},
+			"complexity": {
+				"noImportantStyles": "off"
+			},
+			"style": {
+				"noDescendingSpecificity": "off"
+			},
+			"security": {
+				"noDangerouslySetInnerHtml": "off"
+			}
+		}
+	},
+	"assist": {
+		"enabled": false
+	}
+}
