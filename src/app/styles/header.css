@@ -60,6 +60,7 @@
 	display: flex;
 	align-items: center;
 	gap: clamp(20px, 2.2vw, 32px);
+	transform: translateX(-2vw);
 }
 
 .desktop-nav a,

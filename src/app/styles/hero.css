@@ -1,7 +1,7 @@
 .hero {
 	position: relative;
 	display: grid;
-	grid-template-columns: 60% 40%;
+	grid-template-columns: 62% 38%;
 	height: 100svh;
 	min-height: 580px;
 	overflow: hidden;

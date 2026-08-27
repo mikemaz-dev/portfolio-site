@@ -136,11 +136,6 @@ export function ReviewsSlider({ locale }: { locale: Locale }) {
 						</div>
 						<div className='review-slide-copy'>
 							<blockquote>{getReviewText(review, locale)}</blockquote>
-							{copy.note ? (
-								<div className='review-slide-source'>
-									<small>{copy.note}</small>
-								</div>
-							) : null}
 						</div>
 					</figure>
 				))}

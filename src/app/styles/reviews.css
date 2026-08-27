@@ -61,7 +61,6 @@
 	min-width: 0;
 	height: 100%;
 	flex-direction: column;
-	justify-content: space-between;
 	gap: var(--space-6);
 }
 
@@ -73,22 +72,6 @@
 	font-weight: 300;
 	line-height: 1.04;
 	letter-spacing: -0.04em;
-}
-
-.review-slide-source {
-	display: flex;
-	align-items: center;
-	gap: var(--space-4);
-	color: rgb(11 12 15 / 58%);
-	font-size: 11px;
-	letter-spacing: 0.14em;
-	text-transform: uppercase;
-}
-
-.review-slide-source small {
-	font-size: 11px;
-	letter-spacing: 0;
-	text-transform: none;
 }
 
 .reviews-plaque {
