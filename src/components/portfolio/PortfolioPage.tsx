@@ -1,17 +1,12 @@
 import { ArrowDown, ArrowUp, ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 
+import { ExperienceSection } from './ExperienceSection'
+import { LearningSection } from './LearningSection'
 import { ProjectShowcase } from './ProjectShowcase'
 import { ReviewsSlider } from './ReviewsSlider'
 import { SiteHeader } from './SiteHeader'
-import {
-	CONTACTS,
-	CONTENT,
-	EXPERIENCE,
-	type Locale,
-	SITE_URL,
-	SOCIAL_LINKS
-} from '@/data/site-content'
+import { CONTACTS, CONTENT, type Locale, SITE_URL, SOCIAL_LINKS } from '@/data/site-content'
 
 export function PortfolioPage({ locale }: { locale: Locale }) {
 	const copy = CONTENT[locale]
@@ -167,6 +162,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 				</section>
 
 				<ExperienceSection locale={locale} />
+				<LearningSection locale={locale} />
 				<WorkSection locale={locale} />
 
 				<section
@@ -253,45 +249,6 @@ function MultilineText({ text }: { text: string }) {
 			{index < text.split('\n').length - 1 ? <br /> : null}
 		</span>
 	))
-}
-
-function ExperienceSection({ locale }: { locale: Locale }) {
-	const copy = CONTENT[locale].experience
-
-	return (
-		<section
-			className='section section-experience'
-			id='experience'
-			aria-labelledby='experience-title'
-			data-header-theme='light'
-		>
-			<div className='section-heading section-heading-wide'>
-				<p className='section-label'>{copy.index}</p>
-				<h2 id='experience-title'>{copy.title}</h2>
-				<p className='section-intro'>{copy.intro}</p>
-			</div>
-			<div className='experience-list'>
-				{EXPERIENCE.map((item, index) => (
-					<article
-						className='experience-item'
-						key={item.company}
-					>
-						<div className='experience-number'>{String(index + 1).padStart(2, '0')}</div>
-						<div className='experience-role'>
-							<h3>{item.role[locale]}</h3>
-							<p>{item.company}</p>
-							<time>{item.period[locale]}</time>
-						</div>
-						<ul>
-							{item.points[locale].map(point => (
-								<li key={point}>{point}</li>
-							))}
-						</ul>
-					</article>
-				))}
-			</div>
-		</section>
-	)
 }
 
 function WorkSection({ locale }: { locale: Locale }) {

@@ -144,6 +144,22 @@
 		grid-template-columns: 52px minmax(210px, 0.8fr) minmax(0, 1.2fr);
 	}
 
+	.current-education {
+		grid-template-columns: 0.55fr 1.45fr;
+	}
+
+	.current-education span {
+		grid-column: 2;
+	}
+
+	.certificate-item {
+		grid-template-columns: 52px minmax(150px, 0.45fr) minmax(0, 1.25fr);
+	}
+
+	.certificate-actions {
+		grid-column: 3;
+	}
+
 	.review-slide {
 		grid-template-columns: minmax(150px, 0.45fr) minmax(0, 1.55fr);
 		padding-right: var(--space-5);
@@ -295,6 +311,62 @@
 		margin-top: var(--space-5);
 	}
 
+	.experience-overview {
+		margin-top: var(--space-5);
+	}
+
+	.experience-overview .section-intro {
+		grid-column: auto;
+		max-width: 38ch;
+	}
+
+	.experience-total {
+		max-width: 320px;
+	}
+
+	.current-education {
+		display: block;
+		padding: var(--space-5) var(--space-4);
+	}
+
+	.current-education h3 {
+		margin-top: var(--space-5);
+	}
+
+	.current-education span {
+		display: block;
+		margin-top: var(--space-4);
+	}
+
+	.certificate-list {
+		margin-top: var(--space-5);
+	}
+
+	.certificate-item {
+		display: grid;
+		grid-template-columns: 44px minmax(0, 1fr);
+		gap: var(--space-4);
+		padding: var(--space-5) 0;
+	}
+
+	.certificate-meta,
+	.certificate-content,
+	.certificate-actions {
+		grid-column: 2;
+	}
+
+	.certificate-content h3 {
+		font-size: clamp(1.9rem, 8.7vw, 3rem);
+	}
+
+	.certificate-content ul {
+		margin-top: var(--space-4);
+	}
+
+	.certificate-actions {
+		margin-top: var(--space-2);
+	}
+
 	.review-slide {
 		display: block;
 		min-height: 520px;
@@ -309,12 +381,6 @@
 	.review-slide blockquote {
 		font-size: clamp(1.75rem, 8.3vw, 3.5rem);
 		line-height: 1.08;
-	}
-
-	.review-slide-source {
-		align-items: flex-start;
-		flex-direction: column;
-		gap: var(--space-2);
 	}
 
 	.reviews-plaque {

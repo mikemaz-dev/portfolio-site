@@ -21,8 +21,19 @@ export type Review = {
 export type Experience = {
 	role: LocalizedText
 	company: string
+	start: string
+	end?: string
 	period: LocalizedText
 	points: Record<Locale, string[]>
+}
+
+export type Certificate = {
+	title: LocalizedText
+	provider: string
+	period: LocalizedText
+	certificateUrl: string
+	courseUrl?: string
+	learning: Record<Locale, string[]>
 }
 
 export type SocialLink = {
@@ -129,6 +140,7 @@ export const EXPERIENCE: Experience[] = [
 			ru: 'Фриланс frontend-разработчик'
 		},
 		company: 'Freelance / Kwork',
+		start: '2026-04',
 		period: {
 			en: '04/2026 — present',
 			ru: '04/2026 — настоящее время'
@@ -154,6 +166,8 @@ export const EXPERIENCE: Experience[] = [
 			ru: 'Стажёр frontend-разработчик'
 		},
 		company: 'Itransition Group',
+		start: '2026-01',
+		end: '2026-03',
 		period: {
 			en: '01/2026 — 03/2026',
 			ru: '01/2026 — 03/2026'
@@ -171,6 +185,133 @@ export const EXPERIENCE: Experience[] = [
 	}
 ]
 
+export const EDUCATION = {
+	institution: {
+		en: 'Grodno State College of Technology and Design',
+		ru: 'Гродненский государственный колледж техники, технологий и дизайна'
+	},
+	status: {
+		en: 'Second year',
+		ru: 'Техник-программист | 2 курс'
+	}
+} satisfies Record<'institution' | 'status', LocalizedText>
+
+export const CERTIFICATES: Certificate[] = [
+	{
+		title: {
+			en: 'Frontend Development Internship',
+			ru: 'Стажировка по frontend-разработке'
+		},
+		provider: 'Itransition Group',
+		period: { en: 'January — March 2026', ru: 'Январь — март 2026' },
+		certificateUrl:
+			'https://drive.google.com/file/d/1Jj1PLehztjmbNtmzoIyABmMxpxc1Sami/view?usp=sharing',
+		learning: {
+			en: [
+				'Built two web applications with React, Next.js, TypeScript and REST APIs.',
+				'Created reusable UI components and structured application pages around them.',
+				'Set up state management and handled API data across the interfaces.'
+			],
+			ru: [
+				'Разработал два веб-приложения на React, Next.js и TypeScript с использованием REST API.',
+				'Создавал переиспользуемые UI-компоненты и выстраивал на их основе страницы приложений.',
+				'Настраивал управление состоянием и обработку данных API в интерфейсах.'
+			]
+		}
+	},
+	{
+		title: {
+			en: 'RED Summer frontend marathon',
+			ru: 'Frontend-марафон RED Summer'
+		},
+		provider: 'RED Group',
+		period: { en: 'Summer 2025', ru: 'Лето 2025' },
+		certificateUrl:
+			'https://drive.google.com/file/d/1mh2Y8VjMxaiIQCZNhStokFlxoTIpHPji/view?usp=sharing',
+		learning: {
+			en: [
+				'Completed a time-boxed frontend practice programme.',
+				'Strengthened responsive layout and component-based implementation.',
+				'Practised taking an interface from requirements to a finished result.'
+			],
+			ru: [
+				'Прошёл интенсивную программу практики frontend-разработки.',
+				'Закрепил адаптивную вёрстку и компонентный подход.',
+				'Практиковал полный цикл от требований до готового интерфейса.'
+			]
+		}
+	},
+	{
+		title: {
+			en: 'Advanced Frontend Intensive',
+			ru: 'Front-end для продвинутых'
+		},
+		provider: 'HTML Lessons / RED Group',
+		period: { en: 'November — December 2024', ru: 'Ноябрь — декабрь 2024' },
+		certificateUrl:
+			'https://drive.google.com/file/d/1h423GyIdFXcA1D3FwIiNEC89YykLbEEj/view?usp=sharing',
+		courseUrl: 'https://htmllessons.io/intensives/front-end-dlya-prodvinutyh-new',
+		learning: {
+			en: [
+				'Next.js client and server components, App Router and layouts.',
+				'SSR, SSG and ISR, API requests and application state.',
+				'Authentication, forms, SEO, loading states and performance.'
+			],
+			ru: [
+				'Клиентские и серверные компоненты Next.js, App Router и layouts.',
+				'SSR, SSG и ISR, работа с API и состоянием приложения.',
+				'Авторизация, формы, SEO, состояния загрузки и оптимизация.'
+			]
+		}
+	},
+	{
+		title: {
+			en: 'Mastering Next.js 13 with TypeScript',
+			ru: 'Mastering Next.js 13 with TypeScript'
+		},
+		provider: 'Code with Mosh',
+		period: { en: 'July 2024', ru: 'Июль 2024' },
+		certificateUrl:
+			'https://drive.google.com/file/d/1rx1oLPMAB-YQrWyJaDT8hEkFa9JnIp0M/view?usp=sharing',
+		courseUrl: 'https://codewithmosh.com/p/mastering-next-js-13-with-typescript',
+		learning: {
+			en: [
+				'App Router, nested routing and navigation with TypeScript.',
+				'REST APIs, Prisma database integration and NextAuth.',
+				'Performance, SEO, deployment and production troubleshooting.'
+			],
+			ru: [
+				'App Router, вложенные маршруты и навигация с TypeScript.',
+				'REST API, интеграция Prisma с базой данных и NextAuth.',
+				'Производительность, SEO, деплой и разбор ошибок.'
+			]
+		}
+	},
+	{
+		title: {
+			en: 'JavaScript + React — From Zero to Results',
+			ru: 'JavaScript + React — с нуля до результата'
+		},
+		provider: 'Udemy / Ivan Petrichenko',
+		period: { en: 'April — June 2024', ru: 'Апрель — июнь 2024' },
+		certificateUrl:
+			'https://drive.google.com/file/d/1Z5XdpVVANoQLix572GJAgx9WdmXWob6Z/view?usp=sharing',
+		courseUrl: 'https://www.udemy.com/course/javascript_full/',
+		learning: {
+			en: [
+				'JavaScript fundamentals, DOM events, asynchronous code and Fetch API.',
+				'React components, state, forms and Redux fundamentals.',
+				'Git and GitHub, npm, Webpack and project-based development.'
+			],
+			ru: [
+				'Основы JavaScript, DOM-события, асинхронный код и Fetch API.',
+				'React-компоненты, состояние, формы и основы Redux.',
+				'Git и GitHub, npm, Webpack и разработка учебных проектов.'
+			]
+		}
+	}
+]
+
 export const CONTENT = {
 	en: {
 		langName: 'English',
@@ -178,6 +319,7 @@ export const CONTENT = {
 			work: 'Work',
 			about: 'About',
 			experience: 'Experience',
+			learning: 'Learning',
 			reviews: 'Reviews',
 			contact: 'Contact'
 		},
@@ -189,7 +331,7 @@ export const CONTENT = {
 			contactCta: 'Write on Telegram'
 		},
 		work: {
-			index: '03 / Selected work',
+			index: '04 / Selected work',
 			title: 'Three projects.\nThree different challenges.',
 			intro:
 				'A compact selection focused on product structure, responsive UI and careful frontend execution.',
@@ -216,19 +358,28 @@ export const CONTENT = {
 		experience: {
 			index: '02 / Experience',
 			title: 'Work experience.',
-			intro: 'Commercial projects, teamwork and frontend practice in production-like environments.'
+			intro: 'Commercial projects, teamwork and frontend practice in production-like environments.',
+			totalLabel: 'Total commercial experience',
+			totalNote: 'Calculated from the timeline below'
+		},
+		learning: {
+			index: '03 / Learning',
+			title: 'Education and\ncertificates.',
+			intro: 'Structured learning supported by practical projects and continued independent study.',
+			currentLabel: 'Current education',
+			certificateLabel: 'Certificate',
+			courseLabel: 'Course details'
 		},
 		reviews: {
-			index: '04 / Client feedback',
+			index: '05 / Client feedback',
 			title: 'Client feedback.',
-			note: 'Translated from Russian',
 			badge: 'Kwork reviews',
 			caption: 'Feedback from completed freelance projects',
 			previous: 'Previous review',
 			next: 'Next review'
 		},
 		contact: {
-			index: '05 / Contact',
+			index: '06 / Contact',
 			title: 'Have a project in mind?',
 			text: 'Send a short message with your goal, timeline and any reference you already have.',
 			emailLabel: 'Write an email',
@@ -242,6 +393,7 @@ export const CONTENT = {
 			work: 'Проекты',
 			about: 'Обо мне',
 			experience: 'Опыт',
+			learning: 'Обучение',
 			reviews: 'Отзывы',
 			contact: 'Контакты'
 		},
@@ -253,7 +405,7 @@ export const CONTENT = {
 			contactCta: 'Написать в Telegram'
 		},
 		work: {
-			index: '03 / Избранные проекты',
+			index: '04 / Избранные проекты',
 			title: 'Три проекта.\nТри разные задачи.',
 			intro:
 				'Короткая подборка о структуре продукта, адаптивном UI и аккуратной frontend-реализации.',
@@ -280,19 +432,28 @@ export const CONTENT = {
 		experience: {
 			index: '02 / Опыт работы',
 			title: 'Опыт работы.',
-			intro: 'Коммерческие задачи, командная работа и практика современной frontend-разработки.'
+			intro: 'Коммерческие задачи, командная работа и практика современной frontend-разработки.',
+			totalLabel: 'Общий коммерческий опыт',
+			totalNote: 'Рассчитано по периодам ниже'
+		},
+		learning: {
+			index: '03 / Обучение',
+			title: 'Обучение и\nсертификаты.',
+			intro: 'Системное обучение, закреплённое практическими проектами и самостоятельной работой.',
+			currentLabel: 'Текущее образование',
+			certificateLabel: 'Смотреть сертификат',
+			courseLabel: 'Программа курса'
 		},
 		reviews: {
-			index: '04 / Отзывы клиентов',
+			index: '05 / Отзывы клиентов',
 			title: 'Отзывы клиентов.',
-			note: '',
 			badge: 'Отзывы на Kwork',
 			caption: 'Отзывы о завершённых фриланс-проектах',
 			previous: 'Предыдущий отзыв',
 			next: 'Следующий отзыв'
 		},
 		contact: {
-			index: '05 / Контакты',
+			index: '06 / Контакты',
 			title: 'Есть проект или идея?',
 			text: 'Напишите цель, примерные сроки и пришлите референс, если он уже есть.',
 			emailLabel: 'Написать на email',

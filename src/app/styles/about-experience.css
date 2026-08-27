@@ -78,6 +78,40 @@
 	border-bottom: 1px solid rgb(11 12 15 / 22%);
 }
 
+.experience-overview {
+	display: grid;
+	gap: var(--space-5);
+}
+
+.experience-overview .section-intro {
+	margin-top: 8px;
+}
+
+.experience-total {
+	display: grid;
+	border-top: 1px solid rgb(11 12 15 / 22%);
+	padding-top: var(--space-4);
+}
+
+.experience-total strong {
+	font-size: clamp(2.2rem, 3.8vw, 4.5rem);
+	font-weight: 300;
+	line-height: 0.95;
+	letter-spacing: -0.04em;
+	text-wrap: balance;
+}
+
+.experience-total span {
+	margin-top: var(--space-3);
+	font-size: 14px;
+}
+
+.experience-total small {
+	margin-top: var(--space-1);
+	color: rgb(11 12 15 / 58%);
+	font-size: 12px;
+}
+
 .experience-item {
 	display: grid;
 	grid-template-columns: minmax(80px, 0.25fr) minmax(250px, 0.75fr) minmax(0, 1.15fr);

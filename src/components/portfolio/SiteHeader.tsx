@@ -19,6 +19,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 	const navItems = [
 		{ href: '#about', label: copy.nav.about },
 		{ href: '#experience', label: copy.nav.experience },
+		{ href: '#learning', label: copy.nav.learning },
 		{ href: '#work', label: copy.nav.work },
 		{ href: '#reviews', label: copy.nav.reviews },
 		{ href: '#contact', label: copy.nav.contact }
@@ -35,7 +36,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 
 				const sampleY = Math.min(
 					window.innerHeight - 1,
-					Math.round(header.getBoundingClientRect().height)
+					Math.ceil(header.getBoundingClientRect().bottom) + 4
 				)
 				const section = Array.from(
 					document.querySelectorAll<HTMLElement>('[data-header-theme]')
