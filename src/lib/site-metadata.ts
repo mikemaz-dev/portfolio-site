@@ -50,6 +50,9 @@ export function createSiteMetadata(locale: Locale): Metadata {
 		authors: [{ name: 'Mikhail Mazurkevich', url: CONTACT_URLS.github }],
 		creator: 'Mikhail Mazurkevich',
 		publisher: 'Mikhail Mazurkevich',
+		verification: {
+			google: '-uYV0t1s_lU4v76AfTdZ00K8BpBPK2No4XxUH4bwnT8'
+		},
 		robots: {
 			index: true,
 			follow: true,
