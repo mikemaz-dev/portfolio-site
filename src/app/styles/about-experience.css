@@ -1,8 +1,20 @@
 .section-about {
-	display: grid;
-	grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1.08fr);
-	gap: clamp(52px, 8vw, 136px);
 	border-top: 1px solid rgb(11 12 15 / 20%);
+}
+
+.about-layout {
+	display: grid;
+	grid-template-columns: minmax(280px, 0.9fr) minmax(360px, 1.1fr);
+	grid-template-areas:
+		'heading portrait'
+		'body portrait';
+	grid-template-rows: auto 1fr;
+	gap: var(--space-7) clamp(52px, 8vw, 136px);
+	min-height: 0;
+}
+
+.about-heading {
+	grid-area: heading;
 }
 
 .about-heading .section-label {
@@ -10,7 +22,33 @@
 }
 
 .about-body {
+	grid-area: body;
 	padding-top: var(--space-7);
+}
+
+.about-portrait-column {
+	position: relative;
+	grid-area: portrait;
+	min-width: 0;
+}
+
+.about-portrait {
+	position: sticky;
+	top: 104px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.about-portrait-frame {
+	position: relative;
+	height: min(72svh, 780px);
+	overflow: hidden;
+	background: #d7dce4;
+}
+
+.about-portrait img {
+	object-fit: cover;
+	object-position: center 40%;
 }
 
 .about-copy {
@@ -31,7 +69,7 @@
 	display: grid;
 	grid-template-columns: minmax(220px, 0.55fr) 1.45fr;
 	gap: var(--space-5);
-	margin-top: var(--space-4);
+	margin-top: var(--space-5);
 	border-top: 1px solid rgb(11 12 15 / 22%);
 	padding-top: var(--space-5);
 }

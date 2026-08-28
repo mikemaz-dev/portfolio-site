@@ -12,7 +12,10 @@ export function LearningSection({ locale }: { locale: Locale }) {
 			aria-labelledby='learning-title'
 			data-header-theme='light'
 		>
-			<div className='section-heading section-heading-wide'>
+			<div
+				className='section-heading section-heading-wide'
+				data-reveal='group'
+			>
 				<p className='section-label'>{copy.index}</p>
 				<h2 id='learning-title'>
 					<MultilineText text={copy.title} />
@@ -20,7 +23,10 @@ export function LearningSection({ locale }: { locale: Locale }) {
 				<p className='section-intro'>{copy.intro}</p>
 			</div>
 
-			<div className='current-education'>
+			<div
+				className='current-education'
+				data-reveal='group'
+			>
 				<p>{copy.currentLabel}</p>
 				<h3>{EDUCATION.institution[locale]}</h3>
 				<span>{EDUCATION.status[locale]}</span>
@@ -31,6 +37,8 @@ export function LearningSection({ locale }: { locale: Locale }) {
 					<article
 						className='certificate-item'
 						key={certificate.certificateUrl}
+						data-reveal='item'
+						data-reveal-delay={((index % 3) + 1).toString()}
 					>
 						<div className='certificate-index'>{String(index + 1).padStart(2, '0')}</div>
 						<div className='certificate-meta'>

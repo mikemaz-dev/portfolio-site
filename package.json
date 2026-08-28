@@ -8,7 +8,7 @@
 		"start": "next start",
 		"lint": "biome lint src/app src/components/portfolio src/data/site-content.ts src/lib",
 		"typecheck": "tsc --noEmit",
-		"format:check": "prettier --check \"src/app/**/*.{ts,tsx,css}\" \"src/components/portfolio/**/*.{ts,tsx}\" \"src/data/site-content.ts\" \"src/lib/**/*.ts\" package.json",
+		"format:check": "prettier --check \"src/app/**/*.{ts,tsx,css}\" \"src/components/portfolio/**/*.{ts,tsx}\" \"src/data/site-content.ts\" \"src/lib/**/*.{ts,tsx}\" package.json",
 		"check": "npm run format:check && npm run lint && npm run typecheck && npm run build"
 	},
 	"engines": {

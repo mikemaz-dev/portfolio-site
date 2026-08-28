@@ -16,6 +16,7 @@ export function ProjectShowcase({ locale }: { locale: Locale }) {
 			<div
 				className='project-preview-shell'
 				aria-hidden='true'
+				data-reveal='group'
 			>
 				<div
 					className='project-preview-media'
@@ -38,6 +39,8 @@ export function ProjectShowcase({ locale }: { locale: Locale }) {
 					<article
 						className='project-row'
 						data-active={activeProject === index}
+						data-reveal='item'
+						data-reveal-delay={((index % 3) + 1).toString()}
 						key={project.title}
 						onFocusCapture={() => setActiveProject(index)}
 						onMouseEnter={() => setActiveProject(index)}

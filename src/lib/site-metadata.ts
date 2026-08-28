@@ -4,26 +4,28 @@ import { type Locale, SITE_URL } from '@/data/site-content'
 
 const metadataCopy = {
 	en: {
-		title: 'mazdev_14 — Frontend Developer',
+		title: 'Mikhail Mazurkevich — Frontend Developer | React & Next.js',
 		description:
-			'Mikhail Mazurkevich builds clean, responsive interfaces and web products with React and Next.js.'
+			'Frontend developer open to roles and freelance projects. React, Next.js, TypeScript, responsive UI and product logic.'
 	},
 	ru: {
-		title: 'mazdev_14 — Frontend-разработчик',
+		title: 'Михаил Мазуркевич — Frontend-разработчик | React и Next.js',
 		description:
-			'Михаил Мазуркевич создаёт чистые адаптивные интерфейсы и веб-продукты на React и Next.js.'
+			'Frontend-разработчик, открытый к работе и проектам. React, Next.js, TypeScript, адаптивные интерфейсы и логика продукта.'
 	}
 } as const
 
 export function createSiteMetadata(locale: Locale): Metadata {
 	const copy = metadataCopy[locale]
 	const canonical = locale === 'en' ? SITE_URL : `${SITE_URL}/ru`
+	const ogImage = locale === 'en' ? '/og/en' : '/og/ru'
 
 	return {
 		metadataBase: new URL(SITE_URL),
 		title: copy.title,
 		description: copy.description,
 		applicationName: 'mazdev_14 portfolio',
+		manifest: '/manifest.webmanifest',
 		category: 'technology',
 		keywords:
 			locale === 'en'
@@ -68,7 +70,7 @@ export function createSiteMetadata(locale: Locale): Metadata {
 			}
 		},
 		openGraph: {
-			type: 'profile',
+			type: 'website',
 			url: canonical,
 			title: copy.title,
 			description: copy.description,
@@ -77,10 +79,13 @@ export function createSiteMetadata(locale: Locale): Metadata {
 			alternateLocale: locale === 'en' ? ['ru_RU'] : ['en_US'],
 			images: [
 				{
-					url: '/images/mikhail-hero-v2.webp',
-					width: 1107,
-					height: 1421,
-					alt: 'Mikhail Mazurkevich — frontend developer'
+					url: ogImage,
+					width: 1200,
+					height: 630,
+					alt:
+						locale === 'ru'
+							? 'Михаил Мазуркевич — frontend-разработчик'
+							: 'Mikhail Mazurkevich — frontend developer'
 				}
 			]
 		},
@@ -88,7 +93,7 @@ export function createSiteMetadata(locale: Locale): Metadata {
 			card: 'summary_large_image',
 			title: copy.title,
 			description: copy.description,
-			images: ['/images/mikhail-hero-v2.webp']
+			images: [ogImage]
 		},
 		icons: {
 			icon: '/favicon.ico'

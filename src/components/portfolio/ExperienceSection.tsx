@@ -12,7 +12,10 @@ export function ExperienceSection({ locale }: { locale: Locale }) {
 			aria-labelledby='experience-title'
 			data-header-theme='light'
 		>
-			<div className='section-heading section-heading-wide experience-heading'>
+			<div
+				className='section-heading section-heading-wide experience-heading'
+				data-reveal='group'
+			>
 				<p className='section-label'>{copy.index}</p>
 				<h2 id='experience-title'>{copy.title}</h2>
 				<div className='experience-overview'>
@@ -29,6 +32,8 @@ export function ExperienceSection({ locale }: { locale: Locale }) {
 					<article
 						className='experience-item'
 						key={item.company}
+						data-reveal='item'
+						data-reveal-delay={((index % 3) + 1).toString()}
 					>
 						<div className='experience-number'>{String(index + 1).padStart(2, '0')}</div>
 						<div className='experience-role'>

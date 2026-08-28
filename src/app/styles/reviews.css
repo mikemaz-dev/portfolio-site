@@ -18,6 +18,10 @@
 	cursor: grab;
 }
 
+.reviews-track:focus-visible {
+	outline-offset: -4px;
+}
+
 .reviews-track::-webkit-scrollbar {
 	display: none;
 }
@@ -146,7 +150,25 @@
 		color 320ms var(--ease);
 }
 
+.reviews-controls .reviews-autoplay[data-playing='true'] {
+	border-color: transparent;
+	background: var(--cobalt);
+	color: var(--paper);
+}
+
 .reviews-controls button:hover {
 	background: var(--paper);
 	color: var(--ink);
+}
+
+.reviews-controls button svg {
+	transition: transform 520ms var(--ease);
+}
+
+.reviews-controls button:first-child:hover svg {
+	transform: translateX(-3px);
+}
+
+.reviews-controls button:last-child:hover svg {
+	transform: translateX(3px);
 }

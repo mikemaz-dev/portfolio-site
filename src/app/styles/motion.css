@@ -1,0 +1,60 @@
+html[data-reveal-ready='true'] [data-reveal='group'],
+html[data-reveal-ready='true'] [data-reveal='item'] {
+	opacity: 0;
+	transform: translateY(28px);
+	filter: blur(14px);
+	transition:
+		opacity 900ms var(--ease),
+		transform 900ms var(--ease),
+		filter 900ms var(--ease);
+}
+
+html[data-reveal-ready='true'] [data-reveal='item'][data-reveal-delay='1'] {
+	transition-delay: 50ms;
+}
+
+html[data-reveal-ready='true'] [data-reveal='item'][data-reveal-delay='2'] {
+	transition-delay: 100ms;
+}
+
+html[data-reveal-ready='true'] [data-reveal='item'][data-reveal-delay='3'] {
+	transition-delay: 150ms;
+}
+
+html[data-reveal-ready='true'] [data-reveal='portrait'] {
+	overflow: hidden;
+	clip-path: inset(0);
+}
+
+html[data-reveal-ready='true'] [data-reveal='portrait'] .about-portrait {
+	opacity: 0;
+	clip-path: inset(0 0 100% 0);
+	transition:
+		opacity 700ms var(--ease),
+		clip-path 1100ms var(--ease);
+}
+
+html[data-reveal-ready='true'] [data-reveal='portrait'] .about-portrait img {
+	transform: scale(1.045);
+	transition: transform 1100ms var(--ease);
+}
+
+html[data-reveal-ready='true'] [data-reveal][data-reveal-visible='true'] {
+	opacity: 1;
+	transform: translateY(0);
+	filter: blur(0);
+}
+
+html[data-reveal-ready='true']
+	[data-reveal='portrait'][data-reveal-visible='true']
+	.about-portrait {
+	opacity: 1;
+	clip-path: inset(0);
+}
+
+html[data-reveal-ready='true']
+	[data-reveal='portrait'][data-reveal-visible='true']
+	.about-portrait
+	img {
+	transform: scale(1);
+}

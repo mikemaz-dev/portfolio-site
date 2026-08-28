@@ -191,7 +191,7 @@ export const EDUCATION = {
 		ru: 'Гродненский государственный колледж техники, технологий и дизайна'
 	},
 	status: {
-		en: 'Second year',
+		en: 'Software Engineer | Second year',
 		ru: 'Техник-программист | 2 курс'
 	}
 } satisfies Record<'institution' | 'status', LocalizedText>
@@ -325,14 +325,18 @@ export const CONTENT = {
 		},
 		headerCta: 'Write on Telegram',
 		hero: {
-			title: 'I build clean,\nreliable interfaces.',
-			lead: 'Mikhail Mazurkevich, frontend developer. I turn designs and ideas into fast, responsive web products with React and Next.js.',
+			eyebrow: 'Frontend developer / Open to roles and projects',
+			title: 'I build clean,\nreliable interfaces',
+			lead: 'Mikhail Mazurkevich, frontend developer. I build responsive web products with React, Next.js and TypeScript — from interface details to forms, APIs and product logic.',
+			focusLabel: 'Core focus',
+			focus: 'React / Next.js / TypeScript',
 			workCta: 'View projects',
-			contactCta: 'Write on Telegram'
+			cvCta: 'Open CV',
+			portraitAlt: 'Portrait of Mikhail Mazurkevich, frontend developer'
 		},
 		work: {
 			index: '04 / Selected work',
-			title: 'Three projects.\nThree different challenges.',
+			title: 'Three projects\nThree different challenges',
 			intro:
 				'A compact selection focused on product structure, responsive UI and careful frontend execution.',
 			open: 'Open project',
@@ -340,7 +344,7 @@ export const CONTENT = {
 		},
 		about: {
 			index: '01 / About',
-			title: 'I make websites\nclear and easy to use.',
+			title: 'I make websites\nclear and easy to use',
 			paragraphs: [
 				'I am a frontend developer who likes turning clear designs and rough ideas into reliable interfaces. I care about hierarchy, responsive behaviour and the small details that make a product feel complete.',
 				'I work with React and Next.js, connect APIs, build forms and product states, and keep the code understandable for the next person who opens it.'
@@ -357,14 +361,14 @@ export const CONTENT = {
 		},
 		experience: {
 			index: '02 / Experience',
-			title: 'Work experience.',
+			title: 'Work experience',
 			intro: 'Commercial projects, teamwork and frontend practice in production-like environments.',
 			totalLabel: 'Total commercial experience',
 			totalNote: 'Calculated from the timeline below'
 		},
 		learning: {
 			index: '03 / Learning',
-			title: 'Education and\ncertificates.',
+			title: 'Education and\ncertificates',
 			intro: 'Structured learning supported by practical projects and continued independent study.',
 			currentLabel: 'Current education',
 			certificateLabel: 'Certificate',
@@ -372,11 +376,13 @@ export const CONTENT = {
 		},
 		reviews: {
 			index: '05 / Client feedback',
-			title: 'Client feedback.',
+			title: 'Client feedback',
 			badge: 'Kwork reviews',
 			caption: 'Feedback from completed freelance projects',
 			previous: 'Previous review',
-			next: 'Next review'
+			next: 'Next review',
+			pause: 'Pause automatic reviews',
+			play: 'Play automatic reviews'
 		},
 		contact: {
 			index: '06 / Contact',
@@ -399,14 +405,18 @@ export const CONTENT = {
 		},
 		headerCta: 'Написать в Telegram',
 		hero: {
-			title: 'Создаю чистые\nи надёжные интерфейсы.',
-			lead: 'Михаил Мазуркевич, frontend-разработчик. Превращаю дизайн и идеи в быстрые адаптивные веб-продукты на React и Next.js.',
+			eyebrow: 'Frontend-разработчик / Открыт к работе и проектам',
+			title: 'Создаю чистые\nи надёжные интерфейсы',
+			lead: 'Михаил Мазуркевич, frontend-разработчик. Создаю адаптивные веб-продукты на React, Next.js и TypeScript — от деталей интерфейса до форм, API и логики продукта.',
+			focusLabel: 'Основной фокус',
+			focus: 'React / Next.js / TypeScript',
 			workCta: 'Смотреть проекты',
-			contactCta: 'Написать в Telegram'
+			cvCta: 'Открыть CV',
+			portraitAlt: 'Портрет Михаила Мазуркевича, frontend-разработчика'
 		},
 		work: {
 			index: '04 / Избранные проекты',
-			title: 'Три проекта.\nТри разные задачи.',
+			title: 'Три проекта\nТри разные задачи',
 			intro:
 				'Короткая подборка о структуре продукта, адаптивном UI и аккуратной frontend-реализации.',
 			open: 'Открыть проект',
@@ -414,7 +424,7 @@ export const CONTENT = {
 		},
 		about: {
 			index: '01 / Обо мне',
-			title: 'Делаю сайты\nпонятными и удобными.',
+			title: 'Делаю сайты\nпонятными и удобными',
 			paragraphs: [
 				'Я frontend-разработчик. Превращаю готовый дизайн или сырую идею в надёжный интерфейс. Слежу за иерархией, адаптивом и деталями, благодаря которым продукт ощущается завершённым.',
 				'Работаю с React и Next.js, подключаю API, собираю формы и состояния продукта, поддерживаю понятную структуру кода.'
@@ -431,14 +441,14 @@ export const CONTENT = {
 		},
 		experience: {
 			index: '02 / Опыт работы',
-			title: 'Опыт работы.',
+			title: 'Опыт работы',
 			intro: 'Коммерческие задачи, командная работа и практика современной frontend-разработки.',
 			totalLabel: 'Общий коммерческий опыт',
 			totalNote: 'Рассчитано по периодам ниже'
 		},
 		learning: {
 			index: '03 / Обучение',
-			title: 'Обучение и\nсертификаты.',
+			title: 'Обучение и\nсертификаты',
 			intro: 'Системное обучение, закреплённое практическими проектами и самостоятельной работой.',
 			currentLabel: 'Текущее образование',
 			certificateLabel: 'Смотреть сертификат',
@@ -446,11 +456,13 @@ export const CONTENT = {
 		},
 		reviews: {
 			index: '05 / Отзывы клиентов',
-			title: 'Отзывы клиентов.',
+			title: 'Отзывы клиентов',
 			badge: 'Отзывы на Kwork',
 			caption: 'Отзывы о завершённых фриланс-проектах',
 			previous: 'Предыдущий отзыв',
-			next: 'Следующий отзыв'
+			next: 'Следующий отзыв',
+			pause: 'Остановить автоматическое переключение отзывов',
+			play: 'Запустить автоматическое переключение отзывов'
 		},
 		contact: {
 			index: '06 / Контакты',

@@ -5,41 +5,103 @@ import { ExperienceSection } from './ExperienceSection'
 import { LearningSection } from './LearningSection'
 import { ProjectShowcase } from './ProjectShowcase'
 import { ReviewsSlider } from './ReviewsSlider'
+import { ScrollRevealController } from './ScrollRevealController'
 import { SiteHeader } from './SiteHeader'
-import { CONTACTS, CONTENT, type Locale, SITE_URL, SOCIAL_LINKS } from '@/data/site-content'
+import {
+	CERTIFICATES,
+	CONTACTS,
+	CONTENT,
+	type Locale,
+	PROJECTS,
+	SITE_URL,
+	SOCIAL_LINKS
+} from '@/data/site-content'
 
 export function PortfolioPage({ locale }: { locale: Locale }) {
 	const copy = CONTENT[locale]
+	const pageUrl = locale === 'en' ? SITE_URL : `${SITE_URL}/ru`
+	const personId = `${SITE_URL}/#person`
+	const websiteId = `${SITE_URL}/#website`
 	const jsonLd = {
 		'@context': 'https://schema.org',
-		'@type': 'Person',
-		name: 'Mikhail Mazurkevich',
-		alternateName: 'mazdev_14',
-		url: locale === 'en' ? SITE_URL : `${SITE_URL}/ru`,
-		image: `${SITE_URL}/images/mikhail-hero-v2.webp`,
-		jobTitle: 'Frontend Developer',
-		email: `mailto:${CONTACTS.email}`,
-		sameAs: [CONTACTS.github, CONTACTS.linkedin, CONTACTS.telegram],
-		knowsAbout: [
-			'React',
-			'Next.js',
-			'TypeScript',
-			'JavaScript',
-			'Responsive web design',
-			'Frontend development'
-		],
-		hasOccupation: {
-			'@type': 'Occupation',
-			name: 'Frontend Developer',
-			occupationLocation: {
-				'@type': 'Country',
-				name: 'Belarus'
-			}
-		}
+		'@graph': [
+			{
+				'@type': 'Person',
+				'@id': personId,
+				name: 'Mikhail Mazurkevich',
+				alternateName: 'mazdev_14',
+				url: pageUrl,
+				image: `${SITE_URL}/images/mikhail-hero-v2.webp`,
+				jobTitle: 'Frontend Developer',
+				email: `mailto:${CONTACTS.email}`,
+				sameAs: [CONTACTS.github, CONTACTS.linkedin, CONTACTS.telegram],
+				knowsAbout: [
+					'React',
+					'Next.js',
+					'TypeScript',
+					'JavaScript',
+					'Responsive web design',
+					'Frontend development'
+				],
+				hasOccupation: {
+					'@type': 'Occupation',
+					name: 'Frontend Developer',
+					occupationLocation: { '@type': 'Country', name: 'Belarus' }
+				},
+				hasCredential: CERTIFICATES.map((_, index) => ({
+					'@id': `${pageUrl}#credential-${index + 1}`
+				}))
+			},
+			{
+				'@type': 'ProfilePage',
+				'@id': `${pageUrl}#profile`,
+				url: pageUrl,
+				name: locale === 'ru' ? 'Портфолио Михаила Мазуркевича' : 'Mikhail Mazurkevich portfolio',
+				inLanguage: locale,
+				isPartOf: { '@id': websiteId },
+				mainEntity: { '@id': personId }
+			},
+			{
+				'@type': 'WebSite',
+				'@id': websiteId,
+				url: SITE_URL,
+				name: 'mazdev_14',
+				inLanguage: ['en', 'ru'],
+				publisher: { '@id': personId }
+			},
+			{
+				'@type': 'ItemList',
+				'@id': `${pageUrl}#selected-work`,
+				name: locale === 'ru' ? 'Избранные frontend-проекты' : 'Selected frontend projects',
+				itemListElement: PROJECTS.map((project, index) => ({
+					'@type': 'ListItem',
+					position: index + 1,
+					item: {
+						'@type': 'CreativeWork',
+						name: project.title,
+						description: project.description[locale],
+						url: project.liveUrl,
+						image: `${SITE_URL}${project.image}`,
+						creator: { '@id': personId }
+					}
+				}))
+			},
+			...CERTIFICATES.map((certificate, index) => ({
+				'@type': 'EducationalOccupationalCredential',
+				'@id': `${pageUrl}#credential-${index + 1}`,
+				name: certificate.title[locale],
+				url: certificate.certificateUrl,
+				credentialCategory: 'Certificate',
+				recognizedBy: { '@type': 'Organization', name: certificate.provider }
+			}))
+		]
 	}
+
+	const serializedJsonLd = JSON.stringify(jsonLd).replace(/</g, '\\u003c')
 
 	return (
 		<>
+			<ScrollRevealController />
 			<a
 				className='skip-link'
 				href='#main-content'
@@ -54,46 +116,60 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 				data-header-theme='dark'
 			>
 				<SiteHeader locale={locale} />
-				<div className='hero-copy'>
-					<h1
-						id='hero-title'
-						className='hero-title rise-item'
-					>
-						<MultilineText text={copy.hero.title} />
-					</h1>
-					<p className='hero-lead rise-item'>{copy.hero.lead}</p>
-					<div className='hero-actions rise-item'>
-						<a
-							className='button button-solid'
-							href='#work'
+				<div className='hero-editorial'>
+					<p className='hero-eyebrow'>{copy.hero.eyebrow}</p>
+					<div className='hero-main'>
+						<h1
+							id='hero-title'
+							className='hero-title'
 						>
-							{copy.hero.workCta}
-							<ArrowDown
-								aria-hidden='true'
-								size={18}
-							/>
-						</a>
-						<a
-							className='button button-outline button-outline-dark'
-							href={CONTACTS.telegram}
-							target='_blank'
-							rel='noreferrer'
-						>
-							{copy.hero.contactCta}
-							<ArrowUpRight
-								aria-hidden='true'
-								size={18}
-							/>
-						</a>
+							<HeroTitle text={copy.hero.title} />
+						</h1>
+						<div className='hero-context'>
+							<p className='hero-focus-label'>{copy.hero.focusLabel}</p>
+							<strong>{copy.hero.focus}</strong>
+							<p className='hero-lead'>{copy.hero.lead}</p>
+						</div>
 					</div>
-				</div>
-				<div className='hero-photo rise-item'>
-					<Image
-						alt='Mikhail Mazurkevich outdoors in a blue shirt'
-						fill
-						preload
-						sizes='(min-width: 1024px) 40vw, 100vw'
-						src='/images/mikhail-hero-v2.webp'
+					<div className='hero-bottom'>
+						<div className='hero-actions'>
+							<a
+								className='button button-solid'
+								href='#work'
+							>
+								{copy.hero.workCta}
+								<ArrowDown
+									aria-hidden='true'
+									size={18}
+								/>
+							</a>
+							<a
+								className='button button-outline button-outline-dark'
+								href={CONTACTS.cv}
+								target='_blank'
+								rel='noreferrer'
+							>
+								{copy.hero.cvCta}
+								<ArrowUpRight
+									aria-hidden='true'
+									size={18}
+								/>
+							</a>
+						</div>
+						<div className='hero-contact-line'>
+							<a href={`mailto:${CONTACTS.email}`}>{CONTACTS.email}</a>
+							<a
+								href={CONTACTS.telegram}
+								target='_blank'
+								rel='noreferrer'
+							>
+								Telegram
+							</a>
+						</div>
+					</div>
+					<div
+						className='hero-accent'
+						aria-hidden='true'
 					/>
 				</div>
 			</section>
@@ -105,49 +181,73 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 					aria-labelledby='about-title'
 					data-header-theme='light'
 				>
-					<div className='about-heading'>
-						<p className='section-label'>{copy.about.index}</p>
-						<h2 id='about-title'>
-							<MultilineText text={copy.about.title} />
-						</h2>
-					</div>
-					<div className='about-body'>
-						<div className='about-copy'>
-							{copy.about.paragraphs.map(paragraph => (
-								<p key={paragraph}>{paragraph}</p>
-							))}
+					<div className='about-layout'>
+						<div
+							className='about-heading'
+							data-reveal='group'
+						>
+							<p className='section-label'>{copy.about.index}</p>
+							<h2 id='about-title'>
+								<MultilineText text={copy.about.title} />
+							</h2>
 						</div>
-						<div className='about-links'>
-							<a
-								className='text-action'
-								href={CONTACTS.cv}
-								target='_blank'
-								rel='noreferrer'
-							>
-								{copy.about.cv}
-								<ArrowUpRight
-									aria-hidden='true'
-									size={17}
-								/>
-							</a>
-							<a
-								className='text-action'
-								href={CONTACTS.linkedin}
-								target='_blank'
-								rel='noreferrer'
-							>
-								{copy.about.linkedin}
-								<ArrowUpRight
-									aria-hidden='true'
-									size={17}
-								/>
-							</a>
+						<div
+							className='about-portrait-column'
+							data-reveal='portrait'
+						>
+							<div className='about-portrait'>
+								<div className='about-portrait-frame'>
+									<Image
+										alt={copy.hero.portraitAlt}
+										fill
+										sizes='(min-width: 1024px) 42vw, (min-width: 768px) 48vw, 100vw'
+										src='/images/mikhail-hero-v2.webp'
+									/>
+								</div>
+							</div>
+						</div>
+						<div
+							className='about-body'
+							data-reveal='group'
+						>
+							<div className='about-copy'>
+								{copy.about.paragraphs.map(paragraph => (
+									<p key={paragraph}>{paragraph}</p>
+								))}
+							</div>
+							<div className='about-links'>
+								<a
+									className='text-action'
+									href={CONTACTS.cv}
+									target='_blank'
+									rel='noreferrer'
+								>
+									{copy.about.cv}
+									<ArrowUpRight
+										aria-hidden='true'
+										size={17}
+									/>
+								</a>
+								<a
+									className='text-action'
+									href={CONTACTS.linkedin}
+									target='_blank'
+									rel='noreferrer'
+								>
+									{copy.about.linkedin}
+									<ArrowUpRight
+										aria-hidden='true'
+										size={17}
+									/>
+								</a>
+							</div>
 						</div>
 					</div>
 					<div
 						className='stack-list'
 						aria-labelledby='stack-title'
 						role='group'
+						data-reveal='group'
 					>
 						<h3 id='stack-title'>{copy.about.stackTitle}</h3>
 						<ul>
@@ -171,7 +271,10 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 					aria-labelledby='reviews-title'
 					data-header-theme='light'
 				>
-					<div className='section-heading section-heading-wide'>
+					<div
+						className='section-heading section-heading-wide'
+						data-reveal='group'
+					>
 						<p className='section-label'>{copy.reviews.index}</p>
 						<h2 id='reviews-title'>
 							<MultilineText text={copy.reviews.title} />
@@ -186,7 +289,10 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 				id='contact'
 				data-header-theme='dark'
 			>
-				<div className='contact-top'>
+				<div
+					className='contact-top'
+					data-reveal='group'
+				>
 					<p className='section-label section-label-light'>{copy.contact.index}</p>
 					<div>
 						<h2 id='contact-title'>{copy.contact.title}</h2>
@@ -196,6 +302,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 				<a
 					className='contact-email'
 					href={`mailto:${CONTACTS.email}`}
+					data-reveal='group'
 				>
 					<span>{copy.contact.emailLabel}</span>
 					<strong>{CONTACTS.email}</strong>
@@ -205,12 +312,14 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 					/>
 				</a>
 				<div className='contact-links'>
-					{SOCIAL_LINKS.map(link => (
+					{SOCIAL_LINKS.map((link, index) => (
 						<a
 							href={link.href}
 							target='_blank'
 							rel='noreferrer'
 							key={link.label}
+							data-reveal='item'
+							data-reveal-delay={(index + 1).toString()}
 						>
 							{link.label}
 							<ArrowUpRight
@@ -236,10 +345,22 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 
 			<script
 				type='application/ld+json'
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+				dangerouslySetInnerHTML={{ __html: serializedJsonLd }}
 			/>
 		</>
 	)
+}
+
+function HeroTitle({ text }: { text: string }) {
+	return text.split('\n').map((line, index) => (
+		<span
+			className='hero-title-line'
+			key={line}
+		>
+			<span>{line}</span>
+			{index < text.split('\n').length - 1 ? <br /> : null}
+		</span>
+	))
 }
 
 function MultilineText({ text }: { text: string }) {
@@ -261,7 +382,10 @@ function WorkSection({ locale }: { locale: Locale }) {
 			aria-labelledby='work-title'
 			data-header-theme='light'
 		>
-			<div className='section-heading section-heading-wide'>
+			<div
+				className='section-heading section-heading-wide'
+				data-reveal='group'
+			>
 				<p className='section-label'>{copy.index}</p>
 				<h2 id='work-title'>
 					<MultilineText text={copy.title} />
