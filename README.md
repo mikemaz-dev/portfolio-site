@@ -1,8 +1,10 @@
-# mazdev_14 — Frontend Portfolio
+# mikemaz-dev — Frontend Portfolio
 
-A bilingual portfolio for Mikhail Mazurkevich, focused on selected frontend work, experience and client feedback.
+A bilingual portfolio for Mikhail Mazurkevich, focused on selected frontend work, experience and
+client feedback.
 
-[Live website](https://mikemaz-portfolio.vercel.app/) · [Russian version](https://mikemaz-portfolio.vercel.app/ru)
+[Live website](https://mikemaz-portfolio.vercel.app/) ·
+[Russian version](https://mikemaz-portfolio.vercel.app/ru)
 
 ## Highlights
 

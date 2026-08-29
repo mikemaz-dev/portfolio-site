@@ -3,7 +3,7 @@ import type { MetadataRoute } from 'next'
 export default function manifest(): MetadataRoute.Manifest {
 	return {
 		name: 'Mikhail Mazurkevich — Frontend Developer',
-		short_name: 'mazdev_14',
+		short_name: 'mikemaz-dev',
 		description: 'Frontend developer portfolio built with React, Next.js and TypeScript.',
 		start_url: '/',
 		display: 'standalone',
@@ -11,12 +11,12 @@ export default function manifest(): MetadataRoute.Manifest {
 		theme_color: '#0B0C0F',
 		icons: [
 			{
-				src: '/logos/favicon/m/android-chrome-192x192.png',
+				src: '/logos/mikemaz-dev-icon-192.png',
 				sizes: '192x192',
 				type: 'image/png'
 			},
 			{
-				src: '/logos/favicon/m/android-chrome-512x512.png',
+				src: '/logos/mikemaz-dev-icon-512.png',
 				sizes: '512x512',
 				type: 'image/png'
 			}

@@ -3,6 +3,7 @@
 import { Menu, X } from 'lucide-react'
 import { type MouseEvent, useEffect, useRef, useState } from 'react'
 
+import { BrandMark } from './BrandMark'
 import { LocaleLink } from './LocaleLink'
 import { CONTACTS, CONTENT, type Locale } from '@/data/site-content'
 
@@ -24,6 +25,9 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 		{ href: '#reviews', label: copy.nav.reviews },
 		{ href: '#contact', label: copy.nav.contact }
 	]
+	const desktopNavItems = navItems.filter(item =>
+		['#about', '#experience', '#learning', '#work', '#contact'].includes(item.href)
+	)
 
 	useEffect(() => {
 		let frame = 0
@@ -104,17 +108,17 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 			<a
 				className='brand-mark'
 				href='#top'
-				aria-label={locale === 'ru' ? 'mazdev_14 — на главную' : 'mazdev_14 homepage'}
+				aria-label={locale === 'ru' ? 'mikemaz-dev — на главную' : 'mikemaz-dev homepage'}
 				onClick={isMenuOpen ? navigateFromMenu : undefined}
 			>
-				mazdev_14
+				<BrandMark className='brand-mark-icon' />
 			</a>
 
 			<nav
 				className='desktop-nav'
 				aria-label={locale === 'ru' ? 'Основная навигация' : 'Primary navigation'}
 			>
-				{navItems.map(item => (
+				{desktopNavItems.map(item => (
 					<a
 						href={item.href}
 						key={item.href}

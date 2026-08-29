@@ -24,14 +24,14 @@ export function createSiteMetadata(locale: Locale): Metadata {
 		metadataBase: new URL(SITE_URL),
 		title: copy.title,
 		description: copy.description,
-		applicationName: 'mazdev_14 portfolio',
+		applicationName: 'mikemaz-dev portfolio',
 		manifest: '/manifest.webmanifest',
 		category: 'technology',
 		keywords:
 			locale === 'en'
 				? [
 						'Mikhail Mazurkevich',
-						'mazdev_14',
+						'mikemaz-dev',
 						'frontend developer',
 						'React developer',
 						'Next.js developer',
@@ -40,7 +40,7 @@ export function createSiteMetadata(locale: Locale): Metadata {
 					]
 				: [
 						'Михаил Мазуркевич',
-						'mazdev_14',
+						'mikemaz-dev',
 						'frontend-разработчик',
 						'React разработчик',
 						'Next.js разработчик',
@@ -77,7 +77,7 @@ export function createSiteMetadata(locale: Locale): Metadata {
 			url: canonical,
 			title: copy.title,
 			description: copy.description,
-			siteName: 'mazdev_14',
+			siteName: 'mikemaz-dev',
 			locale: locale === 'en' ? 'en_US' : 'ru_RU',
 			alternateLocale: locale === 'en' ? ['ru_RU'] : ['en_US'],
 			images: [
@@ -99,7 +99,11 @@ export function createSiteMetadata(locale: Locale): Metadata {
 			images: [ogImage]
 		},
 		icons: {
-			icon: '/favicon.ico'
+			icon: [
+				{ url: '/logos/mikemaz-dev-mark.svg', type: 'image/svg+xml' },
+				{ url: '/logos/mikemaz-dev-icon-512.png', sizes: '512x512', type: 'image/png' }
+			],
+			apple: '/logos/mikemaz-dev-icon-512.png'
 		}
 	}
 }

@@ -49,18 +49,23 @@
 .brand-mark {
 	display: inline-flex;
 	align-items: center;
-	min-height: 44px;
-	width: fit-content;
-	font-size: 17px;
-	line-height: 1;
-	letter-spacing: -0.02em;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	color: var(--header-foreground);
+}
+
+.brand-mark-icon {
+	display: block;
+	width: 33px;
+	height: 33px;
+	transition: color 420ms var(--ease);
 }
 
 .desktop-nav {
 	display: flex;
 	align-items: center;
 	gap: clamp(20px, 2.2vw, 32px);
-	transform: translateX(-2vw);
 }
 
 .desktop-nav a,

@@ -327,9 +327,7 @@ export const CONTENT = {
 		hero: {
 			eyebrow: 'Frontend developer / Open to roles and projects',
 			title: 'I build clean,\nreliable interfaces',
-			lead: 'Mikhail Mazurkevich, frontend developer. I build responsive web products with React, Next.js and TypeScript — from interface details to forms, APIs and product logic.',
-			focusLabel: 'Core focus',
-			focus: 'React / Next.js / TypeScript',
+			lead: 'React, Next.js and TypeScript — thoughtful UI, forms, APIs and product logic.',
 			workCta: 'View projects',
 			cvCta: 'Open CV',
 			portraitAlt: 'Portrait of Mikhail Mazurkevich, frontend developer'
@@ -407,9 +405,7 @@ export const CONTENT = {
 		hero: {
 			eyebrow: 'Frontend-разработчик / Открыт к работе и проектам',
 			title: 'Создаю чистые\nи надёжные интерфейсы',
-			lead: 'Михаил Мазуркевич, frontend-разработчик. Создаю адаптивные веб-продукты на React, Next.js и TypeScript — от деталей интерфейса до форм, API и логики продукта.',
-			focusLabel: 'Основной фокус',
-			focus: 'React / Next.js / TypeScript',
+			lead: 'React, Next.js и TypeScript — продуманный UI, формы, API и логика продукта.',
 			workCta: 'Смотреть проекты',
 			cvCta: 'Открыть CV',
 			portraitAlt: 'Портрет Михаила Мазуркевича, frontend-разработчика'

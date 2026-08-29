@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 
+import { BrandMark } from '@/components/portfolio/BrandMark'
+
 import './styles/not-found.css'
 import { CONTACTS } from '@/data/site-content'
 
 export const metadata: Metadata = {
 	title: '404 / Page not found',
-	description: 'The requested page does not exist. Return to the mazdev_14 portfolio.'
+	description: 'The requested page does not exist. Return to the mikemaz-dev portfolio.'
 }
 
 export default function GlobalNotFound() {
@@ -17,9 +19,9 @@ export default function GlobalNotFound() {
 						<a
 							className='not-found-brand'
 							href='/'
-							aria-label='mazdev_14 homepage'
+							aria-label='mikemaz-dev homepage'
 						>
-							mazdev_14
+							<BrandMark className='not-found-brand-icon' />
 						</a>
 						<span>404 / not found</span>
 					</header>

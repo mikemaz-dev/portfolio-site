@@ -212,11 +212,15 @@
 
 	.hero-main {
 		grid-column: 1;
-		display: block;
+		display: flex;
+		min-height: 0;
+		flex-direction: column;
+		justify-content: center;
 		padding: var(--space-4) 0;
 	}
 
 	.hero-title {
+		align-self: flex-start;
 		max-width: 10ch;
 		font-size: clamp(2.75rem, 14.5vw, 4.5rem);
 		line-height: 0.86;
@@ -226,31 +230,20 @@
 		font-size: clamp(2.45rem, 12.8vw, 4rem);
 	}
 
-	.hero-context {
-		margin-top: var(--space-4);
-		padding: 0;
-	}
-
-	.hero-focus-label {
-		display: none;
-	}
-
-	.hero-context strong {
-		font-size: 13px;
-	}
-
 	.hero-lead {
 		max-width: 50ch;
-		margin-top: var(--space-2);
+		margin-top: var(--space-4);
+		padding: 0;
 		font-size: 12.5px;
 		line-height: 1.45;
 	}
 
+	.code-reveal {
+		display: none;
+	}
+
 	.hero-bottom {
 		grid-column: 1;
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--space-2);
 		padding: var(--space-3) 0;
 	}
 
@@ -263,16 +256,6 @@
 		min-height: 44px;
 		padding: 0 15px;
 		font-size: 12px;
-	}
-
-	.hero-contact-line {
-		justify-content: space-between;
-		gap: var(--space-3);
-		font-size: 10.5px;
-	}
-
-	.hero-contact-line a {
-		min-height: 28px;
 	}
 
 	.section {
@@ -560,13 +543,19 @@
 	}
 
 	.hero-bottom {
-		padding: 8px 0;
+		padding: 0;
 	}
 
 	.hero-actions .button {
 		min-height: 44px;
 		padding: 0 9px;
 		font-size: 10.5px;
+	}
+}
+
+@media (hover: none), (pointer: coarse) {
+	.code-reveal {
+		display: none;
 	}
 }
 
@@ -597,6 +586,11 @@
 
 	.hero-main {
 		padding: var(--space-3) 0;
+	}
+
+	.code-reveal {
+		height: min(150px, 28vh);
+		margin-top: 18px;
 	}
 
 	.hero-bottom {
@@ -631,5 +625,13 @@
 
 	html[data-reveal-ready='true'] [data-reveal='portrait'] .about-portrait img {
 		transform: none;
+	}
+
+	.code-reveal {
+		cursor: default;
+	}
+
+	.code-reveal-grid span[data-static='true'] {
+		opacity: 0;
 	}
 }

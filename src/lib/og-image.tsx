@@ -23,7 +23,30 @@ export function createOgImage(locale: Locale) {
 			}}
 		>
 			<div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 21 }}>
-				<span>mazdev_14</span>
+				<div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+					<svg
+						aria-label='mikemaz-dev monogram'
+						width='42'
+						height='42'
+						viewBox='0 0 512 512'
+						fill='none'
+					>
+						<path
+							d='M84 374V132L236 294L388 132V348'
+							stroke='#F4F5F7'
+							strokeWidth='46'
+							strokeLinecap='square'
+							strokeLinejoin='miter'
+						/>
+						<path
+							d='M348 400H432'
+							stroke='#2F5BFF'
+							strokeWidth='28'
+							strokeLinecap='square'
+						/>
+					</svg>
+					<span>mikemaz-dev</span>
+				</div>
 				<span style={{ color: 'rgba(244,245,247,.62)' }}>{copy.hero.eyebrow}</span>
 			</div>
 			<div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
@@ -54,9 +77,9 @@ export function createOgImage(locale: Locale) {
 					}}
 				>
 					<span style={{ color: 'rgba(244,245,247,.48)', fontSize: 15, letterSpacing: '2px' }}>
-						{copy.hero.focusLabel.toUpperCase()}
+						FRONTEND / UI / PRODUCT LOGIC
 					</span>
-					<span style={{ fontSize: 22 }}>{copy.hero.focus}</span>
+					<span style={{ fontSize: 20, lineHeight: 1.35 }}>{copy.hero.lead}</span>
 				</div>
 			</div>
 			<div style={{ display: 'flex', width: '100%', height: 7, background: '#2F5BFF' }} />

@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowUp, ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 
+import { CodeReveal } from './CodeReveal'
 import { ExperienceSection } from './ExperienceSection'
 import { LearningSection } from './LearningSection'
 import { ProjectShowcase } from './ProjectShowcase'
@@ -29,7 +30,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 				'@type': 'Person',
 				'@id': personId,
 				name: 'Mikhail Mazurkevich',
-				alternateName: 'mazdev_14',
+				alternateName: 'mikemaz-dev',
 				url: pageUrl,
 				image: `${SITE_URL}/images/mikhail-hero-v2.webp`,
 				jobTitle: 'Frontend Developer',
@@ -65,7 +66,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 				'@type': 'WebSite',
 				'@id': websiteId,
 				url: SITE_URL,
-				name: 'mazdev_14',
+				name: 'mikemaz-dev',
 				inLanguage: ['en', 'ru'],
 				publisher: { '@id': personId }
 			},
@@ -118,6 +119,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 				<SiteHeader locale={locale} />
 				<div className='hero-editorial'>
 					<p className='hero-eyebrow'>{copy.hero.eyebrow}</p>
+					<CodeReveal />
 					<div className='hero-main'>
 						<h1
 							id='hero-title'
@@ -125,11 +127,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 						>
 							<HeroTitle text={copy.hero.title} />
 						</h1>
-						<div className='hero-context'>
-							<p className='hero-focus-label'>{copy.hero.focusLabel}</p>
-							<strong>{copy.hero.focus}</strong>
-							<p className='hero-lead'>{copy.hero.lead}</p>
-						</div>
+						<p className='hero-lead'>{copy.hero.lead}</p>
 					</div>
 					<div className='hero-bottom'>
 						<div className='hero-actions'>
@@ -154,16 +152,6 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 									aria-hidden='true'
 									size={18}
 								/>
-							</a>
-						</div>
-						<div className='hero-contact-line'>
-							<a href={`mailto:${CONTACTS.email}`}>{CONTACTS.email}</a>
-							<a
-								href={CONTACTS.telegram}
-								target='_blank'
-								rel='noreferrer'
-							>
-								Telegram
 							</a>
 						</div>
 					</div>
@@ -331,7 +319,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 				</div>
 				<div className='footer-line'>
 					<p>
-						© {new Date().getFullYear()} mazdev_14 <span>{copy.contact.copyright}</span>
+						© {new Date().getFullYear()} mikemaz-dev <span>{copy.contact.copyright}</span>
 					</p>
 					<a href='#top'>
 						{copy.contact.backToTop}

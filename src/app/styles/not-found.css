@@ -68,8 +68,17 @@ html,
 }
 
 .not-found-brand {
-	font-size: 16px;
-	letter-spacing: -0.02em;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+}
+
+.not-found-brand-icon {
+	display: block;
+	width: 34px;
+	height: 34px;
 }
 
 .not-found-stage {
