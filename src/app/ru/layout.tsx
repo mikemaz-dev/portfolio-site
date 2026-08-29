@@ -1,6 +1,8 @@
 import type { Viewport } from 'next'
 import type { ReactNode } from 'react'
 
+import { YandexMetrika } from '@/components/portfolio/YandexMetrika'
+
 import '../globals.css'
 
 import { onest } from '@/app/fonts'
@@ -20,7 +22,10 @@ export default function RussianLayout({ children }: Readonly<{ children: ReactNo
 			lang='ru'
 			data-scroll-behavior='smooth'
 		>
-			<body className={onest.variable}>{children}</body>
+			<body className={onest.variable}>
+				{children}
+				<YandexMetrika />
+			</body>
 		</html>
 	)
 }
