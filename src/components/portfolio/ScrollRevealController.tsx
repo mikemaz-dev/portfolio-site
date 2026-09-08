@@ -22,19 +22,28 @@ export function ScrollRevealController() {
 			entries => {
 				entries.forEach(entry => {
 					if (!entry.isIntersecting) return
+					delete (entry.target as HTMLElement).dataset.revealPending
 					;(entry.target as HTMLElement).dataset.revealVisible = 'true'
 					observer.unobserve(entry.target)
 				})
 			},
-			{ rootMargin: '0px 0px -10% 0px', threshold: 0.08 }
+			{ rootMargin: '0px 0px 24px 0px', threshold: 0 }
 		)
 
 		targets.forEach(target => {
+			if (target.getBoundingClientRect().top < window.innerHeight) {
+				target.dataset.revealVisible = 'true'
+				return
+			}
+			target.dataset.revealPending = 'true'
 			observer.observe(target)
 		})
 
 		return () => {
 			observer.disconnect()
+			targets.forEach(target => {
+				delete target.dataset.revealPending
+			})
 			delete root.dataset.revealReady
 		}
 	}, [])

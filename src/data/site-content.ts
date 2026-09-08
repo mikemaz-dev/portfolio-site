@@ -48,7 +48,10 @@ export const CONTACTS = {
 	telegram: 'https://t.me/mazdev_14',
 	linkedin: 'https://www.linkedin.com/in/mike-mazurkevich/',
 	github: 'https://github.com/mikemaz-dev',
-	cv: 'https://drive.google.com/file/d/1KkJd2WcG_X0RMc1qe2JTw4hZEEMvN2V8/view?usp=sharing'
+	cv: {
+		en: 'https://drive.google.com/file/d/1Pp2TR31KsijNBVN0pCubfpnuqN2iur97/view?usp=drive_link',
+		ru: 'https://drive.google.com/file/d/1i0iIO-RMoyHBr2tN25_PHcTZF2E9E8Lr/view?usp=drive_link'
+	}
 } as const
 
 export const SOCIAL_LINKS: SocialLink[] = [
@@ -325,27 +328,27 @@ export const CONTENT = {
 		},
 		headerCta: 'Write on Telegram',
 		hero: {
-			eyebrow: 'Frontend developer / Open to roles and projects',
-			title: 'I build clean,\nreliable interfaces',
-			lead: 'React, Next.js and TypeScript — thoughtful UI, forms, APIs and product logic.',
+			eyebrow: 'Available for projects and frontend roles',
+			title: 'I build websites\nand web apps',
+			lead: 'I work with React, Next.js and TypeScript. I build responsive interfaces, connect APIs and turn designs into working websites.',
 			workCta: 'View projects',
 			cvCta: 'Open CV',
 			portraitAlt: 'Portrait of Mikhail Mazurkevich, frontend developer'
 		},
 		work: {
-			index: '04 / Selected work',
-			title: 'Three projects\nThree different challenges',
+			index: 'Selected work',
+			title: 'Selected projects',
 			intro:
-				'A compact selection focused on product structure, responsive UI and careful frontend execution.',
+				'Task management, online ordering and finance. Explore the interfaces and the code behind them.',
 			open: 'Open project',
 			source: 'View source'
 		},
 		about: {
-			index: '01 / About',
-			title: 'I make websites\nclear and easy to use',
+			index: 'About',
+			title: 'Thoughtful interfaces.\nReadable code.',
 			paragraphs: [
-				'I am a frontend developer who likes turning clear designs and rough ideas into reliable interfaces. I care about hierarchy, responsive behaviour and the small details that make a product feel complete.',
-				'I work with React and Next.js, connect APIs, build forms and product states, and keep the code understandable for the next person who opens it.'
+				'I’m Mikhail, a frontend developer. I turn designs and ideas into websites that are easy to use on any screen.',
+				'I’ve completed an internship at Itransition and work with freelance clients. I build interfaces, connect APIs and keep the code easy to maintain.'
 			],
 			stackTitle: 'Core stack',
 			stack: [
@@ -358,22 +361,22 @@ export const CONTENT = {
 			linkedin: 'Open LinkedIn'
 		},
 		experience: {
-			index: '02 / Experience',
+			index: 'Experience',
 			title: 'Work experience',
 			intro: 'Commercial projects, teamwork and frontend practice in production-like environments.',
 			totalLabel: 'Total commercial experience',
 			totalNote: 'Calculated from the timeline below'
 		},
 		learning: {
-			index: '03 / Learning',
-			title: 'Education and\ncertificates',
-			intro: 'Structured learning supported by practical projects and continued independent study.',
+			index: 'Learning',
+			title: 'Always learning',
+			intro: 'College, an internship and focused courses. Open a course to see what I learned.',
 			currentLabel: 'Current education',
 			certificateLabel: 'Certificate',
 			courseLabel: 'Course details'
 		},
 		reviews: {
-			index: '05 / Client feedback',
+			index: 'Client feedback',
 			title: 'Client feedback',
 			badge: 'Kwork reviews',
 			caption: 'Feedback from completed freelance projects',
@@ -383,7 +386,7 @@ export const CONTENT = {
 			play: 'Play automatic reviews'
 		},
 		contact: {
-			index: '06 / Contact',
+			index: 'Contact',
 			title: 'Have a project in mind?',
 			text: 'Send a short message with your goal, timeline and any reference you already have.',
 			emailLabel: 'Write an email',
@@ -403,27 +406,27 @@ export const CONTENT = {
 		},
 		headerCta: 'Написать в Telegram',
 		hero: {
-			eyebrow: 'Frontend-разработчик / Открыт к работе и проектам',
-			title: 'Создаю чистые\nи надёжные интерфейсы',
-			lead: 'React, Next.js и TypeScript — продуманный UI, формы, API и логика продукта.',
+			eyebrow: 'Открыт к проектам и работе в команде',
+			title: 'Разрабатываю\nсайты и\nвеб-приложения',
+			lead: 'Работаю с React, Next.js и TypeScript. Делаю адаптивную вёрстку, подключаю API и превращаю макеты в работающие сайты.',
 			workCta: 'Смотреть проекты',
 			cvCta: 'Открыть CV',
 			portraitAlt: 'Портрет Михаила Мазуркевича, frontend-разработчика'
 		},
 		work: {
-			index: '04 / Избранные проекты',
-			title: 'Три проекта\nТри разные задачи',
+			index: 'Избранные проекты',
+			title: 'Избранные проекты',
 			intro:
-				'Короткая подборка о структуре продукта, адаптивном UI и аккуратной frontend-реализации.',
+				'Управление задачами, онлайн-заказы и финансы. Можно посмотреть интерфейсы и заглянуть в код.',
 			open: 'Открыть проект',
 			source: 'Смотреть код'
 		},
 		about: {
-			index: '01 / Обо мне',
-			title: 'Делаю сайты\nпонятными и удобными',
+			index: 'Обо мне',
+			title: 'Внимание к людям\nи к деталям',
 			paragraphs: [
-				'Я frontend-разработчик. Превращаю готовый дизайн или сырую идею в надёжный интерфейс. Слежу за иерархией, адаптивом и деталями, благодаря которым продукт ощущается завершённым.',
-				'Работаю с React и Next.js, подключаю API, собираю формы и состояния продукта, поддерживаю понятную структуру кода.'
+				'Я Михаил, frontend-разработчик. Превращаю дизайн и идеи в сайты, которыми удобно пользоваться на любом экране.',
+				'Прошёл стажировку в Itransition и работаю с заказчиками на фрилансе. Собираю интерфейсы, подключаю API и пишу код, который удобно поддерживать.'
 			],
 			stackTitle: 'Основной стек',
 			stack: [
@@ -436,22 +439,22 @@ export const CONTENT = {
 			linkedin: 'Открыть LinkedIn'
 		},
 		experience: {
-			index: '02 / Опыт работы',
+			index: 'Опыт работы',
 			title: 'Опыт работы',
 			intro: 'Коммерческие задачи, командная работа и практика современной frontend-разработки.',
 			totalLabel: 'Общий коммерческий опыт',
 			totalNote: 'Рассчитано по периодам ниже'
 		},
 		learning: {
-			index: '03 / Обучение',
-			title: 'Обучение и\nсертификаты',
-			intro: 'Системное обучение, закреплённое практическими проектами и самостоятельной работой.',
+			index: 'Обучение',
+			title: 'Учусь и применяю',
+			intro: 'Колледж, стажировка и профильные курсы. Раскройте курс, чтобы узнать, что я изучил.',
 			currentLabel: 'Текущее образование',
 			certificateLabel: 'Смотреть сертификат',
 			courseLabel: 'Программа курса'
 		},
 		reviews: {
-			index: '05 / Отзывы клиентов',
+			index: 'Отзывы клиентов',
 			title: 'Отзывы клиентов',
 			badge: 'Отзывы на Kwork',
 			caption: 'Отзывы о завершённых фриланс-проектах',
@@ -461,7 +464,7 @@ export const CONTENT = {
 			play: 'Запустить автоматическое переключение отзывов'
 		},
 		contact: {
-			index: '06 / Контакты',
+			index: 'Контакты',
 			title: 'Есть проект или идея?',
 			text: 'Напишите цель, примерные сроки и пришлите референс, если он уже есть.',
 			emailLabel: 'Написать на email',

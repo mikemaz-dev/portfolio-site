@@ -16,14 +16,11 @@ export function ExperienceSection({ locale }: { locale: Locale }) {
 				className='section-heading section-heading-wide experience-heading'
 				data-reveal='group'
 			>
-				<p className='section-label'>{copy.index}</p>
 				<h2 id='experience-title'>{copy.title}</h2>
 				<div className='experience-overview'>
-					<p className='section-intro'>{copy.intro}</p>
 					<div className='experience-total'>
 						<strong>{duration}</strong>
 						<span>{copy.totalLabel}</span>
-						<small>{copy.totalNote}</small>
 					</div>
 				</div>
 			</div>
@@ -35,7 +32,6 @@ export function ExperienceSection({ locale }: { locale: Locale }) {
 						data-reveal='item'
 						data-reveal-delay={((index % 3) + 1).toString()}
 					>
-						<div className='experience-number'>{String(index + 1).padStart(2, '0')}</div>
 						<div className='experience-role'>
 							<h3>{item.role[locale]}</h3>
 							<p>{item.company}</p>

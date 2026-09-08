@@ -416,13 +416,16 @@
 
 	.review-slide {
 		display: block;
-		min-height: 520px;
-		padding: var(--space-5) var(--space-4) var(--space-6);
+		min-height: 420px;
+		height: auto;
+		border-top: 0;
+		padding: var(--space-4) var(--space-4) var(--space-5);
 	}
 
 	.review-slide-copy {
-		min-height: 300px;
-		margin-top: var(--space-6);
+		min-height: 0;
+		height: auto;
+		margin-top: var(--space-5);
 	}
 
 	.review-slide blockquote {
@@ -452,6 +455,15 @@
 	.reviews-controls {
 		grid-column: 2;
 		grid-row: 1;
+	}
+
+	.section-reviews {
+		padding-top: var(--space-6);
+		padding-bottom: var(--space-6);
+	}
+
+	.section-reviews .section-heading-wide {
+		margin-bottom: var(--space-4);
 	}
 
 	.contact-section {

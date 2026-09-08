@@ -1,6 +1,6 @@
 @import './styles/base.css';
+@import './styles/shell.css';
 @import './styles/header.css';
-@import './styles/hero.css';
 @import './styles/motion.css';
 @import './styles/ui.css';
 @import './styles/sections.css';
@@ -10,3 +10,6 @@
 @import './styles/reviews.css';
 @import './styles/contact.css';
 @import './styles/responsive.css';
+@import './styles/intro.css';
+@import './styles/refinements.css';
+@import './styles/learning-disclosure.css';

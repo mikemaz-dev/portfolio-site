@@ -10,6 +10,7 @@
 	grid-auto-flow: column;
 	align-items: stretch;
 	overflow-x: auto;
+	overflow-y: hidden;
 	overscroll-behavior-x: contain;
 	scroll-behavior: smooth;
 	scroll-snap-type: x mandatory;
@@ -171,4 +172,12 @@
 
 .reviews-controls button:last-child:hover svg {
 	transform: translateX(3px);
+}
+
+@media (pointer: coarse) {
+	.review-slide {
+		-webkit-user-select: none;
+		user-select: none;
+		-webkit-touch-callout: none;
+	}
 }

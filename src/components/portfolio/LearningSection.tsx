@@ -32,54 +32,60 @@ export function LearningSection({ locale }: { locale: Locale }) {
 				<span>{EDUCATION.status[locale]}</span>
 			</div>
 
-			<div className='certificate-list'>
+			<div className='learning-list'>
 				{CERTIFICATES.map((certificate, index) => (
-					<article
-						className='certificate-item'
+					<details
+						className='learning-course'
 						key={certificate.certificateUrl}
-						data-reveal='item'
-						data-reveal-delay={((index % 3) + 1).toString()}
+						open={index === 0}
 					>
-						<div className='certificate-index'>{String(index + 1).padStart(2, '0')}</div>
-						<div className='certificate-meta'>
-							<p>{certificate.provider}</p>
-							<time>{certificate.period[locale]}</time>
-						</div>
-						<div className='certificate-content'>
-							<h3>{certificate.title[locale]}</h3>
+						<summary>
+							<span className='learning-provider'>
+								{certificate.provider}
+								<span>{certificate.period[locale]}</span>
+							</span>
+							<span className='learning-title'>{certificate.title[locale]}</span>
+							<span
+								className='learning-toggle'
+								aria-hidden='true'
+							/>
+						</summary>
+						<div className='learning-detail'>
 							<ul>
 								{certificate.learning[locale].map(item => (
 									<li key={item}>{item}</li>
 								))}
 							</ul>
-						</div>
-						<div className='certificate-actions'>
-							<a
-								href={certificate.certificateUrl}
-								target='_blank'
-								rel='noreferrer'
-							>
-								{copy.certificateLabel}
-								<ArrowUpRight
-									aria-hidden='true'
-									size={16}
-								/>
-							</a>
-							{certificate.courseUrl ? (
+							<div className='learning-links'>
 								<a
-									href={certificate.courseUrl}
+									className='text-action'
+									href={certificate.certificateUrl}
 									target='_blank'
 									rel='noreferrer'
 								>
-									{copy.courseLabel}
+									{copy.certificateLabel}
 									<ArrowUpRight
-										aria-hidden='true'
 										size={16}
+										aria-hidden='true'
 									/>
 								</a>
-							) : null}
+								{certificate.courseUrl ? (
+									<a
+										className='text-action'
+										href={certificate.courseUrl}
+										target='_blank'
+										rel='noreferrer'
+									>
+										{copy.courseLabel}
+										<ArrowUpRight
+											size={16}
+											aria-hidden='true'
+										/>
+									</a>
+								) : null}
+							</div>
 						</div>
-					</article>
+					</details>
 				))}
 			</div>
 		</section>

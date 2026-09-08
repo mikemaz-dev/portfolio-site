@@ -123,7 +123,10 @@ export function SiteHeader({ locale }: { locale: Locale }) {
 						href={item.href}
 						key={item.href}
 					>
-						{item.label}
+						<span className='nav-label'>
+							<span>{item.label}</span>
+							<span aria-hidden='true'>{item.label}</span>
+						</span>
 					</a>
 				))}
 			</nav>
