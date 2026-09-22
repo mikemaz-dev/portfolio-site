@@ -4,6 +4,7 @@ import { ArrowUpRight, CodeXml } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 
+import { TaskHubRelease } from './TaskHubRelease'
 import { CONTENT, type Locale, PROJECTS } from '@/data/site-content'
 
 export function ProjectShowcase({ locale }: { locale: Locale }) {
@@ -22,12 +23,16 @@ export function ProjectShowcase({ locale }: { locale: Locale }) {
 					className='project-preview-media'
 					key={selectedProject.title}
 				>
-					<Image
-						alt=''
-						fill
-						sizes='(min-width: 1024px) 48vw, 100vw'
-						src={selectedProject.image}
-					/>
+					{selectedProject.title === 'TaskHub' ? (
+						<TaskHubRelease locale={locale} />
+					) : (
+						<Image
+							alt=''
+							fill
+							sizes='(min-width: 1024px) 48vw, 100vw'
+							src={selectedProject.image}
+						/>
+					)}
 				</div>
 				<span className='project-preview-index'>
 					{String(activeProject + 1).padStart(2, '0')} / {String(PROJECTS.length).padStart(2, '0')}
@@ -46,18 +51,27 @@ export function ProjectShowcase({ locale }: { locale: Locale }) {
 						onMouseEnter={() => setActiveProject(index)}
 					>
 						<div className='project-mobile-image'>
-							<Image
-								alt={`${project.title} ${locale === 'ru' ? '— превью интерфейса' : 'interface preview'}`}
-								fill
-								sizes='(max-width: 1023px) 100vw, 1px'
-								src={project.image}
-							/>
+							{project.title === 'TaskHub' ? (
+								<TaskHubRelease locale={locale} />
+							) : (
+								<Image
+									alt={`${project.title} ${locale === 'ru' ? '— превью интерфейса' : 'interface preview'}`}
+									fill
+									sizes='(max-width: 1023px) 100vw, 1px'
+									src={project.image}
+								/>
+							)}
 						</div>
 						<div className='project-row-heading'>
 							<span>{String(index + 1).padStart(2, '0')}</span>
 							<p>{project.kind[locale]}</p>
 						</div>
 						<h3>{project.title}</h3>
+						{project.title === 'TaskHub' ? (
+							<p className='project-release-note'>
+								{locale === 'ru' ? 'Новая версия уже доступна' : 'New version available now'}
+							</p>
+						) : null}
 						<p className='project-description'>{project.description[locale]}</p>
 						<ul
 							className='project-tech'

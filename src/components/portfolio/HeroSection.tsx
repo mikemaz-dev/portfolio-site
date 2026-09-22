@@ -1,8 +1,8 @@
-import { ArrowDown, ArrowUpRight, Star } from 'lucide-react'
-import Image from 'next/image'
+import { ArrowDown, ArrowUpRight } from 'lucide-react'
 
 import { SiteHeader } from './SiteHeader'
-import { CONTACTS, CONTENT, type Locale } from '@/data/site-content'
+import { TaskHubRelease } from './TaskHubRelease'
+import { CONTACTS, CONTENT, type Locale, TASKHUB_URL } from '@/data/site-content'
 
 export function HeroSection({ locale }: { locale: Locale }) {
 	const copy = CONTENT[locale].hero
@@ -55,57 +55,39 @@ export function HeroSection({ locale }: { locale: Locale }) {
 						<span aria-hidden='true' />
 						{copy.eyebrow}
 					</p>
+					<a
+						className='intro-release-mobile'
+						href={TASKHUB_URL}
+						target='_blank'
+						rel='noreferrer'
+					>
+						<span>
+							TaskHub <span>{locale === 'ru' ? 'Новая версия' : 'New release'}</span>
+						</span>
+						<ArrowUpRight
+							size={18}
+							aria-hidden='true'
+						/>
+					</a>
 				</div>
 				<a
 					className='intro-project'
-					href='#work'
+					href={TASKHUB_URL}
+					target='_blank'
+					rel='noreferrer'
 					aria-label={
 						locale === 'ru'
-							? 'TaskHub — любимый проект, продолжаю развивать. Смотреть проекты'
-							: 'TaskHub — my favourite project, actively in development. Explore projects'
+							? 'TaskHub — новая версия. Открыть приложение'
+							: 'TaskHub — new release. Open the app'
 					}
 				>
-					<span className='intro-project-favourite'>
-						<Star
-							size={14}
+					<TaskHubRelease locale={locale} />
+					<div className='intro-project-caption'>
+						<span>{locale === 'ru' ? 'Открыть новую версию' : 'Explore the new release'}</span>
+						<ArrowUpRight
+							size={18}
 							aria-hidden='true'
 						/>
-						{locale === 'ru' ? 'Любимый проект' : 'My favourite project'}
-					</span>
-					<div className='intro-project-window'>
-						<div
-							className='intro-project-toolbar'
-							aria-hidden='true'
-						>
-							<span className='intro-window-dots'>
-								<i />
-								<i />
-								<i />
-							</span>
-							<span>TaskHub</span>
-							<ArrowUpRight size={16} />
-						</div>
-						<div className='intro-project-image'>
-							<Image
-								src='/wip_screen/taskhub.png'
-								alt={
-									locale === 'ru'
-										? 'TaskHub — приложение для управления задачами'
-										: 'TaskHub task management application'
-								}
-								fill
-								sizes='(min-width: 1600px) 660px, (min-width: 1024px) 44vw, 1px'
-								quality={80}
-							/>
-						</div>
-					</div>
-					<div className='intro-project-caption'>
-						<span>
-							{locale === 'ru'
-								? 'TaskHub — продолжаю развивать'
-								: 'TaskHub — actively in development'}
-						</span>
-						<span>Next.js / TypeScript</span>
 					</div>
 				</a>
 			</div>

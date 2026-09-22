@@ -42,6 +42,7 @@ export type SocialLink = {
 }
 
 export const SITE_URL = 'https://mikemaz-portfolio.vercel.app'
+export const TASKHUB_URL = 'https://taskhub-green.vercel.app/'
 
 export const CONTACTS = {
 	email: 'mazurkevich.mikhail.14@gmail.com',
@@ -73,7 +74,7 @@ export const PROJECTS: Project[] = [
 		},
 		image: '/wip_screen/taskhub.png',
 		tech: ['Next.js', 'TypeScript', 'Supabase', 'Zustand'],
-		liveUrl: 'https://taskhub-green.vercel.app/',
+		liveUrl: TASKHUB_URL,
 		sourceUrl: 'https://github.com/mikemaz-dev/taskhub'
 	},
 	{
