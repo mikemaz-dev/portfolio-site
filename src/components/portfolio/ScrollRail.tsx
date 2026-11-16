@@ -47,6 +47,14 @@ export function ScrollRail({ locale }: { locale: Locale }) {
 					Math.min(96, trackHeight * (viewportHeight / documentHeight))
 				)
 				const travel = Math.max(0, trackHeight - thumbHeight)
+				// Read every layout value before writing styles, so the frame never forces a second layout.
+				const sampleY = Math.min(window.innerHeight - 1, Math.round(window.innerHeight / 2))
+				const section = Array.from(
+					document.querySelectorAll<HTMLElement>('[data-header-theme]')
+				).find(element => {
+					const bounds = element.getBoundingClientRect()
+					return bounds.top <= sampleY && bounds.bottom > sampleY
+				})
 
 				thumb.style.height = `${thumbHeight}px`
 				thumb.style.transform = `translate3d(0, ${Math.min(1, Math.max(0, progress)) * travel}px, 0)`
@@ -57,13 +65,6 @@ export function ScrollRail({ locale }: { locale: Locale }) {
 				rail.dataset.scrollable = maximumScroll > 1 ? 'true' : 'false'
 				rail.setAttribute('aria-valuenow', String(Math.round(progress * 100)))
 
-				const sampleY = Math.min(window.innerHeight - 1, Math.round(window.innerHeight / 2))
-				const section = Array.from(
-					document.querySelectorAll<HTMLElement>('[data-header-theme]')
-				).find(element => {
-					const bounds = element.getBoundingClientRect()
-					return bounds.top <= sampleY && bounds.bottom > sampleY
-				})
 				rail.dataset.theme = section?.dataset.headerTheme === 'dark' ? 'dark' : 'light'
 			})
 		}
@@ -164,7 +165,7 @@ export function ScrollRail({ locale }: { locale: Locale }) {
 				aria-valuemax={100}
 				aria-valuemin={0}
 				aria-valuenow={0}
-				className='scroll-rail'
+				className='group/rail fixed top-1/2 right-0 z-90 hidden h-[clamp(176px,34vh,320px)] w-11 -translate-y-1/2 cursor-grab touch-none outline-offset-[-8px] focus-visible:outline-none data-[dragging=true]:cursor-grabbing data-[scrollable=false]:invisible pointer-fine:block'
 				onKeyDown={handleKeyDown}
 				onPointerCancel={handlePointerUp}
 				onPointerDown={handlePointerDown}
@@ -176,21 +177,21 @@ export function ScrollRail({ locale }: { locale: Locale }) {
 				tabIndex={0}
 			>
 				<div
-					className='scroll-rail-track'
+					className='absolute top-0 right-1.5 bottom-0 w-1 rounded-full bg-ink/10 transition-colors duration-500 group-data-[theme=dark]/rail:bg-white/20'
 					ref={trackRef}
 				>
 					<div
-						className='scroll-rail-thumb'
+						className='absolute top-0 right-0 min-h-14 w-1 rounded-full bg-ink transition-[width] duration-500 ease-out-expo will-change-transform group-hover/rail:w-2 group-focus-visible/rail:w-2 group-data-[active=true]/rail:w-2 group-data-[dragging=true]/rail:w-2 group-data-[theme=dark]/rail:bg-accent'
 						ref={thumbRef}
 					/>
 				</div>
 			</div>
 			<div
-				className='scroll-mobile'
+				className='fixed bottom-[calc(10px+env(safe-area-inset-bottom))] left-1/2 z-95 block h-11 w-44 -translate-x-1/2 rounded-full border border-line bg-white/90 px-4 shadow-[0_8px_30px_-12px_rgb(8_8_12/30%)] backdrop-blur-xl data-[scrollable=false]:invisible md:hidden pointer-fine:hidden [body:has(header[data-menu-open=true])_&]:invisible'
 				ref={mobileRef}
 			>
 				<input
-					className='scroll-mobile-input'
+					className='block h-[42px] w-full cursor-ew-resize touch-none appearance-none bg-transparent focus-visible:rounded-md [&::-moz-range-progress]:h-1 [&::-moz-range-progress]:rounded-full [&::-moz-range-progress]:bg-ink [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-6 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-white [&::-moz-range-thumb]:bg-ink [&::-moz-range-track]:h-1 [&::-moz-range-track]:rounded-full [&::-moz-range-track]:bg-[#c9cbdb] [&::-webkit-slider-runnable-track]:h-1 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-[linear-gradient(to_right,var(--color-ink)_var(--scroll-progress,0%),#c9cbdb_var(--scroll-progress,0%))] [&::-webkit-slider-thumb]:-mt-[6px] [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:bg-ink [&::-webkit-slider-thumb]:shadow-md'
 					type='range'
 					min={0}
 					max={1000}

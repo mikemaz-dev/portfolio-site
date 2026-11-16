@@ -10,7 +10,7 @@ type LoaderPhase = 'pending' | 'loading' | 'leaving' | 'hidden'
 // Fast navigations never flash an overlay; slow resources cannot hold up the page.
 const SHOW_AFTER_MS = 150
 const MAXIMUM_WAIT_MS = 900
-const EXIT_DURATION_MS = 240
+const EXIT_DURATION_MS = 500
 
 export function PageLoader({ locale }: { locale: Locale }) {
 	const [phase, setPhase] = useState<LoaderPhase>('pending')
@@ -67,20 +67,17 @@ export function PageLoader({ locale }: { locale: Locale }) {
 
 	return (
 		<div
-			className='page-loader'
+			className='pointer-events-none fixed inset-0 z-1000 grid place-items-center bg-paper text-ink transition-opacity duration-500 ease-out-expo data-[phase=leaving]:opacity-0'
 			data-phase={phase}
 			role='status'
 			aria-label={locale === 'ru' ? 'Загрузка сайта' : 'Loading website'}
 		>
 			<div
-				className='page-loader-signature'
+				className='grid justify-items-center gap-5'
 				aria-hidden='true'
 			>
-				<BrandMark className='page-loader-mark' />
-				<span>mikemaz-dev</span>
-				<div className='page-loader-track'>
-					<span />
-				</div>
+				<BrandMark className='size-14 motion-safe:animate-blink' />
+				<span className='text-sm tracking-[-0.01em] text-muted'>mikemaz-dev</span>
 			</div>
 		</div>
 	)
