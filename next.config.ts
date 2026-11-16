@@ -2,7 +2,9 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
 	experimental: {
-		globalNotFound: true
+		globalNotFound: true,
+		// Inline the (small) Tailwind stylesheet into the HTML: no render-blocking CSS request.
+		inlineCss: true
 	},
 
 	async headers() {

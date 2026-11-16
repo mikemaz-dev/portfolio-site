@@ -7,7 +7,8 @@ export function YandexMetrika() {
 		<>
 			<Script
 				id='yandex-metrika'
-				strategy='afterInteractive'
+				// Analytics waits for browser idle time after load, so it never competes with the first render.
+				strategy='lazyOnload'
 			>{`
 				(function(m,e,t,r,i,k,a){
 					m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
