@@ -6,4 +6,3 @@ class PublicPages {
 }
 
 export const PAGE = new PublicPages()
-

@@ -1,6 +1,7 @@
-import type { Difficulties } from '@/types/project.types'
 import { CircleDot } from 'lucide-react'
 import { twMerge } from 'tailwind-merge'
+
+import type { Difficulties } from '@/types/project.types'
 
 export interface DifficultyBadgeProps {
 	difficulty: keyof typeof Difficulties
@@ -21,7 +22,7 @@ export const DifficultyBadge = ({ difficulty }: DifficultyBadgeProps) => {
 				difficultyClassMap[difficulty] ?? 'bg-neutral-700/30 text-neutral-400'
 			)}
 		>
-			<CircleDot className='w-3.5 h-3.5' />
+			<CircleDot className='h-3.5 w-3.5' />
 			{difficulty}
 		</span>
 	)

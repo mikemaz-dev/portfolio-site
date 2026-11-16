@@ -4,8 +4,7 @@ export const CERTIFICATES_DATA: ICertificate[] = [
 	{
 		name: 'Marathon RED Summer',
 		date: 'Summer 2025',
-		link: 'https://www.udemy.com/course/javascript_full/',
-		pdfLink: 'https://drive.google.com/file/d/1lqFKplqOaoMZivptXCs4U-nvEb93XKzI/preview?usp=drive_link'
+		pdfLink: 'https://drive.google.com/file/d/1mh2Y8VjMxaiIQCZNhStokFlxoTIpHPji/view?usp=sharing'
 	},
 	{
 		name: 'Complete course on Javascript + React - from scratch to results',

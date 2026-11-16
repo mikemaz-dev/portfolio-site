@@ -41,9 +41,9 @@ export function ScrollToTopButton() {
 					onClick={scrollToTop}
 					aria-label='Scroll to top'
 					style={{ bottom: `${bottom}px` }}
-					className='fixed bottom-6 right-[15.8px] z-40 group rounded-full cursor-pointer bg-neutral-800/60 max-sm:bg-neutral-800 border border-neutral-600 text-white p-3 hover:bg-neutral-800 transition-colors'
+					className='group fixed right-[15.8px] bottom-6 z-40 cursor-pointer rounded-full border border-neutral-600 bg-neutral-800/60 p-3 text-white transition-colors hover:bg-neutral-800 max-sm:bg-neutral-800'
 				>
-					<ArrowUp className='size-5 text-neutral-100/80 group-hover:text-neutral-100 transition-colors' />
+					<ArrowUp className='size-5 text-neutral-100/80 transition-colors group-hover:text-neutral-100' />
 				</m.button>
 			)}
 		</AnimatePresence>

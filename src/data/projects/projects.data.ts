@@ -1,6 +1,5 @@
 import { Difficulties, type IProject } from '@/types/project.types'
 
-
 export const PROJECTS_DATA: IProject[] = [
 	{
 		preview: '/wip_screen/taskhub.png',
@@ -96,7 +95,7 @@ export const PROJECTS_DATA: IProject[] = [
 			'Prettier',
 			'ESLint',
 			'React Hook Form',
-			'Zod',
+			'Zod'
 		],
 		difficult: Difficulties.Intermediate,
 		livelink: 'https://marvel-react-three.vercel.app/',
@@ -126,7 +125,7 @@ export const PROJECTS_DATA: IProject[] = [
 			'Webpack',
 			'Prettier',
 			'ESLint',
-			'Zod',
+			'Zod'
 		],
 		difficult: Difficulties.Beginner,
 		livelink: 'https://mikemaz-dev.github.io/Embrace-Agency/',

@@ -1,33 +1,73 @@
 'use client'
 
-import { Heart } from 'lucide-react'
-import Link from 'next/link'
+import { Github, Mail, MessageCircle, ShoppingBag } from 'lucide-react'
+
+import { useLanguage } from '@/providers/LanguageProvider'
+
+import { SITE_COPY } from '@/data/site-copy.data'
+import { CONTACTS } from '@/data/site.data'
 
 export function Footer() {
-	return (
-		<footer
-			id='footer'
-			className='border-t border-t-neutral-700/50 text-neutral-400 py-6'
-		>
-			<div className='container mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-1'>
-				<span className='text-sm'>&copy; {new Date().getFullYear()} Mikhail Mazurkevich.</span>
+	const { language } = useLanguage()
+	const copy = SITE_COPY[language]
 
-				<span className='flex items-center text-sm'>
-					Made with
-					<Heart
-						className='w-4 h-4 mx-1 text-transparent'
-						fill='#fb2c36'
-					/>
-					by&nbsp;
-					<Link
-						href='https://github.com/mikemaz-dev'
-						target='_blank'
+	return (
+		<footer className='bg-slate-950 px-6 py-10 text-white md:px-10'>
+			<div className='mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-end md:justify-between'>
+				<div>
+					<p className='text-xl font-semibold'>Mike Mazur</p>
+					<p className='mt-2 max-w-md text-sm leading-6 text-slate-400'>{copy.footer.text}</p>
+				</div>
+				<nav className='flex flex-wrap gap-4 text-sm text-slate-400'>
+					{copy.nav.map(item => (
+						<a
+							className='hover:text-white'
+							href={item.href}
+							key={item.name}
+						>
+							{item.name}
+						</a>
+					))}
+				</nav>
+				<div className='flex gap-3'>
+					<a
+						className='footer-icon'
+						href={CONTACTS.telegram}
 						rel='noopener noreferrer'
-						className='text-neutral-200 hover:text-white transition-colors duration-300'
+						target='_blank'
+						aria-label='Telegram'
 					>
-						Mikhail
-					</Link>
-				</span>
+						<MessageCircle size={18} />
+					</a>
+					<a
+						className='footer-icon'
+						href={CONTACTS.kwork}
+						rel='noopener noreferrer'
+						target='_blank'
+						aria-label='Kwork'
+					>
+						<ShoppingBag size={18} />
+					</a>
+					<a
+						className='footer-icon'
+						href={`mailto:${CONTACTS.email}`}
+						aria-label='Email'
+					>
+						<Mail size={18} />
+					</a>
+					<a
+						className='footer-icon'
+						href={CONTACTS.github}
+						rel='noopener noreferrer'
+						target='_blank'
+						aria-label='GitHub'
+					>
+						<Github size={18} />
+					</a>
+				</div>
+			</div>
+			<div className='mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-sm text-slate-500'>
+				© {new Date().getFullYear()} Mike Mazur. {copy.footer.built}
 			</div>
 		</footer>
 	)

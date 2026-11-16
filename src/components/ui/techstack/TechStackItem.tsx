@@ -1,7 +1,8 @@
-import type { ITech } from '@/data/techs/techs.types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { twMerge } from 'tailwind-merge'
+
+import type { ITech } from '@/data/techs/techs.types'
 
 interface TechStackItemProps {
 	tech: ITech
@@ -13,20 +14,19 @@ export function TechStackItem({ tech }: TechStackItemProps) {
 			href={tech.link ?? '/'}
 			target={tech.link ? '_blank' : undefined}
 			className={twMerge(
-				'flex items-center gap-4 group p-4 w-full transition-transform will-change-transform duration-300 hover:scale-105 ease-in-out'
+				'group flex w-full items-center gap-4 p-4 transition-transform duration-300 ease-in-out will-change-transform hover:scale-105'
 			)}
 		>
-			<div className='flex-shrink-0 w-10 h-10 relative'>
+			<div className='relative h-10 w-10 flex-shrink-0'>
 				<Image
 					src={tech.img ? tech.img : ''}
 					alt={tech.name}
 					fill
-					className='object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300'
+					className='object-contain opacity-75 grayscale transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0'
 				/>
 			</div>
-			
-			<span
-				className='text-lg font-medium text-white/70 group-hover:text-white transition-all duration-300'>
+
+			<span className='text-lg font-medium text-white/70 transition-all duration-300 group-hover:text-white'>
 				{tech.name}
 			</span>
 		</Link>

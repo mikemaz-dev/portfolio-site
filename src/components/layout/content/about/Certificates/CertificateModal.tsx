@@ -36,23 +36,23 @@ export const CertificateModal: React.FC<Props> = ({ pdfLink, name, onClose }) =>
 			onClick={onClose}
 		>
 			<div
-				className='relative w-full max-w-4xl h-[80vh] bg-neutral-900 rounded-xl overflow-hidden shadow-xl'
+				className='relative h-[80vh] w-full max-w-4xl overflow-hidden rounded-xl bg-neutral-900 shadow-xl'
 				onClick={e => e.stopPropagation()}
 			>
 				{isLoading && (
-					<div className='absolute inset-0 flex items-center justify-center bg-black/50 z-10'>
-						<div className='animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-white'></div>
+					<div className='absolute inset-0 z-10 flex items-center justify-center bg-black/50'>
+						<div className='h-10 w-10 animate-spin rounded-full border-t-2 border-b-2 border-white'></div>
 					</div>
 				)}
 
 				<iframe
 					src={pdfLink}
-					className='w-full h-full border-0'
+					className='h-full w-full border-0'
 					onLoad={() => setIsLoading(false)}
 					title={name}
 				/>
 
-				<div className='absolute top-3 self-end w-full flex justify-center'>
+				<div className='absolute top-3 flex w-full justify-center self-end'>
 					<Button
 						variant='primary'
 						onClick={onClose}

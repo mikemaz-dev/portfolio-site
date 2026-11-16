@@ -33,9 +33,9 @@ export function Button({
 			whileHover={{ scale: 1.05 }}
 			whileTap={{ scale: 0.98 }}
 			className={twMerge(
-				'relative font-medium rounded-lg border-2 cursor-pointer backdrop-blur-md transition-all duration-300',
+				'relative cursor-pointer rounded-lg border-2 font-medium backdrop-blur-md transition-all duration-300',
 
-				iconOnly ? 'p-1 w-8 h-8 flex items-center justify-center' : 'px-3 py-1.5',
+				iconOnly ? 'flex h-8 w-8 items-center justify-center p-1' : 'px-3 py-1.5',
 
 				minimalistic && 'px-2 py-1 text-xs',
 

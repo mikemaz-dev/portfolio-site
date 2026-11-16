@@ -1,4 +1,5 @@
 import { PAGE } from '@/config/sections.config'
+
 import type { IHeader } from '@/types/header.types'
 
 export const HEADER_DATA: IHeader[] = [
@@ -17,5 +18,5 @@ export const HEADER_DATA: IHeader[] = [
 	{
 		name: 'Projects',
 		href: PAGE.PROJECTS
-	},
+	}
 ]
