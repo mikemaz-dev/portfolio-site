@@ -3,13 +3,13 @@ export type Locale = 'en' | 'ru'
 export type LocalizedText = Record<Locale, string>
 
 export type Project = {
-	title: string
+	title: LocalizedText
 	kind: LocalizedText
 	description: LocalizedText
 	image: string
 	tech: string[]
 	liveUrl: string
-	sourceUrl: string
+	sourceUrl?: string
 }
 
 export type Review = {
@@ -43,6 +43,34 @@ export type SocialLink = {
 
 export const SITE_URL = 'https://mikemaz-portfolio.vercel.app'
 export const TASKHUB_URL = 'https://taskhub-green.vercel.app/'
+export const SHADOWS_AND_HEROES_URL = 'https://shadowsheroes.vercel.app/'
+
+const shadowsAndHeroesTitle = { en: 'Shadows & Heroes', ru: 'Тени и герои' }
+
+export const PATRIOT_AWARD = {
+	competition: 'ПАТРИОТ.by',
+	year: 2026,
+	projectTitle: shadowsAndHeroesTitle,
+	projectUrl: SHADOWS_AND_HEROES_URL,
+	diplomaUrl: '/awards/patriot-by-2026-diploma.webp',
+	title: { en: 'Third place', ru: 'Диплом III степени' },
+	stage: {
+		en: 'Grodno regional stage of the national competition',
+		ru: 'Областной этап республиканского конкурса'
+	},
+	category: {
+		en: '“A Bond Between Generations: We Remember”',
+		ru: '«Связь поколений: мы помним»'
+	},
+	projectDescription: {
+		en: 'An interactive history website with an archive of Belarusian partisans and underground resistance members, a timeline, a map and a quiz.',
+		ru: 'Исторический сайт о белорусских партизанах и подпольщиках с архивом героев, хронологией, интерактивной картой и викториной.'
+	},
+	projectBadge: {
+		en: 'Third place · ПАТРИОТ.by',
+		ru: 'Диплом III степени · ПАТРИОТ.by'
+	}
+} as const
 
 export const CONTACTS = {
 	email: 'mazurkevich.mikhail.14@gmail.com',
@@ -63,7 +91,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
 
 export const PROJECTS: Project[] = [
 	{
-		title: 'TaskHub',
+		title: { en: 'TaskHub', ru: 'TaskHub' },
 		kind: {
 			en: 'Productivity web app',
 			ru: 'Веб-приложение для продуктивности'
@@ -78,7 +106,15 @@ export const PROJECTS: Project[] = [
 		sourceUrl: 'https://github.com/mikemaz-dev/taskhub'
 	},
 	{
-		title: 'NextPizza',
+		title: shadowsAndHeroesTitle,
+		kind: { en: 'Interactive history website', ru: 'Интерактивный исторический сайт' },
+		description: PATRIOT_AWARD.projectDescription,
+		image: '/images/shadows-and-heroes.webp',
+		tech: ['Next.js', 'TypeScript', 'Leaflet'],
+		liveUrl: SHADOWS_AND_HEROES_URL
+	},
+	{
+		title: { en: 'NextPizza', ru: 'NextPizza' },
 		kind: {
 			en: 'Full-stack commerce app',
 			ru: 'Full-stack приложение для заказов'
@@ -93,7 +129,7 @@ export const PROJECTS: Project[] = [
 		sourceUrl: 'https://github.com/mikemaz-dev/next-pizza'
 	},
 	{
-		title: 'JustBank',
+		title: { en: 'JustBank', ru: 'JustBank' },
 		kind: {
 			en: 'Finance interface',
 			ru: 'Финансовый интерфейс'
@@ -324,6 +360,7 @@ export const CONTENT = {
 			about: 'About',
 			experience: 'Experience',
 			learning: 'Learning',
+			awards: 'Awards',
 			reviews: 'Reviews',
 			contact: 'Contact'
 		},
@@ -340,7 +377,7 @@ export const CONTENT = {
 			index: 'Selected work',
 			title: 'Selected projects',
 			intro:
-				'Task management, online ordering and finance. Explore the interfaces and the code behind them.',
+				'Web apps and websites for managing tasks, exploring history, ordering food and handling finances.',
 			open: 'Open project',
 			source: 'View source'
 		},
@@ -371,7 +408,7 @@ export const CONTENT = {
 		learning: {
 			index: 'Learning',
 			title: 'Always learning',
-			intro: 'College, an internship and focused courses. Open a course to see what I learned.',
+			intro: 'College, an internship and focused courses — and what each of them taught me.',
 			currentLabel: 'Current education',
 			certificateLabel: 'Certificate',
 			courseLabel: 'Course details'
@@ -402,6 +439,7 @@ export const CONTENT = {
 			about: 'Обо мне',
 			experience: 'Опыт',
 			learning: 'Обучение',
+			awards: 'Награды',
 			reviews: 'Отзывы',
 			contact: 'Контакты'
 		},
@@ -418,7 +456,7 @@ export const CONTENT = {
 			index: 'Избранные проекты',
 			title: 'Избранные проекты',
 			intro:
-				'Управление задачами, онлайн-заказы и финансы. Можно посмотреть интерфейсы и заглянуть в код.',
+				'Веб-приложения и сайты для управления задачами, знакомства с историей, онлайн-заказов и финансов.',
 			open: 'Открыть проект',
 			source: 'Смотреть код'
 		},
@@ -449,7 +487,7 @@ export const CONTENT = {
 		learning: {
 			index: 'Обучение',
 			title: 'Учусь и применяю',
-			intro: 'Колледж, стажировка и профильные курсы. Раскройте курс, чтобы узнать, что я изучил.',
+			intro: 'Колледж, стажировка и профильные курсы — и что каждый из них мне дал.',
 			currentLabel: 'Текущее образование',
 			certificateLabel: 'Смотреть сертификат',
 			courseLabel: 'Программа курса'

@@ -1,113 +1,88 @@
-'use client'
-
-import { ArrowUpRight, CodeXml } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
-import { useState } from 'react'
 
 import { TaskHubRelease } from './TaskHubRelease'
-import { CONTENT, type Locale, PROJECTS } from '@/data/site-content'
+import { caption, textLink } from './styles'
+import { CONTENT, type Locale, PATRIOT_AWARD, PROJECTS, TASKHUB_URL } from '@/data/site-content'
 
 export function ProjectShowcase({ locale }: { locale: Locale }) {
-	const [activeProject, setActiveProject] = useState(0)
 	const copy = CONTENT[locale].work
-	const selectedProject = PROJECTS[activeProject]
 
 	return (
-		<div className='project-layout'>
-			<div
-				className='project-preview-shell'
-				aria-hidden='true'
-				data-reveal='group'
-			>
-				<div
-					className='project-preview-media'
-					key={selectedProject.title}
-				>
-					{selectedProject.title === 'TaskHub' ? (
-						<TaskHubRelease locale={locale} />
-					) : (
-						<Image
-							alt=''
-							fill
-							sizes='(min-width: 1024px) 48vw, 100vw'
-							src={selectedProject.image}
-						/>
-					)}
-				</div>
-				<span className='project-preview-index'>
-					{String(activeProject + 1).padStart(2, '0')} / {String(PROJECTS.length).padStart(2, '0')}
-				</span>
-			</div>
+		<div className='grid gap-x-[clamp(12px,1.6vw,24px)] gap-y-[clamp(40px,5vw,72px)] md:grid-cols-2'>
+			{PROJECTS.map((project, index) => {
+				const title = project.title[locale]
 
-			<div className='project-list'>
-				{PROJECTS.map((project, index) => (
+				return (
 					<article
-						className='project-row'
-						data-active={activeProject === index}
+						className='min-w-0'
+						key={project.liveUrl}
 						data-reveal='item'
-						data-reveal-delay={((index % 3) + 1).toString()}
-						key={project.title}
-						onFocusCapture={() => setActiveProject(index)}
-						onMouseEnter={() => setActiveProject(index)}
+						data-reveal-delay={((index % 2) + 1).toString()}
 					>
-						<div className='project-mobile-image'>
-							{project.title === 'TaskHub' ? (
-								<TaskHubRelease locale={locale} />
-							) : (
-								<Image
-									alt={`${project.title} ${locale === 'ru' ? '— превью интерфейса' : 'interface preview'}`}
-									fill
-									sizes='(max-width: 1023px) 100vw, 1px'
-									src={project.image}
-								/>
-							)}
-						</div>
-						<div className='project-row-heading'>
-							<span>{String(index + 1).padStart(2, '0')}</span>
-							<p>{project.kind[locale]}</p>
-						</div>
-						<h3>{project.title}</h3>
-						{project.title === 'TaskHub' ? (
-							<p className='project-release-note'>
-								{locale === 'ru' ? 'Новая версия уже доступна' : 'New version available now'}
-							</p>
-						) : null}
-						<p className='project-description'>{project.description[locale]}</p>
-						<ul
-							className='project-tech'
-							aria-label={`${project.title} ${locale === 'ru' ? '— технологии' : 'technology stack'}`}
+						<a
+							className='group/project block'
+							href={project.liveUrl}
+							target='_blank'
+							rel='noreferrer'
 						>
-							{project.tech.map(item => (
-								<li key={item}>{item}</li>
-							))}
-						</ul>
-						<div className='project-links'>
-							<a
-								href={project.liveUrl}
-								target='_blank'
-								rel='noreferrer'
+							<div
+								className='relative aspect-[4/3] overflow-hidden rounded-[20px] bg-chip'
+								aria-hidden='true'
 							>
-								{copy.open}
-								<ArrowUpRight
-									aria-hidden='true'
-									size={17}
-								/>
-							</a>
-							<a
-								href={project.sourceUrl}
-								target='_blank'
-								rel='noreferrer'
-							>
-								<CodeXml
-									aria-hidden='true'
-									size={17}
-								/>
-								{copy.source}
-							</a>
+								{project.liveUrl === TASKHUB_URL ? (
+									<div className='absolute inset-0 transition-transform duration-[1.2s] ease-out-expo group-hover/project:scale-[1.03]'>
+										<TaskHubRelease
+											locale={locale}
+											compact
+										/>
+									</div>
+								) : (
+									<Image
+										alt=''
+										fill
+										sizes='(min-width: 1440px) 700px, (min-width: 768px) 48vw, 92vw'
+										src={project.image}
+										className='object-cover object-top transition-[scale] duration-[1.2s] ease-out-expo group-hover/project:scale-[1.04]'
+									/>
+								)}
+								<span className='absolute top-4 right-4 grid size-11 scale-75 place-items-center rounded-full bg-white text-ink opacity-0 transition-[opacity,scale] duration-500 ease-out-expo group-hover/project:scale-100 group-hover/project:opacity-100'>
+									<ArrowUpRight size={18} />
+								</span>
+							</div>
+							<p className={`${caption} mt-5 text-ink/70`}>{project.kind[locale]}</p>
+							<h3 className='mt-2 mb-0 text-[clamp(1.6rem,2.4vw,2.25rem)] leading-tight font-normal tracking-[-0.03em]'>
+								{title}
+							</h3>
+						</a>
+						<p className='mt-3 mb-0 max-w-[54ch] leading-relaxed text-pretty text-ink/65'>
+							{project.description[locale]}
+						</p>
+						<p className='mt-3 mb-0 text-[13px] text-muted'>{project.tech.join(' · ')}</p>
+						<div className='mt-1 flex flex-wrap gap-x-6'>
+							{project.liveUrl === PATRIOT_AWARD.projectUrl ? (
+								<a
+									className={textLink}
+									href='#awards'
+								>
+									{PATRIOT_AWARD.projectBadge[locale]}
+								</a>
+							) : null}
+							{project.sourceUrl ? (
+								<a
+									className={textLink}
+									href={project.sourceUrl}
+									target='_blank'
+									rel='noreferrer'
+									aria-label={`${copy.source}: ${title}`}
+								>
+									{copy.source}
+								</a>
+							) : null}
 						</div>
 					</article>
-				))}
-			</div>
+				)
+			})}
 		</div>
 	)
 }

@@ -206,7 +206,7 @@ export function ReviewsSlider({ locale }: { locale: Locale }) {
 
 	return (
 		<div
-			className='reviews-slider'
+			className='overflow-hidden rounded-[20px] bg-white'
 			data-autoplay={isAutoplayRunning}
 			data-reveal='group'
 			ref={sliderRef}
@@ -223,7 +223,7 @@ export function ReviewsSlider({ locale }: { locale: Locale }) {
 			}}
 		>
 			<div
-				className='reviews-track'
+				className='grid cursor-grab touch-pan-x touch-pan-y snap-x snap-mandatory [scrollbar-width:none] auto-cols-[100%] grid-flow-col items-stretch overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-smooth data-[dragging=true]:cursor-grabbing data-[dragging=true]:snap-none data-[dragging=true]:scroll-auto [&::-webkit-scrollbar]:hidden'
 				data-dragging={isDragging}
 				ref={trackRef}
 				role='region'
@@ -237,19 +237,21 @@ export function ReviewsSlider({ locale }: { locale: Locale }) {
 			>
 				{REVIEWS.map((review, index) => (
 					<figure
-						className='review-slide'
+						className='m-0 grid h-full min-h-[clamp(340px,34vw,520px)] snap-start snap-always gap-8 p-[clamp(24px,4vw,56px)] md:grid-cols-[minmax(0,1fr)_minmax(0,2.2fr)] md:gap-12'
 						data-review-index={index}
 						key={review.original}
 						aria-current={index === activeIndex ? 'true' : undefined}
 					>
-						<div className='review-slide-meta'>
-							<span>
+						<div className='flex flex-col gap-3 text-[13px] uppercase md:justify-between'>
+							<span className='text-muted tabular-nums'>
 								{String(index + 1).padStart(2, '0')} / {String(REVIEWS.length).padStart(2, '0')}
 							</span>
 							<figcaption>{review.author}</figcaption>
 						</div>
-						<div className='review-slide-copy'>
-							<blockquote>{getReviewText(review, locale)}</blockquote>
+						<div className='flex items-center'>
+							<blockquote className='m-0 text-[clamp(1.35rem,2.6vw,2.5rem)] leading-[1.15] font-normal tracking-[-0.03em] text-pretty'>
+								{getReviewText(review, locale)}
+							</blockquote>
 						</div>
 					</figure>
 				))}
@@ -263,30 +265,33 @@ export function ReviewsSlider({ locale }: { locale: Locale }) {
 				{locale === 'ru' ? 'из' : 'of'} {REVIEWS.length}
 			</p>
 
-			<div className='reviews-plaque'>
-				<div className='reviews-plaque-title'>
-					<strong>{copy.badge}</strong>
-					<span>{copy.caption}</span>
+			<div className='flex flex-wrap items-center justify-between gap-4 border-t border-line px-[clamp(20px,3vw,40px)] py-4'>
+				<div className='grid gap-0.5'>
+					<strong className='text-[13px] font-normal uppercase'>{copy.badge}</strong>
+					<span className='text-xs text-muted'>{copy.caption}</span>
 				</div>
 				<div
-					className='reviews-dots'
+					className='flex items-center gap-1'
 					aria-label={locale === 'ru' ? 'Выбрать отзыв' : 'Choose a review'}
 					role='group'
 				>
 					{REVIEWS.map((item, index) => (
 						<button
-							className='review-dot'
+							className='group/dot grid size-6 place-items-center'
 							data-active={index === activeIndex}
 							key={item.original}
 							onClick={() => handleManualNavigation(index)}
 							type='button'
 							aria-label={`${locale === 'ru' ? 'Отзыв' : 'Review'} ${index + 1}`}
 							aria-current={index === activeIndex ? 'true' : undefined}
-						/>
+						>
+							<span className='block h-1.5 w-1.5 rounded-full bg-line transition-all duration-500 ease-out-expo group-data-[active=true]/dot:w-6 group-data-[active=true]/dot:bg-ink' />
+						</button>
 					))}
 				</div>
-				<div className='reviews-controls'>
+				<div className='flex items-center gap-1.5'>
 					<button
+						className='grid size-11 place-items-center rounded-full bg-chip text-ink transition-[transform,background-color,color] duration-500 ease-out-expo hover:bg-ink hover:text-white active:scale-90'
 						onClick={() => handleManualNavigation(activeIndex - 1)}
 						type='button'
 						aria-label={copy.previous}
@@ -297,7 +302,7 @@ export function ReviewsSlider({ locale }: { locale: Locale }) {
 						/>
 					</button>
 					<button
-						className='reviews-autoplay'
+						className='grid size-11 place-items-center rounded-full bg-chip text-ink transition-[transform,background-color,color] duration-500 ease-out-expo hover:bg-ink hover:text-white active:scale-90 data-[playing=true]:bg-ink data-[playing=true]:text-white'
 						data-playing={isPlaying}
 						onClick={toggleAutoplay}
 						type='button'
@@ -317,6 +322,7 @@ export function ReviewsSlider({ locale }: { locale: Locale }) {
 						)}
 					</button>
 					<button
+						className='grid size-11 place-items-center rounded-full bg-chip text-ink transition-[transform,background-color,color] duration-500 ease-out-expo hover:bg-ink hover:text-white active:scale-90'
 						onClick={() => handleManualNavigation(activeIndex + 1)}
 						type='button'
 						aria-label={copy.next}

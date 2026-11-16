@@ -1,5 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 
+import { ListRow } from './ExperienceSection'
+import { caption, sectionSpace, sectionTitle, shell, textLink } from './styles'
 import { CERTIFICATES, CONTENT, EDUCATION, type Locale } from '@/data/site-content'
 
 export function LearningSection({ locale }: { locale: Locale }) {
@@ -7,98 +9,74 @@ export function LearningSection({ locale }: { locale: Locale }) {
 
 	return (
 		<section
-			className='section section-learning'
+			className={`${shell} ${sectionSpace}`}
 			id='learning'
 			aria-labelledby='learning-title'
 			data-header-theme='light'
 		>
 			<div
-				className='section-heading section-heading-wide'
+				className='flex flex-wrap items-end justify-between gap-6'
 				data-reveal='group'
 			>
-				<p className='section-label'>{copy.index}</p>
-				<h2 id='learning-title'>
-					<MultilineText text={copy.title} />
+				<h2
+					id='learning-title'
+					className={sectionTitle}
+				>
+					{copy.title.replace('\n', ' ')}
 				</h2>
-				<p className='section-intro'>{copy.intro}</p>
+				<p className={`${caption} max-w-[34ch] md:text-right`}>{copy.intro}</p>
 			</div>
 
 			<div
-				className='current-education'
+				className='mt-[clamp(32px,5vw,64px)] flex flex-wrap items-center gap-x-6 gap-y-2 rounded-[20px] bg-ink px-[clamp(20px,3vw,36px)] py-6 text-white'
 				data-reveal='group'
 			>
-				<p>{copy.currentLabel}</p>
-				<h3>{EDUCATION.institution[locale]}</h3>
-				<span>{EDUCATION.status[locale]}</span>
+				<p className={`${caption} text-white/55`}>{copy.currentLabel}</p>
+				<h3 className='m-0 text-[clamp(1.2rem,1.8vw,1.6rem)] leading-tight font-normal tracking-[-0.02em]'>
+					{EDUCATION.institution[locale]}
+				</h3>
+				<span className={`${caption} ml-auto text-white/55`}>{EDUCATION.status[locale]}</span>
 			</div>
 
-			<div className='learning-list'>
-				{CERTIFICATES.map((certificate, index) => (
-					<details
-						className='learning-course'
+			<div className='mt-[clamp(32px,5vw,64px)]'>
+				{CERTIFICATES.map(certificate => (
+					<ListRow
 						key={certificate.certificateUrl}
-						open={index === 0}
+						title={certificate.title[locale]}
+						meta={`${certificate.provider} · ${certificate.period[locale]}`}
+						points={certificate.learning[locale]}
 					>
-						<summary>
-							<span className='learning-provider'>
-								{certificate.provider}
-								<span>{certificate.period[locale]}</span>
-							</span>
-							<span className='learning-title'>{certificate.title[locale]}</span>
-							<span
-								className='learning-toggle'
-								aria-hidden='true'
-							/>
-						</summary>
-						<div className='learning-detail'>
-							<ul>
-								{certificate.learning[locale].map(item => (
-									<li key={item}>{item}</li>
-								))}
-							</ul>
-							<div className='learning-links'>
+						<div className='mt-3 flex flex-wrap gap-x-6'>
+							<a
+								className={textLink}
+								href={certificate.certificateUrl}
+								target='_blank'
+								rel='noreferrer'
+							>
+								{copy.certificateLabel}
+								<ArrowUpRight
+									size={14}
+									aria-hidden='true'
+								/>
+							</a>
+							{certificate.courseUrl ? (
 								<a
-									className='text-action'
-									href={certificate.certificateUrl}
+									className={textLink}
+									href={certificate.courseUrl}
 									target='_blank'
 									rel='noreferrer'
 								>
-									{copy.certificateLabel}
+									{copy.courseLabel}
 									<ArrowUpRight
-										size={16}
+										size={14}
 										aria-hidden='true'
 									/>
 								</a>
-								{certificate.courseUrl ? (
-									<a
-										className='text-action'
-										href={certificate.courseUrl}
-										target='_blank'
-										rel='noreferrer'
-									>
-										{copy.courseLabel}
-										<ArrowUpRight
-											size={16}
-											aria-hidden='true'
-										/>
-									</a>
-								) : null}
-							</div>
+							) : null}
 						</div>
-					</details>
+					</ListRow>
 				))}
 			</div>
 		</section>
 	)
-}
-
-function MultilineText({ text }: { text: string }) {
-	const lines = text.split('\n')
-
-	return lines.map((line, index) => (
-		<span key={line}>
-			{line}
-			{index < lines.length - 1 ? <br /> : null}
-		</span>
-	))
 }
