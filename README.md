@@ -19,39 +19,49 @@
 
 ## A portfolio built around the work
 
-A bilingual website for recruiters, collaborators and clients. A clear introduction leads into
-selected projects, professional experience, learning and client reviews — with TaskHub, my favourite
-ongoing project, featured on the desktop hero.
+A bilingual website for recruiters, collaborators and clients. A short introduction leads into
+selected projects, work experience, an award, learning and client reviews.
 
-The visual language stays simple: oversized Onest typography, dark and light sections, a cobalt
-accent and restrained motion.
+The look is a calm studio: a soft lavender canvas, black Onest typography, rounded black panels and
+a single electric-blue accent. Motion is there to make the page feel alive, never to slow it down.
 
 ### Inside the experience
 
+- **A living dot field.** The hero and the award panel sit on a canvas of dots on springs. The
+  pointer or a finger pushes them aside, moving dots stretch into short tails, and a click or tap
+  sends a ripple through the field.
+- **An optional soundtrack.** A generative ambient score built with the Web Audio API — no audio
+  files. Pads and soft bells play on request, clicks on the field ring as chimes, and the dots
+  breathe with the bass. A small panel controls the volume, which is remembered between visits.
 - **Two languages, two CVs.** English at `/`, Russian at `/ru`, with a matching résumé on each page.
-- **Work with context.** Project previews, live demos, source links and automatically calculated
-  commercial experience.
-- **Learning without clutter.** Expandable course details explain what each certificate covers.
-- **Reviews that move at your pace.** Three-second autoplay with pause controls, manual navigation
-  and reduced-motion support.
-- **Small interaction details.** Animated navigation labels, a subtle desktop cursor accent and
-  scroll-triggered reveals. Mobile keeps a simpler layout and a draggable bottom scroll control.
-- **A brief loading state.** A branded transition only appears when loading takes longer; it has a
-  bounded wait rather than an artificial percentage counter.
+- **Work with context.** Project previews, live demos, source links, the TaskHub release and the
+  third place at the ПАТРИОТ.by competition, all reachable from the first screen.
+- **Small details.** The role in the hero is "selected" on load with iOS-style handles, list markers
+  turn as rows scroll in, the award headline splits apart on scroll, and the footer wordmark grows
+  heavier under the cursor thanks to the variable font.
+- **Accessible by default.** Keyboard navigation, a skip link, labelled controls, and every
+  animation turns off with `prefers-reduced-motion`.
 
 ## Built with
 
-| Layer       | Tools                                                                                 |
-| ----------- | ------------------------------------------------------------------------------------- |
-| Application | Next.js 16 App Router, React 19, TypeScript                                           |
-| Styling     | Structured CSS, Tailwind CSS 4, Onest, Lucide icons                                   |
-| Interaction | CSS transitions, IntersectionObserver, requestAnimationFrame, native browser controls |
-| Quality     | Prettier, Biome, TypeScript                                                           |
-| Hosting     | Vercel                                                                                |
+| Layer       | Tools                                                                        |
+| ----------- | ---------------------------------------------------------------------------- |
+| Application | Next.js 16 App Router, React 19, TypeScript                                  |
+| Styling     | Tailwind CSS 4 (theme tokens and keyframes in `globals.css`), Onest, Lucide  |
+| Interaction | Canvas 2D, Web Audio API, CSS scroll-driven animations, IntersectionObserver |
+| Quality     | Prettier, Biome, TypeScript                                                  |
+| Hosting     | Vercel                                                                       |
 
-Server Components provide the page content. Small client components handle navigation, reviews,
-loading and scroll interactions. Images use Next.js image optimisation, and motion respects
-`prefers-reduced-motion`.
+Server Components render the content. Small client components handle the header, the dot field,
+sound, reviews and scroll interactions. The audio engine loads only after the visitor turns sound
+on.
+
+### Performance
+
+The page scores 100 for Lighthouse performance on mobile and desktop against a production build. The
+stylesheet is inlined, analytics load when the browser is idle, the dot field starts after the first
+paint, draws in batches, halves its frame rate when nobody interacts and pauses off screen. Measure
+against `npm run build && npm run start`, not the development server.
 
 ### Search and sharing
 
@@ -61,10 +71,6 @@ projects and credentials.
 
 - [Sitemap](https://mikemaz-portfolio.vercel.app/sitemap.xml)
 - [Robots rules](https://mikemaz-portfolio.vercel.app/robots.txt)
-
-Performance is a design constraint, not a fixed score: Lighthouse results depend on the build,
-device, network and third-party scripts. Measure against a production build, not the development
-server.
 
 ## Run locally
 
@@ -108,13 +114,13 @@ src/
 ├── app/
 │   ├── (en)/                 # English page and layout
 │   ├── ru/                   # Russian page and layout
-│   ├── styles/               # Shared styles and responsive refinements
+│   ├── globals.css           # Tailwind theme: colours, easing, keyframes, reveal rules
 │   ├── robots.ts             # /robots.txt
 │   ├── sitemap.ts            # /sitemap.xml
 │   └── manifest.ts           # App identity and icons
-├── components/portfolio/     # Current website components
+├── components/portfolio/     # Current website components (DotField, SoundToggle, …)
 ├── data/site-content.ts      # EN/RU copy, projects, experience, certificates and CVs
-└── lib/                      # Shared metadata and supporting utilities
+└── lib/                      # Metadata, the ambient audio engine and the audio bus
 public/
 ├── logos/                    # Brand assets and app icons
 └── wip_screen/               # Project previews
