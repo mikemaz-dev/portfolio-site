@@ -15,7 +15,7 @@ export function BrandMark({ className }: { className?: string }) {
 			/>
 			<path
 				d='M348 400H432'
-				stroke='var(--cobalt)'
+				stroke='var(--color-accent)'
 				strokeLinecap='round'
 				strokeWidth='28'
 			/>

@@ -1,16 +1,229 @@
-@import './styles/base.css';
-@import './styles/shell.css';
-@import './styles/header.css';
-@import './styles/motion.css';
-@import './styles/ui.css';
-@import './styles/sections.css';
-@import './styles/projects.css';
-@import './styles/about-experience.css';
-@import './styles/learning.css';
-@import './styles/reviews.css';
-@import './styles/contact.css';
-@import './styles/responsive.css';
-@import './styles/intro.css';
-@import './styles/refinements.css';
-@import './styles/learning-disclosure.css';
-@import './styles/taskhub-release.css';
+@import 'tailwindcss';
+
+/* Fonts are provided per <body> by next/font, so this block must stay inline. */
+@theme inline {
+	--font-sans: var(--font-onest), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@theme {
+	/* Monochrome studio palette with a single electric accent */
+	--color-ink: #08080c;
+	--color-paper: #f0f1fa;
+	--color-chip: #e2e3ef;
+	--color-line: #c9cbdb;
+	--color-muted: #6b6d80;
+	--color-accent: #2f3cff;
+
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+	--animate-mask-up: mask-up 1.2s var(--ease-out-expo) both;
+	--animate-fade-in: fade-in 1s var(--ease-out-expo) both;
+	--animate-split-left: split-left linear both;
+	--animate-split-right: split-right linear both;
+	--animate-menu-in: menu-in 0.6s var(--ease-out-expo) both;
+	--animate-blink: blink 2.4s ease-in-out infinite;
+	--animate-badge-in: badge-in linear both;
+	--animate-highlight-sweep: highlight-sweep 0.9s var(--ease-in-out-quart) 1s both;
+	--animate-text-select: text-select 0.5s ease-out 1.35s both;
+	--animate-handle-in: handle-in 0.6s var(--ease-out-expo) 1.75s both;
+	--animate-eq: eq 1.1s ease-in-out infinite alternate;
+	--animate-sheen: sheen 4.5s ease-in-out 1s infinite;
+
+	@keyframes mask-up {
+		from {
+			transform: translateY(105%);
+		}
+		to {
+			transform: none;
+		}
+	}
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+	@keyframes split-left {
+		from {
+			transform: translateX(var(--split, 22vw));
+		}
+		to {
+			transform: none;
+		}
+	}
+	@keyframes split-right {
+		from {
+			transform: translateX(calc(-1 * var(--split, 22vw)));
+		}
+		to {
+			transform: none;
+		}
+	}
+	@keyframes menu-in {
+		from {
+			opacity: 0;
+			transform: translateY(-12px);
+			clip-path: inset(0 0 100% 0 round 20px);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+			clip-path: inset(0 0 0 0 round 20px);
+		}
+	}
+	@keyframes badge-in {
+		from {
+			opacity: 0;
+			transform: scale(0.4) rotate(-14deg);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+	@keyframes sheen {
+		0%,
+		55% {
+			transform: translateX(0) skewX(-12deg);
+		}
+		100% {
+			transform: translateX(600%) skewX(-12deg);
+		}
+	}
+	@keyframes highlight-sweep {
+		from {
+			transform: scaleX(0);
+		}
+		to {
+			transform: scaleX(1);
+		}
+	}
+	@keyframes text-select {
+		from {
+			color: rgb(8 8 12 / 30%);
+		}
+		to {
+			color: #fff;
+		}
+	}
+	@keyframes handle-in {
+		from {
+			opacity: 0;
+			transform: scaleY(0.2);
+		}
+		to {
+			opacity: 1;
+			transform: none;
+		}
+	}
+	@keyframes eq {
+		from {
+			scale: 1 0.25;
+		}
+		to {
+			scale: 1 1;
+		}
+	}
+	@keyframes blink {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.25;
+		}
+	}
+}
+
+@layer base {
+	html {
+		min-height: 100%;
+		background: var(--color-paper);
+		scroll-behavior: smooth;
+		scroll-padding-top: calc(88px + env(safe-area-inset-top));
+		-webkit-text-size-adjust: 100%;
+		text-size-adjust: 100%;
+	}
+	body {
+		min-width: 320px;
+		overflow-x: clip;
+		background: var(--color-paper);
+		color: var(--color-ink);
+		font-family: var(--font-sans);
+		font-size: 15px;
+		font-weight: 400;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+	a {
+		color: inherit;
+		text-decoration: none;
+		-webkit-tap-highlight-color: transparent;
+	}
+	button {
+		font: inherit;
+		-webkit-tap-highlight-color: transparent;
+	}
+	::selection {
+		background: var(--color-ink);
+		color: var(--color-paper);
+	}
+	:focus-visible {
+		outline: 2px solid var(--color-accent);
+		outline-offset: 4px;
+		border-radius: 6px;
+	}
+	/* The custom scroll control replaces the native scrollbar once it is ready. */
+	html[data-scroll-rail-ready='true'] {
+		scrollbar-width: none;
+	}
+	html[data-scroll-rail-ready='true']::-webkit-scrollbar {
+		display: none;
+		width: 0;
+	}
+	summary::-webkit-details-marker {
+		display: none;
+	}
+}
+
+/* Scroll reveal: crisp rise, no blur. Driven by ScrollRevealController via data attributes. */
+@layer components {
+	[data-reveal] {
+		transition:
+			opacity 1s var(--ease-out-expo),
+			transform 1.2s var(--ease-out-expo);
+	}
+	[data-reveal][data-reveal-delay='1'] {
+		transition-delay: 80ms;
+	}
+	[data-reveal][data-reveal-delay='2'] {
+		transition-delay: 160ms;
+	}
+	[data-reveal][data-reveal-delay='3'] {
+		transition-delay: 240ms;
+	}
+	[data-reveal][data-reveal-delay='4'] {
+		transition-delay: 320ms;
+	}
+	@media (prefers-reduced-motion: no-preference) {
+		html[data-reveal-ready='true'] [data-reveal][data-reveal-pending='true'] {
+			opacity: 0;
+			transform: translateY(28px);
+		}
+		html[data-reveal-ready='true'] [data-reveal][data-reveal-pending='true']:focus-within {
+			opacity: 1;
+			transform: none;
+		}
+		[data-reveal] img {
+			transition: scale 1.6s var(--ease-out-expo);
+		}
+		html[data-reveal-ready='true'] [data-reveal][data-reveal-pending='true'] img {
+			scale: 1.08;
+		}
+	}
+}

@@ -10,7 +10,7 @@ import { createSiteMetadata } from '@/lib/site-metadata'
 
 export const metadata = createSiteMetadata('en')
 export const viewport: Viewport = {
-	themeColor: '#0B0C0F',
+	themeColor: '#f0f1fa',
 	width: 'device-width',
 	initialScale: 1,
 	viewportFit: 'cover'
