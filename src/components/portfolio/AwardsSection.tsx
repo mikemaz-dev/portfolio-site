@@ -56,45 +56,42 @@ export function AwardsSection({ locale }: { locale: Locale }) {
 					+
 				</span>
 
-				<p
-					className={`${caption} relative text-white/60`}
-					data-field-clear
-				>
+				<p className={`${caption} relative text-white/60`}>
 					{CONTENT[locale].nav.awards} · <span lang='ru'>{award.competition}</span> · {award.year}
 				</p>
 
 				{/* The two words drift apart as the block scrolls in, revealing the rank between them. */}
-				<h2
-					id='awards-title'
-					aria-label={award.title[locale]}
-					className='relative mt-6 mb-0 grid grid-cols-[1fr_auto_1fr] items-center gap-x-[clamp(12px,2.4vw,40px)] text-[clamp(2.6rem,9vw,9.5rem)] leading-[0.95] font-normal tracking-[-0.045em] [--split:12vw]'
-					data-field-clear
-				>
-					<span
-						aria-hidden='true'
-						className={`justify-self-start ${split} supports-[animation-timeline:view()]:motion-safe:animate-split-left`}
+				{/* Sized from the panel's width (cqw), so the whole line always fits on one row:
+				    on narrow phones the grid used to squeeze the badge down to a single "I". */}
+				<div className='@container relative mt-6'>
+					<h2
+						id='awards-title'
+						aria-label={award.title[locale]}
+						className='m-0 flex items-center justify-between gap-x-[0.18em] text-[clamp(1.5rem,12cqw,9.5rem)] leading-[0.95] font-normal tracking-[-0.045em] whitespace-nowrap [--split:8cqw]'
 					>
-						{left}
-					</span>
-					<span
-						aria-hidden='true'
-						className='relative isolate inline-grid place-items-center overflow-hidden rounded-[0.22em] bg-accent px-[0.22em] pt-[0.02em] pb-[0.08em] text-white shadow-[0_0_80px_-10px_rgb(47_60_255/70%)] supports-[animation-timeline:view()]:motion-safe:animate-badge-in supports-[animation-timeline:view()]:motion-safe:[animation-range:entry_20%_cover_45%] supports-[animation-timeline:view()]:motion-safe:[animation-timeline:view()]'
-					>
-						{RANK}
-						<span className='pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-white/35 blur-md motion-safe:animate-sheen' />
-					</span>
-					<span
-						aria-hidden='true'
-						className={`justify-self-end text-right ${split} supports-[animation-timeline:view()]:motion-safe:animate-split-right`}
-					>
-						{right}
-					</span>
-				</h2>
+						<span
+							aria-hidden='true'
+							className={`shrink-0 ${split} supports-[animation-timeline:view()]:motion-safe:animate-split-left`}
+						>
+							{left}
+						</span>
+						<span
+							aria-hidden='true'
+							className='relative isolate inline-grid shrink-0 place-items-center overflow-hidden rounded-[0.22em] bg-accent px-[0.22em] pt-[0.02em] pb-[0.08em] text-white shadow-[0_0_80px_-10px_rgb(47_60_255/70%)] supports-[animation-timeline:view()]:motion-safe:animate-badge-in supports-[animation-timeline:view()]:motion-safe:[animation-range:entry_20%_cover_45%] supports-[animation-timeline:view()]:motion-safe:[animation-timeline:view()]'
+						>
+							{RANK}
+							<span className='pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-white/35 blur-md motion-safe:animate-sheen' />
+						</span>
+						<span
+							aria-hidden='true'
+							className={`shrink-0 text-right ${split} supports-[animation-timeline:view()]:motion-safe:animate-split-right`}
+						>
+							{right}
+						</span>
+					</h2>
+				</div>
 
-				<div
-					className='relative mt-[clamp(48px,8vw,120px)] grid gap-8 border-t border-white/25 pt-6 md:grid-cols-3'
-					data-field-clear
-				>
+				<div className='relative mt-[clamp(48px,8vw,120px)] grid gap-8 border-t border-white/25 pt-6 md:grid-cols-3'>
 					<div>
 						<p className={`${caption} text-white/55`}>{ru ? 'Этап' : 'Stage'}</p>
 						<p className='mt-2 mb-0 text-[clamp(1.2rem,1.8vw,1.6rem)] leading-snug tracking-[-0.02em]'>
