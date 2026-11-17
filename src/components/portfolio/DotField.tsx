@@ -4,13 +4,12 @@ import { useEffect, useRef } from 'react'
 
 import { NOTE_EVENT, type NoteDetail, RIPPLE_EVENT, audioBus } from '@/lib/audio-bus'
 
-type Rect = { left: number; top: number; right: number; bottom: number }
 type Ripple = { x: number; y: number; born: number; strength: number }
 
 // A field of soft dots on springs. The pointer (mouse or finger) pushes them aside like
 // a hand through water, moving dots stretch into little comets along their velocity,
 // and a click or tap sends a ripple through the field. Everything settles back with a
-// gentle overshoot. Elements marked [data-field-clear] stay free of dots.
+// gentle overshoot.
 export function DotField({
 	tone = 'dark',
 	spacing = 34,
@@ -41,7 +40,6 @@ export function DotField({
 		let offsetY = new Float32Array(0)
 		let velocityX = new Float32Array(0)
 		let velocityY = new Float32Array(0)
-		let hidden = new Uint8Array(0)
 
 		let width = 0
 		let height = 0
@@ -85,19 +83,6 @@ export function DotField({
 			canvas.style.height = `${height}px`
 			context.setTransform(ratio, 0, 0, ratio, 0, 0)
 
-			const clear: Rect[] = Array.from(
-				host.querySelectorAll<HTMLElement>('[data-field-clear]')
-			).map(element => {
-				const rect = element.getBoundingClientRect()
-				const pad = step * 0.5
-				return {
-					left: rect.left - box.left - pad,
-					top: rect.top - box.top - pad,
-					right: rect.right - box.left + pad,
-					bottom: rect.bottom - box.top + pad
-				}
-			})
-
 			const columns = Math.ceil(width / step) + 1
 			const rows = Math.ceil(height / step) + 1
 			const startX = (width - (columns - 1) * step) / 2
@@ -109,7 +94,6 @@ export function DotField({
 			offsetY = new Float32Array(count)
 			velocityX = new Float32Array(count)
 			velocityY = new Float32Array(count)
-			hidden = new Uint8Array(count)
 			for (let row = 0; row < rows; row += 1) {
 				for (let column = 0; column < columns; column += 1) {
 					const index = row * columns + column
@@ -117,9 +101,6 @@ export function DotField({
 					const y = startY + row * step
 					homeX[index] = x
 					homeY[index] = y
-					hidden[index] = clear.some(r => x > r.left && x < r.right && y > r.top && y < r.bottom)
-						? 1
-						: 0
 				}
 			}
 		}
@@ -151,7 +132,6 @@ export function DotField({
 			const reach = Math.hypot(centerX, centerY)
 
 			for (let index = 0; index < count; index += 1) {
-				if (hidden[index]) continue
 				const x = homeX[index]
 				const y = homeY[index]
 				let forceX = 0
@@ -326,8 +306,6 @@ export function DotField({
 		window.addEventListener('touchend', onTouchEnd, { passive: true })
 		window.addEventListener('touchcancel', onTouchEnd, { passive: true })
 		document.documentElement.addEventListener('pointerleave', release)
-		// Fonts change text boxes, so rebuild the clear zones once they load.
-		void document.fonts?.ready.then(build)
 		const begin = () => {
 			ready = true
 			started = performance.now()

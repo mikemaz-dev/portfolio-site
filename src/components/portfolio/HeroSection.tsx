@@ -23,10 +23,7 @@ export function HeroSection({ locale }: { locale: Locale }) {
 			<div
 				className={`${shell} flex flex-1 flex-col items-center justify-center pt-28 pb-10 text-center`}
 			>
-				<p
-					className={`${caption} mb-7 flex items-center gap-2.5 motion-safe:animate-fade-in`}
-					data-field-clear
-				>
+				<p className={`${caption} mb-7 flex items-center gap-2.5 motion-safe:animate-fade-in`}>
 					<span
 						aria-hidden='true'
 						className='size-2 rounded-full bg-[#1fc16b] motion-safe:animate-blink'
@@ -36,7 +33,6 @@ export function HeroSection({ locale }: { locale: Locale }) {
 				<h1
 					id='hero-title'
 					className='relative isolate m-0 text-[clamp(1.85rem,8.4vw,8.6rem)] leading-[0.98] font-medium tracking-[-0.045em]'
-					data-field-clear
 				>
 					<span className={mask}>
 						<span className={`${rise} motion-safe:[animation-delay:100ms]`}>
@@ -78,16 +74,10 @@ export function HeroSection({ locale }: { locale: Locale }) {
 						</span>
 					</span>
 				</h1>
-				<p
-					className='mt-7 max-w-[46ch] text-[clamp(15px,1.25vw,18px)] leading-relaxed text-pretty text-ink/75 motion-safe:animate-fade-in motion-safe:[animation-delay:450ms]'
-					data-field-clear
-				>
+				<p className='mt-7 max-w-[46ch] text-[clamp(15px,1.25vw,18px)] leading-relaxed text-pretty text-ink/75 motion-safe:animate-fade-in motion-safe:[animation-delay:450ms]'>
 					{copy.lead}
 				</p>
-				<div
-					className='mt-8 flex flex-wrap justify-center gap-2 motion-safe:animate-fade-in motion-safe:[animation-delay:600ms]'
-					data-field-clear
-				>
+				<div className='mt-8 flex flex-wrap justify-center gap-2 motion-safe:animate-fade-in motion-safe:[animation-delay:600ms]'>
 					<a
 						className={pillDark}
 						href='#work'
@@ -122,7 +112,6 @@ export function HeroSection({ locale }: { locale: Locale }) {
 						href={TASKHUB_URL}
 						target='_blank'
 						rel='noreferrer'
-						data-field-clear
 					>
 						<span className={`${caption} rounded-full bg-accent px-3 py-2 text-white`}>
 							{ru ? 'Новое' : 'New'}
@@ -137,7 +126,6 @@ export function HeroSection({ locale }: { locale: Locale }) {
 					<a
 						className='group/award inline-flex min-h-11 items-center gap-3 rounded-full bg-white py-1.5 pr-5 pl-1.5 text-sm shadow-[0_10px_30px_-18px_rgb(8_8_12/50%)] transition-transform duration-500 ease-out-expo hover:-translate-y-0.5'
 						href='#awards'
-						data-field-clear
 					>
 						<span className='grid h-[34px] min-w-[34px] place-items-center rounded-full bg-ink px-2.5 text-[13px] font-medium tracking-[0.04em] text-white'>
 							III
@@ -155,7 +143,6 @@ export function HeroSection({ locale }: { locale: Locale }) {
 				<a
 					className={`${caption} hidden min-h-11 items-center gap-2 text-muted transition-colors hover:text-ink md:inline-flex`}
 					href='#about'
-					data-field-clear
 				>
 					{ru ? 'Листайте' : 'Scroll'}
 					<ArrowDown
